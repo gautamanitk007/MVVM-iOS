@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UIWindowSceneDelegate {
     var api: API!
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().barTintColor = .systemBlue
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
@@ -22,13 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UIWindowSceneDelegate {
         UIBarButtonItem.appearance().tintColor = .white
         return true
     }
-
-    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        AppDelegate.configuration = Configuration.load()
+        self.api = API(server: AppDelegate.configuration.server)
         if let loginViewController = self.window?.rootViewController?.children.first as? LoginVC{
-            AppDelegate.configuration = Configuration.load()
-            api = API(server: AppDelegate.configuration.server)
             loginViewController.loginViewModel = LoginViewModel(api: self.api)
         }
 
@@ -54,3 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UIWindowSceneDelegate {
 
 }
 
+extension UIApplication {
+  static var appDelegate: AppDelegate { return self.shared.delegate as! AppDelegate}
+}
