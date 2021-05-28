@@ -15,6 +15,7 @@ enum AllowedLength:Int{
 enum SegueIdentifier:String {
     case CreateUserSegue = "createUserSegue"
     case ShowUsersSegue = "showUserSegue"
+    case AlertSegue = "alertSegue"
    
 }
 

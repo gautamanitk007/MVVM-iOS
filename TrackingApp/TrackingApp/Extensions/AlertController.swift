@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 extension UIViewController{
-    func showAlert(title titleValue:String, message msg:String){
-        let alert = UIAlertController(title:titleValue, message:msg, preferredStyle: UIAlertController.Style.alert)
-        alert.modalPresentationStyle = .popover
-        alert.addAction(UIAlertAction(title:Strings.ok.rawValue, style: .default) { _ in})
-        present(alert, animated: true)
-    }
+//    func showAlert(title titleValue:String, message msg:String){
+//        let alert = UIAlertController(title:titleValue, message:msg, preferredStyle: UIAlertController.Style.alert)
+//        alert.modalPresentationStyle = .popover
+//        alert.addAction(UIAlertAction(title:Strings.ok.rawValue, style: .default) { _ in})
+//        present(alert, animated: true)
+//    }
     func  alert(title titleValue:String,on save:@escaping(String?) -> ()) {
         let alert = UIAlertController(title: titleValue, message: "", preferredStyle:.alert)
         alert.addTextField { textField in
@@ -32,5 +32,12 @@ extension UIViewController{
             }
         }))
         present(alert_!, animated: true)
+    }
+    func showAlert(title: String,message: String? ) {
+        let alertController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "alert") as! ErrorVC
+        alertController.set(title: title, msg: message)
+        alertController.modalPresentationStyle = .overCurrentContext
+        alertController.modalTransitionStyle = .flipHorizontal
+        UIApplication.shared.delegate?.window??.rootViewController?.present(alertController, animated: true)
     }
 }

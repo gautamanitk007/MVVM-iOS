@@ -48,7 +48,7 @@ extension LoginViewModel{
         }else if vPassword == true && vId == false{
             completion(false,Strings.password.rawValue)
         }else{
-            completion(false,Strings.password.rawValue)
+            completion(false,Strings.userIdAndPassowrd.rawValue)
         }
     }
 }

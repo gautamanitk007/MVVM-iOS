@@ -12,7 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     static var configuration: Configuration!
     var window: UIWindow?
-    var token:String?
     var api:API!
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -24,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppDelegate.configuration = Configuration.load()
         self.api = API(server: AppDelegate.configuration.server)
-        if let loginViewController = self.window?.rootViewController?.children.first as? LoginVC{
+        if let loginViewController = self.window?.rootViewController as? LoginVC{
             loginViewController.loginViewModel = LoginViewModel(api: self.api)
         }
         

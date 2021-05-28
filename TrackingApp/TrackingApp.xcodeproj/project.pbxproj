@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87A3033526613B5D00473FA9 /* ErrorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3033426613B5D00473FA9 /* ErrorVC.swift */; };
 		87ADEFDF2660D08800CA63D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADEFDE2660D08800CA63D1 /* AppDelegate.swift */; };
 		87ADEFE82660D08C00CA63D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87ADEFE72660D08C00CA63D1 /* Assets.xcassets */; };
 		87ADEFEB2660D08C00CA63D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87ADEFE92660D08C00CA63D1 /* LaunchScreen.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		87A3033426613B5D00473FA9 /* ErrorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVC.swift; sourceTree = "<group>"; };
 		87ADEFDB2660D08800CA63D1 /* TrackingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ADEFDE2660D08800CA63D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87ADEFE72660D08C00CA63D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				87ADF0122660D3AD00CA63D1 /* LoginVC.swift */,
 				87ADF01D2660D46400CA63D1 /* CreateUserVC.swift */,
 				87ADF01F2660D48800CA63D1 /* UserListVC.swift */,
+				87A3033426613B5D00473FA9 /* ErrorVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				87ADF0012660D22300CA63D1 /* UserInfo.swift in Sources */,
 				87ADF01A2660D42B00CA63D1 /* LoginViewModel.swift in Sources */,
 				87ADF01C2660D44300CA63D1 /* UserViewModel.swift in Sources */,
+				87A3033526613B5D00473FA9 /* ErrorVC.swift in Sources */,
 				87ADF0032660D23200CA63D1 /* LoginResponse.swift in Sources */,
 				87ADF0182660D3F600CA63D1 /* RoundedView.swift in Sources */,
 				87ADEFDF2660D08800CA63D1 /* AppDelegate.swift in Sources */,
