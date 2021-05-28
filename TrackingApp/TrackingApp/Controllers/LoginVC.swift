@@ -30,7 +30,7 @@ class LoginVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
 //        self.txtUserId.text = "gautam12.amdocs12@gmail.com"
 //        self.txtPassword.text = "abc24678!"
     }
@@ -42,7 +42,6 @@ class LoginVC: UIViewController {
                 self.loginViewModel.loginUser(["email":self.txtUserId.text!,"password":self.txtPassword.text!]) { [weak self] (_, error )in
                     guard let self = self else {return}
                     if error?.statusCode == ResponseCodes.success{
-                        Log.debug("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx")
                         self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: nil)
                     }else{
                         self.showAlert(title: Strings.infoTitle.rawValue,message:error!.message!)

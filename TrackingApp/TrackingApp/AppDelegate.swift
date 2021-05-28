@@ -23,10 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppDelegate.configuration = Configuration.load()
         self.api = API(server: AppDelegate.configuration.server)
-        if let loginViewController = self.window?.rootViewController as? LoginVC{
+        if let loginViewController = self.window?.rootViewController?.children.first as? LoginVC{
             loginViewController.loginViewModel = LoginViewModel(api: self.api)
         }
-        
         return true
     }
 }

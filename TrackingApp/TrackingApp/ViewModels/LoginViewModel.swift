@@ -41,14 +41,14 @@ extension LoginViewModel{
         let vId = userId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count >= AllowedLength.userIdLength.rawValue
         let vPassword = password.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count >= AllowedLength.userPasswordLength.rawValue
         
-        if vId == true && vPassword == true {
-            completion(true,nil)
-        }else if vId == true && vPassword == false{
-            completion(false,Strings.userId.rawValue)
-        }else if vPassword == true && vId == false{
-            completion(false,Strings.password.rawValue)
-        }else{
+        if vId == false && vPassword == false {
             completion(false,Strings.userIdAndPassowrd.rawValue)
+        }else if vId == true && vPassword == false{
+            completion(false,Strings.password.rawValue)
+        }else if vId == false && vPassword == true {
+            completion(false,Strings.userId.rawValue)
+        }else{
+            completion(true,nil)
         }
     }
 }
