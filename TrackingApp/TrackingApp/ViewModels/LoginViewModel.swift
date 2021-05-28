@@ -19,7 +19,6 @@ class LoginViewModel{
         
         let loginResource = Resource<LoginResponse>(method:"POST",params:params, urlEndPoint: "users/login") { data in
             let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data)
-            print(loginResponse)
             return loginResponse
         }
         
