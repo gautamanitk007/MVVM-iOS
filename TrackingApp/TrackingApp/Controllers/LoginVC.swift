@@ -31,8 +31,8 @@ class LoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        self.txtUserId.text = "gautam12.amdocs12@gmail.com"
-        self.txtPassword.text = "abc24678!"
+//        self.txtUserId.text = "gautam12.amdocs12@gmail.com"
+//        self.txtPassword.text = "abc24678!"
     }
 
     @IBAction func didLoginTapped(_ sender: Any) {

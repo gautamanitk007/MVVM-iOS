@@ -25,6 +25,7 @@ class LoginViewModel{
         self.api.load(resource: loginResource) { [weak self](result, error) in
             guard let self = self else{ return }
             if let loginResponse = result{
+                print(loginResponse)
                 self.api.token = loginResponse.token
                 completion(ResponseCodes.success,error)
             }else{
