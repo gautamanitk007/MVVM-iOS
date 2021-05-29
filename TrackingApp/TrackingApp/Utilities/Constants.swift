@@ -18,6 +18,10 @@ enum SegueIdentifier:String {
     case AlertSegue = "alertSegue"
    
 }
+enum Identifier:String {
+    case GeneralCellIdentifier = "GeneralCelli"
+    
+}
 
 struct ResponseCodes {
     static let success = 200

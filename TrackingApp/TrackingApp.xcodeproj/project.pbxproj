@@ -29,6 +29,12 @@
 		87ADF0202660D48800CA63D1 /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF01F2660D48800CA63D1 /* UserListVC.swift */; };
 		87ADF0452660EED600CA63D1 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF0442660EED600CA63D1 /* MockAPI.swift */; };
 		87ADF0482660F11C00CA63D1 /* LoginVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF0472660F11C00CA63D1 /* LoginVCTests.swift */; };
+		87D3B25A26628D64008A2877 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3B25926628D64008A2877 /* UIButton+Extension.swift */; };
+		87D3B25C26628ED3008A2877 /* DropdownVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3B25B26628ED3008A2877 /* DropdownVC.swift */; };
+		87D3B2602662A1B1008A2877 /* GeneralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3B25F2662A1B1008A2877 /* GeneralCell.swift */; };
+		87D3B2632662A304008A2877 /* TableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3B2622662A304008A2877 /* TableViewDatasource.swift */; };
+		87D3B2652662A377008A2877 /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3B2642662A377008A2877 /* CountryViewModel.swift */; };
+		87D3B2672662A5A3008A2877 /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3B2662662A5A3008A2877 /* CountryListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +74,12 @@
 		87ADF03E2660EAA400CA63D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87ADF0442660EED600CA63D1 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
 		87ADF0472660F11C00CA63D1 /* LoginVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCTests.swift; sourceTree = "<group>"; };
+		87D3B25926628D64008A2877 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		87D3B25B26628ED3008A2877 /* DropdownVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownVC.swift; sourceTree = "<group>"; };
+		87D3B25F2662A1B1008A2877 /* GeneralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCell.swift; sourceTree = "<group>"; };
+		87D3B2622662A304008A2877 /* TableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDatasource.swift; sourceTree = "<group>"; };
+		87D3B2642662A377008A2877 /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
+		87D3B2662662A5A3008A2877 /* CountryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +121,7 @@
 		87ADEFDD2660D08800CA63D1 /* TrackingApp */ = {
 			isa = PBXGroup;
 			children = (
+				87D3B2612662A2D7008A2877 /* Datasource */,
 				87ADEFFB2660D1AA00CA63D1 /* Models */,
 				87ADEFFA2660D19C00CA63D1 /* Views */,
 				87ADEFF92660D19100CA63D1 /* Controllers */,
@@ -131,6 +144,8 @@
 			children = (
 				87ADF0192660D42B00CA63D1 /* LoginViewModel.swift */,
 				87ADF01B2660D44300CA63D1 /* UserViewModel.swift */,
+				87D3B2642662A377008A2877 /* CountryViewModel.swift */,
+				87D3B2662662A5A3008A2877 /* CountryListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -148,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				87ADF0102660D38100CA63D1 /* AlertController.swift */,
+				87D3B25926628D64008A2877 /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -169,6 +185,7 @@
 				87ADF01D2660D46400CA63D1 /* CreateUserVC.swift */,
 				87ADF01F2660D48800CA63D1 /* UserListVC.swift */,
 				87A3033426613B5D00473FA9 /* ErrorVC.swift */,
+				87D3B25B26628ED3008A2877 /* DropdownVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -210,6 +227,7 @@
 		87ADF0162660D3E800CA63D1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				87D3B25F2662A1B1008A2877 /* GeneralCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -230,6 +248,14 @@
 				87ADF0472660F11C00CA63D1 /* LoginVCTests.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		87D3B2612662A2D7008A2877 /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				87D3B2622662A304008A2877 /* TableViewDatasource.swift */,
+			);
+			path = Datasource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,16 +361,22 @@
 			files = (
 				87ADF0092660D31D00CA63D1 /* Constants.swift in Sources */,
 				87ADF0152660D3D500CA63D1 /* RoundedButton.swift in Sources */,
+				87D3B2632662A304008A2877 /* TableViewDatasource.swift in Sources */,
 				87ADF0202660D48800CA63D1 /* UserListVC.swift in Sources */,
+				87D3B25A26628D64008A2877 /* UIButton+Extension.swift in Sources */,
 				87ADEFFF2660D21200CA63D1 /* API.swift in Sources */,
+				87D3B2602662A1B1008A2877 /* GeneralCell.swift in Sources */,
+				87D3B2672662A5A3008A2877 /* CountryListViewModel.swift in Sources */,
 				87ADF00D2660D35200CA63D1 /* Configuration.swift in Sources */,
 				87ADF00B2660D33800CA63D1 /* Log.swift in Sources */,
 				87ADF0112660D38100CA63D1 /* AlertController.swift in Sources */,
 				87ADF0132660D3AD00CA63D1 /* LoginVC.swift in Sources */,
 				87ADF0012660D22300CA63D1 /* UserInfo.swift in Sources */,
+				87D3B2652662A377008A2877 /* CountryViewModel.swift in Sources */,
 				87ADF01A2660D42B00CA63D1 /* LoginViewModel.swift in Sources */,
 				87ADF01C2660D44300CA63D1 /* UserViewModel.swift in Sources */,
 				87A3033526613B5D00473FA9 /* ErrorVC.swift in Sources */,
+				87D3B25C26628ED3008A2877 /* DropdownVC.swift in Sources */,
 				87ADF0032660D23200CA63D1 /* LoginResponse.swift in Sources */,
 				87ADF0182660D3F600CA63D1 /* RoundedView.swift in Sources */,
 				87ADEFDF2660D08800CA63D1 /* AppDelegate.swift in Sources */,
@@ -521,7 +553,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.konica.dev.TrackingApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -539,7 +571,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.konica.dev.TrackingApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
