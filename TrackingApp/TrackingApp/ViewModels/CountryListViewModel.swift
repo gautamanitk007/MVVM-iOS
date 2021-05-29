@@ -9,7 +9,11 @@ import Foundation
 
 class CountryListViewModel {
     private (set) var countryViewModels = [CountryViewModel]()
-
+    init(countryList:[Country]) {
+        for country in countryList {
+            self.countryViewModels.append(CountryViewModel(countryName: country.name, code: country.code))
+        }
+    }
     func addCountryViewModel(_ vm:CountryViewModel){
         self.countryViewModels.append(vm)
     }

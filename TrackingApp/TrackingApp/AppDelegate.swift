@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.api = API(server: AppDelegate.configuration.server)
         if let loginViewController = self.window?.rootViewController?.children.first as? LoginVC{
             loginViewController.loginViewModel = LoginViewModel(api: self.api)
+            loginViewController.countryListViewModel = CountryListViewModel(countryList: AppDelegate.configuration.countryList)
         }
         return true
     }

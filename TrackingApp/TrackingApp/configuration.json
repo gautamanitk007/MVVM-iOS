@@ -1,4 +1,14 @@
 {
   "server" : "https://gautamkumarsingh-task-manager.herokuapp.com",
   "debug" : true,
+  "countryList":[{"name":"Singapore","code":"SG"},
+      {"name":"Malaysia","code":"MY"},
+      {"name":"Thailand","code":"TH"},
+      {"name":"Indonesia","code":"IND"},
+      {"name":"India","code":"IN"},
+      {"name":"Bangladesh","code":"BG"},
+      {"name":"Shrilanka","code":"SL"},
+      {"name":"China","code":"CN"},
+      {"name":"Nepal","code":"Np"},
+  ]
 }

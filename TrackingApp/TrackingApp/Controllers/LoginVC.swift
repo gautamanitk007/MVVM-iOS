@@ -21,7 +21,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var txtUserId: UITextField!
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var baseScrollView: UIScrollView!
-  
+    var countryListViewModel:CountryListViewModel!
     var loginViewModel:LoginViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,15 +80,7 @@ class LoginVC: UIViewController {
         }else if segue.identifier == "dropDownSegue"{
             guard let dropDown = segue.destination as? DropdownVC else {fatalError("UserListVC not found")}
             dropDown.delegate = self
-            let cListViewModel = CountryListViewModel()
-            cListViewModel.addCountryViewModel(CountryViewModel(countryName: "Singapore", code: "SG"))
-            cListViewModel.addCountryViewModel(CountryViewModel(countryName: "Malaysia", code: "MY"))
-            cListViewModel.addCountryViewModel(CountryViewModel(countryName: "Hong Kong", code: "HK"))
-            cListViewModel.addCountryViewModel(CountryViewModel(countryName: "Indonesia", code: "IND"))
-            cListViewModel.addCountryViewModel(CountryViewModel(countryName: "Australia", code: "AU"))
-            cListViewModel.addCountryViewModel(CountryViewModel(countryName: "Thailand", code: "TH"))
-            dropDown.countryListViewModel = cListViewModel
-    
+            dropDown.countryListViewModel = self.countryListViewModel
         }
     }
     

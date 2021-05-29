@@ -7,9 +7,15 @@
 
 import Foundation
 
+struct Country:Codable{
+    let name:String
+    let code:String
+}
+
 struct Configuration: Codable {
-  let server: String
-  let debug: Bool
+    let server: String
+    let debug: Bool
+    let countryList:[Country]
 }
 
 extension Configuration {

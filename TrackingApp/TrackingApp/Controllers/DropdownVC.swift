@@ -16,6 +16,11 @@ class DropdownVC: UIViewController {
     var countryListViewModel:CountryListViewModel!
     weak var delegate:DropdownDelegate?
     private var datasource : TableViewDatasource<GeneralCell,CountryViewModel>!
+    var contentSize:CGSize?{
+        didSet{
+            self.preferredContentSize = contentSize!
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.datasource = TableViewDatasource(cellIdentifier: Identifier.GeneralCellIdentifier.rawValue,items: self.countryListViewModel.countryViewModels){(cell,viewModel) in
@@ -23,11 +28,9 @@ class DropdownVC: UIViewController {
         }
         self.cutomTable.dataSource = self.datasource
         self.cutomTable.delegate = self
+        contentSize = CGSize.init(width: 160, height: 260)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.preferredContentSize = CGSize.init(width: 160, height: 260)
-    }
+    
     deinit {
         self.datasource = nil
         self.countryListViewModel = nil
