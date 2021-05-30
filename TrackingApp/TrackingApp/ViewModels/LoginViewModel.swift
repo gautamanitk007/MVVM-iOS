@@ -8,7 +8,6 @@
 import Foundation
 import CoreData
 class LoginViewModel{
-    
     let api:API!
     let coOrdinator:Coordinator!
     init( api:API,coOrdinator:Coordinator) {
@@ -55,7 +54,11 @@ extension LoginViewModel{
     }
 }
 
+
+
+
 extension LoginViewModel{
+
     func insert(_ object:LoginResponse,_ password:String){
         Log.debug(object.token)
         self.coOrdinator.perform {[weak self] in
@@ -65,7 +68,6 @@ extension LoginViewModel{
             }else{
                 let _ =  Login.insert(into: self.coOrdinator.syncContext, for: object, password: password)
             }
-            
             let _ =  self.coOrdinator.syncContext.saveOrRollback()
         }
     }
@@ -75,6 +77,9 @@ extension LoginViewModel{
             let loginObj = Login.findOrFetch(in: self.coOrdinator.syncContext, matching: Login.defaultPredicate)
             completion(loginObj)
         }
-        
+    }
+
+    func updateRemember(_ reMember:Bool){
+        Utility.saveBoolInDefaults(reMember, forKey: Strings.RememberKey.rawValue)
     }
 }

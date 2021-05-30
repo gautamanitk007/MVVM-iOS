@@ -23,12 +23,20 @@ class LoginVC: UIViewController {
     @IBOutlet weak var baseScrollView: UIScrollView!
     var countryListViewModel:CountryListViewModel!
     var loginViewModel:LoginViewModel!
+    var isRemember:Bool?{
+        didSet{
+            self.btnRemember.isSelected = isRemember!
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     
         self.txtUserId.delegate = self
         self.txtPassword.delegate = self
-        self.btnCountry.rightImage(image: UIImage(named: "drop.png")!, renderMode:.alwaysOriginal)
+        self.btnCountry.setImage(image: UIImage(named: "drop.png")!, renderMode: .alwaysOriginal, semantics: .forceRightToLeft, alignment: .right, left: 0, right: 60)
+        self.btnRemember.setImage(image: UIImage(named: "circle_unchecked.png")!, renderMode: .alwaysOriginal, semantics: .forceLeftToRight, alignment: .left, left: 12, right: 0)
+       
+        
         self.stopActivity()
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
@@ -44,7 +52,9 @@ class LoginVC: UIViewController {
         
     }
     @IBAction func didRememberTapped(_ sender: Any) {
-        self.btnRemember.isSelected = !self.btnRemember.isSelected
+        self.loginViewModel.updateRemember(!self.btnRemember.isSelected)
+        self.isRemember = Utility.getBoolValueFromDefaults(Strings.RememberKey.rawValue)
+        
     }
     @IBAction func didCountryTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "dropDownSegue", sender: nil)
@@ -123,6 +133,12 @@ class LoginVC: UIViewController {
                     }else{
                         self.startLogin(obj)
                     }
+                    self.isRemember = Utility.getBoolValueFromDefaults(Strings.RememberKey.rawValue)
+                }
+            }else{
+                DispatchQueue.main.async {[weak self] in
+                    guard let self = self else {return}
+                    self.isRemember = Utility.getBoolValueFromDefaults(Strings.RememberKey.rawValue)
                 }
             }
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		874EE6B22663893900CB2C45 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874EE6B12663893900CB2C45 /* Utility.swift */; };
 		8780FEB4266322A4007BF173 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB3266322A4007BF173 /* Managed.swift */; };
 		8780FEB6266322E0007BF173 /* DataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB5266322E0007BF173 /* DataStack.swift */; };
 		8780FEB826632334007BF173 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB726632334007BF173 /* Coordinator.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		874EE6B12663893900CB2C45 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		8780FEB3266322A4007BF173 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		8780FEB5266322E0007BF173 /* DataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStack.swift; sourceTree = "<group>"; };
 		8780FEB726632334007BF173 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				87ADF0082660D31D00CA63D1 /* Constants.swift */,
 				87ADF00A2660D33800CA63D1 /* Log.swift */,
 				87ADF00C2660D35200CA63D1 /* Configuration.swift */,
+				874EE6B12663893900CB2C45 /* Utility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				8780FEC22663251E007BF173 /* Login+CoreDataProperties.swift in Sources */,
 				87ADF0012660D22300CA63D1 /* UserInfo.swift in Sources */,
 				87D3B2652662A377008A2877 /* CountryViewModel.swift in Sources */,
+				874EE6B22663893900CB2C45 /* Utility.swift in Sources */,
 				87ADF01A2660D42B00CA63D1 /* LoginViewModel.swift in Sources */,
 				87ADF01C2660D44300CA63D1 /* UserViewModel.swift in Sources */,
 				87A3033526613B5D00473FA9 /* ErrorVC.swift in Sources */,

@@ -46,7 +46,7 @@
                                                         <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8F7-Yu-Nos" customClass="RoundedButton" customModule="TrackingApp" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="152" width="117" height="40"/>
+                                                        <rect key="frame" x="8" y="152" width="114" height="40"/>
                                                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="EWK-Rf-n91"/>
@@ -84,24 +84,15 @@
                                                             <action selector="didCountryTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UEL-Ds-C7G"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqO-Iu-V37">
-                                                        <rect key="frame" x="181" y="152" width="161" height="40"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="3Oh-EJ-uyx"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe0-Cc-orq">
-                                                        <rect key="frame" x="133" y="152" width="40" height="40"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe0-Cc-orq">
+                                                        <rect key="frame" x="130" y="152" width="212" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="qLQ-Q1-ePc"/>
-                                                            <constraint firstAttribute="width" constant="40" id="zEQ-dI-uFB"/>
+                                                            <constraint firstAttribute="width" constant="212" id="zEQ-dI-uFB"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" image="circle_unchecked"/>
+                                                        <state key="normal" title="Remember Password" image="circle_unchecked"/>
                                                         <state key="selected" image="checkmark"/>
                                                         <connections>
                                                             <action selector="didRememberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Son-kc-pj8"/>
@@ -115,7 +106,6 @@
                                                     <constraint firstItem="ZM9-ew-hhA" firstAttribute="leading" secondItem="eYG-KV-yiV" secondAttribute="leading" constant="8" id="72V-nT-7zK"/>
                                                     <constraint firstItem="8F7-Yu-Nos" firstAttribute="leading" secondItem="eYG-KV-yiV" secondAttribute="leading" constant="8" id="7uU-8D-ltx"/>
                                                     <constraint firstItem="4Td-fm-wPa" firstAttribute="top" secondItem="8F7-Yu-Nos" secondAttribute="bottom" constant="8" symbolic="YES" id="8S2-aB-lNo"/>
-                                                    <constraint firstItem="vqO-Iu-V37" firstAttribute="leading" secondItem="fe0-Cc-orq" secondAttribute="trailing" constant="8" symbolic="YES" id="Aux-xU-FvD"/>
                                                     <constraint firstItem="ZM9-ew-hhA" firstAttribute="top" secondItem="eYG-KV-yiV" secondAttribute="top" constant="8" id="MTc-0A-d6R"/>
                                                     <constraint firstItem="vSH-SI-4Vv" firstAttribute="leading" secondItem="eYG-KV-yiV" secondAttribute="leading" constant="8" id="N7j-em-k6m"/>
                                                     <constraint firstItem="vSH-SI-4Vv" firstAttribute="top" secondItem="ZM9-ew-hhA" secondAttribute="bottom" constant="8" id="QY4-hn-vjp"/>
@@ -124,11 +114,10 @@
                                                     <constraint firstAttribute="trailing" secondItem="4Td-fm-wPa" secondAttribute="trailing" constant="8" id="W0g-VF-auC"/>
                                                     <constraint firstItem="fe0-Cc-orq" firstAttribute="leading" secondItem="8F7-Yu-Nos" secondAttribute="trailing" constant="8" symbolic="YES" id="Xhn-l9-Jfe"/>
                                                     <constraint firstItem="nwg-kb-O0m" firstAttribute="leading" secondItem="eYG-KV-yiV" secondAttribute="leading" constant="8" id="bxQ-4H-qB9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fe0-Cc-orq" secondAttribute="trailing" constant="8" id="dkg-JK-3dI"/>
                                                     <constraint firstAttribute="height" constant="248" id="fLA-0t-K3d"/>
                                                     <constraint firstItem="nwg-kb-O0m" firstAttribute="top" secondItem="vSH-SI-4Vv" secondAttribute="bottom" constant="8" id="jv4-gR-caV"/>
                                                     <constraint firstItem="fe0-Cc-orq" firstAttribute="top" secondItem="nwg-kb-O0m" secondAttribute="bottom" constant="8" id="obI-4E-zSR"/>
-                                                    <constraint firstAttribute="trailing" secondItem="vqO-Iu-V37" secondAttribute="trailing" constant="8" id="py7-H9-2Ev"/>
-                                                    <constraint firstItem="vqO-Iu-V37" firstAttribute="top" secondItem="nwg-kb-O0m" secondAttribute="bottom" constant="8" id="qSx-bs-2cj"/>
                                                     <constraint firstAttribute="trailing" secondItem="vSH-SI-4Vv" secondAttribute="trailing" constant="8" id="qUX-RS-zU2"/>
                                                     <constraint firstAttribute="width" constant="350" id="qw0-8f-S4g"/>
                                                     <constraint firstItem="8F7-Yu-Nos" firstAttribute="top" secondItem="nwg-kb-O0m" secondAttribute="bottom" constant="8" id="sF0-nS-fqj"/>
@@ -288,14 +277,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GeneralCelli" id="JmA-Vu-qOf" customClass="GeneralCell" customModule="TrackingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="43"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="42.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JmA-Vu-qOf" id="wq5-zY-Vjw">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blD-fV-xnT">
-                                                    <rect key="frame" x="20" y="11" width="374" height="21"/>
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="374" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -384,7 +373,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkmark" width="92.333335876464844" height="92.333335876464844"/>
+        <image name="checkmark" width="30" height="30"/>
         <image name="circle_unchecked" width="30" height="30"/>
         <image name="home" width="640" height="400"/>
         <namedColor name="AccentColor">

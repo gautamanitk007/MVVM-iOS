@@ -49,6 +49,8 @@ enum Strings:String {
     case password = "Password length should be more than 4 characters"
     case userId = "User Id length should be more than 5 characters"
     case userIdAndPassowrd = "Please check userid and password length"
+    case validateUser = "Please validate user first before remember"
+    case RememberKey = "isRemember"
   
 }
 

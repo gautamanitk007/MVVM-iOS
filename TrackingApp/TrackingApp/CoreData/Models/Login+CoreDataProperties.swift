@@ -16,10 +16,10 @@ extension Login {
         return NSFetchRequest<Login>(entityName: "Login")
     }
 
-    @NSManaged public var userId: String?
-    @NSManaged public var password: String?
     @NSManaged public var name: String?
+    @NSManaged public var password: String?
     @NSManaged public var token: String?
+    @NSManaged public var userId: String?
 
 }
 
