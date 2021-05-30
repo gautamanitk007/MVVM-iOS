@@ -38,7 +38,7 @@ extension API{
             request.addValue(bearer, forHTTPHeaderField: "Authorization")
         }else {
             if params.count > 0{
-                let jsonData = try? JSONSerialization.data(withJSONObject: params)
+                let jsonData = try? JSONSerialization.data(withJSONObject: ["userId":params["userId"],"password":params["password"]])
                 request.httpBody = jsonData
             }
         }

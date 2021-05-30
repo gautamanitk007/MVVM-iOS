@@ -15,7 +15,6 @@ class LoginVC: UIViewController {
     @IBOutlet var contentView:UIView!
     @IBOutlet weak var btnRemember: UIButton!
     @IBOutlet weak var btnCountry: RoundedButton!
-    @IBOutlet weak var btnCreateUser: RoundedButton!
     @IBOutlet weak var btnLogin: RoundedButton!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtUserId: UITextField!
@@ -49,12 +48,11 @@ class LoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        
+        self.isRemember = Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
     }
     @IBAction func didRememberTapped(_ sender: Any) {
         self.loginViewModel.updateRemember(!self.btnRemember.isSelected)
-        self.isRemember = Utility.getBoolValueFromDefaults(Strings.RememberKey.rawValue)
-        
+        self.isRemember = Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
     }
     @IBAction func didCountryTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "dropDownSegue", sender: nil)
@@ -67,10 +65,14 @@ class LoginVC: UIViewController {
                 self.startActivity()
                 self.loginViewModel.fetchLogin {[weak self]  login in
                     guard let self = self else {return}
-                    if let obj = login{
-                        self.startLogin(obj)
+                    let (isExist,value) = Utility.getToken(forKey: Strings.TokenKey.rawValue)
+                    if isExist{
+                        DispatchQueue.main.async {[weak self] in
+                            guard let self = self else {return}
+                            self.startLogin()
+                        }
                     }else{
-                        self.loginViewModel.loginUser(["userId":uId!,"password":pwd!,"token":""]) { (_, error )in
+                        self.loginViewModel.loginUser(["userId":uId!,"password":pwd!,"token":value]) { (_, error )in
                             DispatchQueue.main.async {[weak self] in
                                 guard let self = self else {return}
                                 self.stopActivity()
@@ -89,16 +91,12 @@ class LoginVC: UIViewController {
             }
         }
     }
-    @IBAction func didCreateUserTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: SegueIdentifier.CreateUserSegue.rawValue, sender: nil)
-    }
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.ShowUsersSegue.rawValue {
-            //guard let homeVC = segue.destination as? UserListVC else {fatalError("UserListVC not found")}
-          
-        }else if segue.identifier == SegueIdentifier.CreateUserSegue.rawValue{
-            //guard let navController = segue.destination as? UINavigationController else {fatalError("NavigationController not found")}
-            //guard let registrationVC = navController.viewControllers.first as? CreateUserVC else {fatalError("CreateUserVC not found")}
+            guard let userListVC = segue.destination as? UserListVC else {fatalError("UserListVC not found")}
+            userListVC.userViewModel = UserViewModel(api: self.loginViewModel.api, coOrdinator: self.loginViewModel.coOrdinator)
+            userListVC.userId = self.txtUserId.text
         }else if segue.identifier == "dropDownSegue"{
             guard let dropDown = segue.destination as? DropdownVC else {fatalError("UserListVC not found")}
             dropDown.delegate = self
@@ -125,20 +123,20 @@ class LoginVC: UIViewController {
     @objc func autoLogin(){
         self.loginViewModel.fetchLogin {[weak self]  login in
             guard let self = self else {return}
-            if let obj = login{
+            if let obj = login,let token = obj.token, token.count > 0{
                 DispatchQueue.main.async {[weak self] in
                     guard let self = self else {return}
                     if let _ = self.navigationController?.topViewController as? UserListVC{
                         Log.debug("TopVC")
                     }else{
-                        self.startLogin(obj)
+                        self.startLogin()
                     }
-                    self.isRemember = Utility.getBoolValueFromDefaults(Strings.RememberKey.rawValue)
+                    self.isRemember = Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
                 }
             }else{
                 DispatchQueue.main.async {[weak self] in
                     guard let self = self else {return}
-                    self.isRemember = Utility.getBoolValueFromDefaults(Strings.RememberKey.rawValue)
+                    self.isRemember = Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
                 }
             }
         }
@@ -157,9 +155,9 @@ extension LoginVC{
             self.activityView.stopAnimating()
         }
     }
-    func startLogin(_ login:Login){
+    func startLogin(){
         self.stopActivity()
-        self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: login)
+        self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: nil)
     }
 }
 //MARK:- UITextFieldDelegate

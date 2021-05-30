@@ -61,10 +61,12 @@ extension LoginViewModel{
 
     func insert(_ object:LoginResponse,_ password:String){
         Log.debug(object.token)
+        Utility.saveTokenInDefaults(value: object.token, forKey: Strings.TokenKey.rawValue)
         self.coOrdinator.perform {[weak self] in
             guard let self = self else{ return}
             if let loginObj = Login.findOrFetch(in: self.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(Login.userId),object.user.userId)){
                 loginObj.token = object.token
+                let _ = loginObj.managedObjectContext?.saveOrRollback()
             }else{
                 let _ =  Login.insert(into: self.coOrdinator.syncContext, for: object, password: password)
             }

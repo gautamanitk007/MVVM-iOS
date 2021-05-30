@@ -6,12 +6,15 @@
 //
 
 import Foundation
-
+import CoreData
 class UserViewModel{
     let api:API!
-    init(api:API) {
+    let coOrdinator:Coordinator!
+    init( api:API,coOrdinator:Coordinator) {
         self.api = api
+        self.coOrdinator = coOrdinator
     }
+    
     func getAllUsers(_ params:[String:String],on completion:@escaping(Int,ApiError?)->()){
         
         let uResponse = Resource<[UserInfo]>(method:"Get",params:params, urlEndPoint: "users") { data in
@@ -27,5 +30,21 @@ class UserViewModel{
             }
         }
     }
+    
+    func logoutUser(_ params:[String:String],on completion:@escaping(Int,ApiError?)->()){
+        let uResponse = Resource<Dictionary<String,Any>>(method:"POST",params:params, urlEndPoint: "users/logout") { data in
+            let json = try? JSONSerialization.jsonObject(with: data, options: [])
+            return (json as! Dictionary<String, Any>)
+        }
+        self.api.load(resource: uResponse) {(result, error) in
+            Utility.saveTokenInDefaults(value: "", forKey: Strings.TokenKey.rawValue)
+            if let err = error, err.statusCode != ResponseCodes.success{
+                completion(err.statusCode,err)
+            }else{
+                completion(ResponseCodes.success,error)
+            }
+        }
+    }
+    
 }
 
