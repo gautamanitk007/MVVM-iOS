@@ -22,7 +22,6 @@ struct ApiError{
 
 class API{
     let server:String
-    var token:String?
     init(server:String) {
         self.server = server
     }
@@ -34,7 +33,7 @@ extension API{
         let url = URL(string: self.server + "/" + endPoint)!
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
-        if let token = self.token {
+        if let token = params["token"] as? String,token.count > 0 {
             let bearer = "Bearer \(token)"
             request.addValue(bearer, forHTTPHeaderField: "Authorization")
         }else {
@@ -62,7 +61,11 @@ extension API {
                 if let data = data {
                     completion(resource.parse(data),sError)
                 }else{
-                    completion(nil,sError)
+                    if let err = sError {
+                        completion(nil,err)
+                    }else{
+                        completion(nil,ApiError(statusCode: -1009, message: error?.localizedDescription))
+                    }
                 }
             }
         }.resume()

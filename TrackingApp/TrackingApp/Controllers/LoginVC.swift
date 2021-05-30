@@ -33,13 +33,15 @@ class LoginVC: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.autoLogin), name:NSNotification.Name(NotificatioString.AutoLogin.rawValue), object: nil)
+        self.txtUserId.text = "gautamkkr1"//"gautam12.amdocs12@gmail.com"
+        self.txtPassword.text = "abc1324678!"//"abc24678!"
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        self.txtUserId.text = "gautam12.amdocs12@gmail.com"
-        self.txtPassword.text = "abc24678!"
+        
     }
     @IBAction func didRememberTapped(_ sender: Any) {
         self.btnRemember.isSelected = !self.btnRemember.isSelected
@@ -49,19 +51,29 @@ class LoginVC: UIViewController {
     }
 
     @IBAction func didLoginTapped(_ sender: Any) {
-        self.loginViewModel.checkCredentialsPreconditions(for: self.txtUserId.text!, and: self.txtPassword.text!) { [weak self] (validationSuccess, error )in
+        self.loginViewModel.checkCredentialsPreconditions(for: self.txtUserId.text!, and: self.txtPassword.text!) { [weak self] (allOk,uId,pwd, error )in
             guard let self = self else {return}
-            if validationSuccess{
+            if allOk{
                 self.startActivity()
-                self.loginViewModel.loginUser(["email":self.txtUserId.text!,"password":self.txtPassword.text!]) { [weak self] (_, error )in
+                self.loginViewModel.fetchLogin {[weak self]  login in
                     guard let self = self else {return}
-                    self.stopActivity()
-                    if error?.statusCode == ResponseCodes.success{
-                        self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: nil)
+                    if let obj = login{
+                        self.startLogin(obj)
                     }else{
-                        self.showAlert(title: Strings.infoTitle.rawValue,message:error!.message!)
+                        self.loginViewModel.loginUser(["userId":uId!,"password":pwd!,"token":""]) { (_, error )in
+                            DispatchQueue.main.async {[weak self] in
+                                guard let self = self else {return}
+                                self.stopActivity()
+                                if error?.statusCode == ResponseCodes.success{
+                                    self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: nil)
+                                }else{
+                                    self.showAlert(title: Strings.infoTitle.rawValue,message:error!.message!)
+                                }
+                            }
+                        }
                     }
                 }
+                
             }else{
                 self.showAlert(title: Strings.infoTitle.rawValue,message:error!)
             }
@@ -100,6 +112,25 @@ class LoginVC: UIViewController {
         })
     }
     
+    @objc func autoLogin(){
+        self.loginViewModel.fetchLogin {[weak self]  login in
+            guard let self = self else {return}
+            if let obj = login{
+                DispatchQueue.main.async {[weak self] in
+                    guard let self = self else {return}
+                    if let _ = self.navigationController?.topViewController as? UserListVC{
+                        Log.debug("TopVC")
+                    }else{
+                        self.startLogin(obj)
+                    }
+                }
+            }
+        }
+    }
+}
+
+//MARK:- utility
+extension LoginVC{
     func startActivity(){
         if self.activityView.isAnimating == false {
             self.activityView.startAnimating()
@@ -110,7 +141,10 @@ class LoginVC: UIViewController {
             self.activityView.stopAnimating()
         }
     }
-    
+    func startLogin(_ login:Login){
+        self.stopActivity()
+        self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: login)
+    }
 }
 //MARK:- UITextFieldDelegate
 extension LoginVC:UITextFieldDelegate{

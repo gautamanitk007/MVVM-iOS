@@ -6,13 +6,14 @@
 //
 
 import Foundation
-
+import CoreData
 class LoginViewModel{
     
     let api:API!
-    
-    init( api:API) {
+    let coOrdinator:Coordinator!
+    init( api:API,coOrdinator:Coordinator) {
         self.api = api
+        self.coOrdinator = coOrdinator
     }
     
     func loginUser(_ params:[String:String],on completion:@escaping(Int,ApiError?)->()){
@@ -25,8 +26,7 @@ class LoginViewModel{
         self.api.load(resource: loginResource) { [weak self](result, error) in
             guard let self = self else{ return }
             if let loginResponse = result{
-                print(loginResponse)
-                self.api.token = loginResponse.token
+                self.insert(loginResponse, params["password"]!)
                 completion(ResponseCodes.success,error)
             }else{
                 completion(error!.statusCode,error)
@@ -37,18 +37,44 @@ class LoginViewModel{
 }
 
 extension LoginViewModel{
-    func checkCredentialsPreconditions(for userId:String,and password:String,on completion:@escaping(Bool,String?)->()){
-        let vId = userId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count >= AllowedLength.userIdLength.rawValue
-        let vPassword = password.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count >= AllowedLength.userPasswordLength.rawValue
+    func checkCredentialsPreconditions(for userId:String,and password:String,on completion:@escaping(Bool,String?,String?,String?)->()){
+        let uId = userId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let pwd = password.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let vId = uId.count >= AllowedLength.userIdLength.rawValue
+        let vPassword = pwd.count >= AllowedLength.userPasswordLength.rawValue
         
         if vId == false && vPassword == false {
-            completion(false,Strings.userIdAndPassowrd.rawValue)
+            completion(false,nil,nil,Strings.userIdAndPassowrd.rawValue)
         }else if vId == true && vPassword == false{
-            completion(false,Strings.password.rawValue)
+            completion(false,nil,nil,Strings.password.rawValue)
         }else if vId == false && vPassword == true {
-            completion(false,Strings.userId.rawValue)
+            completion(false,nil,nil,Strings.userId.rawValue)
         }else{
-            completion(true,nil)
+            completion(true,uId,pwd,nil)
         }
+    }
+}
+
+extension LoginViewModel{
+    func insert(_ object:LoginResponse,_ password:String){
+        Log.debug(object.token)
+        self.coOrdinator.perform {[weak self] in
+            guard let self = self else{ return}
+            if let loginObj = Login.findOrFetch(in: self.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(Login.userId),object.user.userId)){
+                loginObj.token = object.token
+            }else{
+                let _ =  Login.insert(into: self.coOrdinator.syncContext, for: object, password: password)
+            }
+            
+            let _ =  self.coOrdinator.syncContext.saveOrRollback()
+        }
+    }
+    func fetchLogin(on completion:@escaping(Login?)->()){
+        self.coOrdinator.perform {[weak self] in
+            guard let self = self else{ return}
+            let loginObj = Login.findOrFetch(in: self.coOrdinator.syncContext, matching: Login.defaultPredicate)
+            completion(loginObj)
+        }
+        
     }
 }

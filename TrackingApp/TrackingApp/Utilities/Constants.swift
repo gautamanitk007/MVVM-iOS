@@ -25,6 +25,7 @@ enum Identifier:String {
 
 struct ResponseCodes {
     static let success = 200
+    static let duplicate = 202
     static let badrequest = 400
     static let token_invalid = 401
     static let login_auth_failed = 403
@@ -49,4 +50,8 @@ enum Strings:String {
     case userId = "User Id length should be more than 5 characters"
     case userIdAndPassowrd = "Please check userid and password length"
   
+}
+
+enum NotificatioString: String{
+    case AutoLogin = "autoLogin"
 }

@@ -10,5 +10,5 @@ import Foundation
 struct UserInfo: Decodable {
     let _id: String
     let name: String
-    let email: String
+    let userId: String
 }

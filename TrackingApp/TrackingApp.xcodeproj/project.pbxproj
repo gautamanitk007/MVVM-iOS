@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8780FEB4266322A4007BF173 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB3266322A4007BF173 /* Managed.swift */; };
+		8780FEB6266322E0007BF173 /* DataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB5266322E0007BF173 /* DataStack.swift */; };
+		8780FEB826632334007BF173 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB726632334007BF173 /* Coordinator.swift */; };
+		8780FEBA2663236C007BF173 /* NSManagedObjectContext+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB92663236C007BF173 /* NSManagedObjectContext+Extension.swift */; };
+		8780FEBE26632433007BF173 /* TrackingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEBC26632433007BF173 /* TrackingApp.xcdatamodeld */; };
+		8780FEC12663251E007BF173 /* Login+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEBF2663251E007BF173 /* Login+CoreDataClass.swift */; };
+		8780FEC22663251E007BF173 /* Login+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEC02663251E007BF173 /* Login+CoreDataProperties.swift */; };
 		87A3033526613B5D00473FA9 /* ErrorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3033426613B5D00473FA9 /* ErrorVC.swift */; };
 		87ADEFDF2660D08800CA63D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADEFDE2660D08800CA63D1 /* AppDelegate.swift */; };
 		87ADEFE82660D08C00CA63D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87ADEFE72660D08C00CA63D1 /* Assets.xcassets */; };
@@ -48,6 +55,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8780FEB3266322A4007BF173 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
+		8780FEB5266322E0007BF173 /* DataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStack.swift; sourceTree = "<group>"; };
+		8780FEB726632334007BF173 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		8780FEB92663236C007BF173 /* NSManagedObjectContext+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extension.swift"; sourceTree = "<group>"; };
+		8780FEBD26632433007BF173 /* TrackingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrackingApp.xcdatamodel; sourceTree = "<group>"; };
+		8780FEBF2663251E007BF173 /* Login+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8780FEC02663251E007BF173 /* Login+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		87A3033426613B5D00473FA9 /* ErrorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVC.swift; sourceTree = "<group>"; };
 		87ADEFDB2660D08800CA63D1 /* TrackingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ADEFDE2660D08800CA63D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +114,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8780FEB126632280007BF173 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8780FEBB26632412007BF173 /* Models */,
+				8780FEB226632288007BF173 /* Shared */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		8780FEB226632288007BF173 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8780FEB3266322A4007BF173 /* Managed.swift */,
+				8780FEB5266322E0007BF173 /* DataStack.swift */,
+				8780FEB726632334007BF173 /* Coordinator.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		8780FEBB26632412007BF173 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8780FEBF2663251E007BF173 /* Login+CoreDataClass.swift */,
+				8780FEC02663251E007BF173 /* Login+CoreDataProperties.swift */,
+				8780FEBC26632433007BF173 /* TrackingApp.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		87ADEFD22660D08800CA63D1 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +164,7 @@
 		87ADEFDD2660D08800CA63D1 /* TrackingApp */ = {
 			isa = PBXGroup;
 			children = (
+				8780FEB126632280007BF173 /* CoreData */,
 				87D3B2612662A2D7008A2877 /* Datasource */,
 				87ADEFFB2660D1AA00CA63D1 /* Models */,
 				87ADEFFA2660D19C00CA63D1 /* Views */,
@@ -164,6 +208,7 @@
 			children = (
 				87ADF0102660D38100CA63D1 /* AlertController.swift */,
 				87D3B25926628D64008A2877 /* UIButton+Extension.swift */,
+				8780FEB92663236C007BF173 /* NSManagedObjectContext+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -361,16 +406,22 @@
 			files = (
 				87ADF0092660D31D00CA63D1 /* Constants.swift in Sources */,
 				87ADF0152660D3D500CA63D1 /* RoundedButton.swift in Sources */,
+				8780FEB6266322E0007BF173 /* DataStack.swift in Sources */,
 				87D3B2632662A304008A2877 /* TableViewDatasource.swift in Sources */,
 				87ADF0202660D48800CA63D1 /* UserListVC.swift in Sources */,
 				87D3B25A26628D64008A2877 /* UIButton+Extension.swift in Sources */,
 				87ADEFFF2660D21200CA63D1 /* API.swift in Sources */,
+				8780FEBA2663236C007BF173 /* NSManagedObjectContext+Extension.swift in Sources */,
+				8780FEB4266322A4007BF173 /* Managed.swift in Sources */,
 				87D3B2602662A1B1008A2877 /* GeneralCell.swift in Sources */,
+				8780FEBE26632433007BF173 /* TrackingApp.xcdatamodeld in Sources */,
 				87D3B2672662A5A3008A2877 /* CountryListViewModel.swift in Sources */,
 				87ADF00D2660D35200CA63D1 /* Configuration.swift in Sources */,
+				8780FEC12663251E007BF173 /* Login+CoreDataClass.swift in Sources */,
 				87ADF00B2660D33800CA63D1 /* Log.swift in Sources */,
 				87ADF0112660D38100CA63D1 /* AlertController.swift in Sources */,
 				87ADF0132660D3AD00CA63D1 /* LoginVC.swift in Sources */,
+				8780FEC22663251E007BF173 /* Login+CoreDataProperties.swift in Sources */,
 				87ADF0012660D22300CA63D1 /* UserInfo.swift in Sources */,
 				87D3B2652662A377008A2877 /* CountryViewModel.swift in Sources */,
 				87ADF01A2660D42B00CA63D1 /* LoginViewModel.swift in Sources */,
@@ -379,6 +430,7 @@
 				87D3B25C26628ED3008A2877 /* DropdownVC.swift in Sources */,
 				87ADF0032660D23200CA63D1 /* LoginResponse.swift in Sources */,
 				87ADF0182660D3F600CA63D1 /* RoundedView.swift in Sources */,
+				8780FEB826632334007BF173 /* Coordinator.swift in Sources */,
 				87ADEFDF2660D08800CA63D1 /* AppDelegate.swift in Sources */,
 				87ADF01E2660D46400CA63D1 /* CreateUserVC.swift in Sources */,
 			);
@@ -545,15 +597,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 684AQWYBJA;
 				INFOPLIST_FILE = TrackingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.konica.dev.TrackingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.konica.dev.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -563,15 +616,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 684AQWYBJA;
 				INFOPLIST_FILE = TrackingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.konica.dev.TrackingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.konica.dev.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -644,6 +698,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8780FEBC26632433007BF173 /* TrackingApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8780FEBD26632433007BF173 /* TrackingApp.xcdatamodel */,
+			);
+			currentVersion = 8780FEBD26632433007BF173 /* TrackingApp.xcdatamodel */;
+			path = TrackingApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 87ADEFD32660D08800CA63D1 /* Project object */;
 }

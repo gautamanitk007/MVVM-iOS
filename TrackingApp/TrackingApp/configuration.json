@@ -1,5 +1,5 @@
 {
-  "server" : "https://gautamkumarsingh-task-manager.herokuapp.com",
+  "server" : "http://192.168.10.135:3000",
   "debug" : true,
   "countryList":[{"name":"Singapore","code":"SG"},
       {"name":"Malaysia","code":"MY"},
