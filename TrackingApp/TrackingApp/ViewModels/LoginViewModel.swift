@@ -52,6 +52,18 @@ extension LoginViewModel{
             completion(true,uId,pwd,nil)
         }
     }
+    func updateLogin(isRemember reMember:Bool,userId uId:String,password pwd:String){
+        if reMember {
+            Utility.saveInDefaults(value: uId, forKey: Strings.UserId.rawValue)
+            Utility.saveInDefaults(value: pwd, forKey: Strings.Password.rawValue)
+        }else{
+            Utility.saveInDefaults(value: "", forKey: Strings.UserId.rawValue)
+            Utility.saveInDefaults(value: "", forKey: Strings.Password.rawValue)
+        }
+        
+        Utility.saveBoolInDefaults(reMember, forKey: Strings.RememberKey.rawValue)
+    }
+    
 }
 
 
@@ -61,7 +73,7 @@ extension LoginViewModel{
 
     func insert(_ object:LoginResponse,_ password:String){
         Log.debug(object.token)
-        Utility.saveTokenInDefaults(value: object.token, forKey: Strings.TokenKey.rawValue)
+        Utility.saveInDefaults(value: object.token, forKey: Strings.TokenKey.rawValue)
         self.coOrdinator.perform {[weak self] in
             guard let self = self else{ return}
             if let loginObj = Login.findOrFetch(in: self.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(Login.userId),object.user.userId)){
@@ -81,7 +93,5 @@ extension LoginViewModel{
         }
     }
 
-    func updateRemember(_ reMember:Bool){
-        Utility.saveBoolInDefaults(reMember, forKey: Strings.RememberKey.rawValue)
-    }
+    
 }

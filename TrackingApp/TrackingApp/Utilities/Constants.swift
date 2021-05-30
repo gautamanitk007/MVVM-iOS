@@ -15,7 +15,7 @@ enum AllowedLength:Int{
 enum SegueIdentifier:String {
     case CreateUserSegue = "createUserSegue"
     case ShowUsersSegue = "showUserSegue"
-    case AlertSegue = "alertSegue"
+    case DropdownSegue = "dropDownSegue"
    
 }
 enum Identifier:String {
@@ -52,6 +52,8 @@ enum Strings:String {
     case validateUser = "Please validate user first before remember"
     case RememberKey = "isRemember"
     case TokenKey = "tokenKey"
+    case UserId = "userId"
+    case Password = "password"
   
 }
 
