@@ -16,6 +16,10 @@ class UserListVC: UIViewController {
         self.navigationItem.hidesBackButton = true
         let logoutButton = UIBarButtonItem(title: "Logout", style:.plain, target: self, action: #selector(UserListVC.logoutTapped))
         self.navigationItem.leftBarButtonItem = logoutButton
+        self.userViewModel.getAllUsers(["isByPass": "1"]) { status, error in
+            Log.debug("status:\(status)")
+            Log.debug("error:\(error)")
+        }
     }
     @objc func logoutTapped(){
         self.userViewModel.logoutUser(["token":self.userViewModel.token]) { [weak self ](statusCode, error) in

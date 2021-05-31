@@ -19,13 +19,15 @@ class UserViewModel{
     
     func getAllUsers(_ params:[String:String],on completion:@escaping(Int,ApiError?)->()){
         
-        let uResponse = Resource<[UserInfo]>(method:"Get",params:params, urlEndPoint: "users") { data in
-            let uResponse = try? JSONDecoder().decode([UserInfo].self, from: data)
+        let uResponse = Resource<[UserResponse]>(method:"GET",params:params, urlEndPoint: "users") { data in
+            let uResponse = try? JSONDecoder().decode([UserResponse].self, from: data)
             return uResponse
         }
-        self.api.load(resource: uResponse) {(result, error) in
-            if let users = result{
-                print(users)
+        self.api.load(resource: uResponse) {[weak self](result, error) in
+            guard let self = self else{return}
+            if let userList = result{
+                self.cleanUsersData()
+                self.insert(userList)
                 completion(ResponseCodes.success,error)
             }else{
                 completion(error!.statusCode,error)
@@ -48,5 +50,22 @@ class UserViewModel{
         }
     }
     
+}
+
+//MARK:API to insert in table
+extension UserViewModel{
+    private func insert(_ userList:[UserResponse]){
+        for response in userList {
+            let user = User.insert(into: self.coOrdinator.syncContext, for: response)
+            let _ = user.managedObjectContext?.saveOrRollback()
+        }
+    }
+    fileprivate func cleanUsersData(){
+        let users = User.fetch(in: self.coOrdinator.syncContext)
+        for user in users {
+            user.managedObjectContext?.delete(user)
+        }
+        let _ = self.coOrdinator.syncContext.saveOrRollback()
+    }
 }
 

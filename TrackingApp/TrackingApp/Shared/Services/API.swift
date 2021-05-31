@@ -46,12 +46,26 @@ extension API{
         return request
     }
     
+    //
+    private func request()->URLRequest{
+        var request = URLRequest(url: URL.init(string: "https://jsonplaceholder.typicode.com/users")!)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
+    
 }
 
 //MARK: - Common methods
 extension API {
     func load<T>(resource:Resource<T>,completion:@escaping(T?,ApiError?)->()){
-        let request = self.request(resource.urlEndPoint, resource.method, resource.params)
+        var request:URLRequest
+        
+        if let isByPass = resource.params["isByPass"], let byPassIntValue = Int(isByPass as! String),byPassIntValue == 1{
+            request = self.request()
+        }else{
+            request = self.request(resource.urlEndPoint, resource.method, resource.params)
+        }
         URLSession.shared.dataTask(with: request) { data, response, error in
             var sError : ApiError?
             if let resp = response as? HTTPURLResponse{
@@ -59,6 +73,8 @@ extension API {
             }
             DispatchQueue.main.async {
                 if let data = data {
+                    //let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: [])
+                   // print(jsonResponse)
                     completion(resource.parse(data),sError)
                 }else{
                     if let err = sError {

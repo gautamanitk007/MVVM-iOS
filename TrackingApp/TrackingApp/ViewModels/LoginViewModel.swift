@@ -40,10 +40,10 @@ extension LoginViewModel{
         return Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
     }
     var userId:String{
-        return Utility.getValue(forKey:Strings.UserId.rawValue)
+        return "gautamkkr1"//Utility.getValue(forKey:Strings.UserId.rawValue)
     }
     var password:String{
-        return Utility.getValue(forKey:Strings.Password.rawValue)
+        return "abc1324678!"//Utility.getValue(forKey:Strings.Password.rawValue)
     }
     var token:String{
         return Utility.getValue(forKey:Strings.TokenKey.rawValue)
