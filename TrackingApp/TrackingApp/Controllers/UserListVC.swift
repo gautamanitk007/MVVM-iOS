@@ -39,12 +39,12 @@ class UserListVC: UIViewController {
         self.collectionView.dataSource = self.dataSource
         self.collectionView.delegate = self
         
-        
-        self.userViewModel.getAllUsers(["isByPass": "1"]) { status, error in
-            Log.debug("status:\(status)")
-            Log.debug("error:\(error)")
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+        self.userViewModel.getAllUsers(["isByPass": "1"]) {(status, error) in
+            DispatchQueue.main.async {[weak self] in
+                guard let self = self else{return}
+                if status != ResponseCodes.success{
+                    self.showAlert(title: Strings.infoTitle.rawValue, message: error!.message)
+                }
             }
         }
     }
