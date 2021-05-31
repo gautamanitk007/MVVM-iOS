@@ -16,7 +16,7 @@ class UserCell: UICollectionViewCell {
         self.backgroundColor = .white
         self.layer.cornerRadius = 4
         self.layer.borderColor = UIColor.lightGray.cgColor
-        self.layer.borderWidth = 2
+        self.layer.borderWidth = 1
     }
     func configure(_ user:User){
         self.lblName.text = user.name

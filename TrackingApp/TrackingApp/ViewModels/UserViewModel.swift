@@ -26,8 +26,10 @@ class UserViewModel{
         self.api.load(resource: uResponse) {[weak self](result, error) in
             guard let self = self else{return}
             if let userList = result{
-                self.cleanUsersData()
-                self.insert(userList)
+                DispatchQueue.main.async {
+                    self.cleanUsersData()
+                    self.insert(userList)
+                }
                 completion(ResponseCodes.success,error)
             }else{
                 completion(error!.statusCode,error)
@@ -56,16 +58,16 @@ class UserViewModel{
 extension UserViewModel{
     private func insert(_ userList:[UserResponse]){
         for response in userList {
-            let user = User.insert(into: self.coOrdinator.syncContext, for: response)
+            let user = User.insert(into: self.coOrdinator.viewContext, for: response)
             let _ = user.managedObjectContext?.saveOrRollback()
         }
     }
     fileprivate func cleanUsersData(){
-        let users = User.fetch(in: self.coOrdinator.syncContext)
+        let users = User.fetch(in: self.coOrdinator.viewContext)
         for user in users {
             user.managedObjectContext?.delete(user)
         }
-        let _ = self.coOrdinator.syncContext.saveOrRollback()
+        let _ = self.coOrdinator.viewContext.saveOrRollback()
     }
 }
 
