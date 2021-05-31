@@ -48,6 +48,13 @@ extension LoginViewModel{
     var token:String{
         return Utility.getValue(forKey:Strings.TokenKey.rawValue)
     }
+    var isTokenExist:Bool{
+        let tkn = Utility.getValue(forKey:Strings.TokenKey.rawValue)
+        if tkn.count > 0 {
+            return true
+        }
+        return false
+    }
 }
 
 extension LoginViewModel{
@@ -59,14 +66,18 @@ extension LoginViewModel{
         
         self.updateLogin(isRemember: self.isRemember, userId: uId, password: pwd)
         
-        if vId == false && vPassword == false {
-            completion(false,nil,nil,Strings.userIdAndPassowrd.rawValue)
-        }else if vId == true && vPassword == false{
-            completion(false,nil,nil,Strings.password.rawValue)
-        }else if vId == false && vPassword == true {
-            completion(false,nil,nil,Strings.userId.rawValue)
+        if vId == true {
+            if vPassword == true {
+                completion(true,uId,pwd,nil)
+            }else{
+                completion(false,uId,pwd,Strings.password.rawValue)
+            }
         }else{
-            completion(true,uId,pwd,nil)
+            if vPassword == true {
+                completion(true,uId,pwd,Strings.userId.rawValue)
+            }else{
+                completion(false,uId,pwd,Strings.userIdAndPassowrd.rawValue)
+            }
         }
     }
     func updateLogin(isRemember reMember:Bool,userId uId:String,password pwd:String){

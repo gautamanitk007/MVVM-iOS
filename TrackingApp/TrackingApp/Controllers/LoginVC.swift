@@ -110,8 +110,7 @@ class LoginVC: UIViewController {
         self.loginViewModel.fetchLogin { _ in
             DispatchQueue.main.async {[weak self] in
                 guard let self = self else {return}
-                let (isExist,_) = Utility.getToken(forKey: Strings.TokenKey.rawValue)
-                if isExist{
+                if self.loginViewModel.isTokenExist{
                     if let _ = self.navigationController?.topViewController as? UserListVC{
                         Log.debug("TopVC")
                     }else{

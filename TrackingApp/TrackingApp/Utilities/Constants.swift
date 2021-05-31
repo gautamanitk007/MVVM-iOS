@@ -10,7 +10,7 @@ import Foundation
 enum AllowedLength:Int{
     case userNameLength = 2
     case userIdLength = 5
-    case userPasswordLength = 4
+    case userPasswordLength = 7
 }
 enum SegueIdentifier:String {
     case CreateUserSegue = "createUserSegue"
@@ -46,7 +46,7 @@ enum Strings:String {
     case save = "Save"
     case error = "Error!"
     case userName = "User Name length should be more than 3 characters"
-    case password = "Password length should be more than 4 characters"
+    case password = "Password length should be more than 7 characters"
     case userId = "User Id length should be more than 5 characters"
     case userIdAndPassowrd = "Please check userid and password length"
     case validateUser = "Please validate user first before remember"
