@@ -12,7 +12,7 @@ protocol DropdownDelegate:AnyObject {
 }
 
 class DropdownVC: UIViewController {
-    @IBOutlet weak var cutomTable: UITableView!
+    @IBOutlet weak var customTable: UITableView!
     var countryListViewModel:CountryListViewModel!
     weak var delegate:DropdownDelegate?
     private var datasource : TableViewDatasource<GeneralCell,CountryViewModel>!
@@ -26,8 +26,8 @@ class DropdownVC: UIViewController {
         self.datasource = TableViewDatasource(cellIdentifier: Identifier.GeneralCellIdentifier.rawValue,items: self.countryListViewModel.countryViewModels){(cell,viewModel) in
             cell.configure(viewModel)
         }
-        self.cutomTable.dataSource = self.datasource
-        self.cutomTable.delegate = self
+        self.customTable.dataSource = self.datasource
+        self.customTable.delegate = self
         contentSize = CGSize.init(width: 160, height: 260)
     }
     

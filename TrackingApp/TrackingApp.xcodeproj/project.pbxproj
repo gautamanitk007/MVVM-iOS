@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		87244F0526648CF40052D6E2 /* UIHelpers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87244F0326648CF40052D6E2 /* UIHelpers.storyboard */; };
+		87244F07266491FD0052D6E2 /* ErrorVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87244F06266491FD0052D6E2 /* ErrorVCTests.swift */; };
 		874EE6B22663893900CB2C45 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874EE6B12663893900CB2C45 /* Utility.swift */; };
 		8780FEB4266322A4007BF173 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB3266322A4007BF173 /* Managed.swift */; };
 		8780FEB6266322E0007BF173 /* DataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB5266322E0007BF173 /* DataStack.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		87244F0426648CF40052D6E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIHelpers.storyboard; sourceTree = "<group>"; };
+		87244F06266491FD0052D6E2 /* ErrorVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVCTests.swift; sourceTree = "<group>"; };
 		874EE6B12663893900CB2C45 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		8780FEB3266322A4007BF173 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		8780FEB5266322E0007BF173 /* DataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStack.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				87ADF0472660F11C00CA63D1 /* LoginVCTests.swift */,
+				87244F06266491FD0052D6E2 /* ErrorVCTests.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87ADF0452660EED600CA63D1 /* MockAPI.swift in Sources */,
+				87244F07266491FD0052D6E2 /* ErrorVCTests.swift in Sources */,
 				87ADF0482660F11C00CA63D1 /* LoginVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

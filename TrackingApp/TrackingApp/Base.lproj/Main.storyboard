@@ -226,12 +226,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cutomTable" destination="tGv-8x-qLS" id="DzY-nH-tkB"/>
+                        <outlet property="customTable" destination="tGv-8x-qLS" id="DzY-nH-tkB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kO0-wJ-ZeO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-729" y="377"/>
+            <point key="canvasLocation" x="2539" y="212"/>
         </scene>
         <!--Create User-->
         <scene sceneID="A6G-Rd-kyT">
