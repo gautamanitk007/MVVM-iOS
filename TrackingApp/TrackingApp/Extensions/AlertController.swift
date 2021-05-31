@@ -16,7 +16,7 @@ extension UIViewController{
     }
     
     func showAlert(title: String,message: String? ) {
-        let alertController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "alert") as! ErrorVC
+        let alertController = UIStoryboard(name: "UIHelpers", bundle: nil).instantiateViewController(withIdentifier: "alert") as! ErrorVC
         alertController.set(title: title, msg: message)
         alertController.modalPresentationStyle = .overCurrentContext
         alertController.modalTransitionStyle = .flipHorizontal

@@ -3,7 +3,6 @@
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -167,7 +166,6 @@
                         <outlet property="txtPassword" destination="vSH-SI-4Vv" id="gwv-ln-NgX"/>
                         <outlet property="txtUserId" destination="ZM9-ew-hhA" id="31b-UO-PkC"/>
                         <segue destination="PBn-Rn-HZj" kind="show" identifier="showUserSegue" id="fvl-Mu-OSy"/>
-                        <segue destination="J17-Qg-WkO" kind="show" identifier="createUserSegue" id="Tc0-fc-uJF"/>
                         <segue destination="aGn-h2-TIb" kind="popoverPresentation" identifier="dropDownSegue" popoverAnchorView="nwg-kb-O0m" id="QGO-PL-4oO">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -176,83 +174,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-36.231884057971016" y="-540.48913043478262"/>
-        </scene>
-        <!--ErrorVC-->
-        <scene sceneID="H67-Gh-oRS">
-            <objects>
-                <viewController storyboardIdentifier="alert" id="jDI-jR-q7J" customClass="ErrorVC" customModule="TrackingApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uAa-pS-g7Y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-f7-Zsl">
-                                <rect key="frame" x="47" y="293" width="320" height="150"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAT-Os-K1T">
-                                        <rect key="frame" x="8" y="37" width="304" height="60"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KdN-dS-CI9" customClass="RoundedButton" customModule="TrackingApp" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="105" width="304" height="40"/>
-                                        <color key="backgroundColor" name="AccentColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="NCq-t1-uJT"/>
-                                        </constraints>
-                                        <state key="normal" title="OK">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didOkTapped:" destination="jDI-jR-q7J" eventType="touchUpInside" id="vZv-za-oUH"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8h-uZ-PCY">
-                                        <rect key="frame" x="8" y="8" width="304" height="21"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="BgD-sS-Lpg"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="Agf-Ih-rZv"/>
-                                    <constraint firstItem="rAT-Os-K1T" firstAttribute="leading" secondItem="hWh-f7-Zsl" secondAttribute="leading" constant="8" id="Fnu-qM-zeC"/>
-                                    <constraint firstAttribute="bottom" secondItem="KdN-dS-CI9" secondAttribute="bottom" constant="5" id="K1W-q5-pfG"/>
-                                    <constraint firstItem="KdN-dS-CI9" firstAttribute="leading" secondItem="hWh-f7-Zsl" secondAttribute="leading" constant="8" id="O6q-ir-Rnr"/>
-                                    <constraint firstAttribute="trailing" secondItem="O8h-uZ-PCY" secondAttribute="trailing" constant="8" id="Pxc-lv-KEg"/>
-                                    <constraint firstItem="O8h-uZ-PCY" firstAttribute="top" secondItem="hWh-f7-Zsl" secondAttribute="top" constant="8" id="SvG-Ya-4PN"/>
-                                    <constraint firstItem="O8h-uZ-PCY" firstAttribute="leading" secondItem="hWh-f7-Zsl" secondAttribute="leading" constant="8" id="Yyc-Dk-5YU"/>
-                                    <constraint firstItem="KdN-dS-CI9" firstAttribute="top" secondItem="rAT-Os-K1T" secondAttribute="bottom" constant="8" id="aYQ-1y-28Q"/>
-                                    <constraint firstItem="rAT-Os-K1T" firstAttribute="top" secondItem="O8h-uZ-PCY" secondAttribute="bottom" constant="8" symbolic="YES" id="bZM-4k-eeA"/>
-                                    <constraint firstAttribute="trailing" secondItem="KdN-dS-CI9" secondAttribute="trailing" constant="8" id="fTQ-uI-3ub"/>
-                                    <constraint firstAttribute="trailing" secondItem="rAT-Os-K1T" secondAttribute="trailing" constant="8" id="nOn-ex-LbK"/>
-                                    <constraint firstAttribute="height" constant="150" id="yB1-ze-3o4"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="9GW-Yy-rdM"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="hWh-f7-Zsl" firstAttribute="centerX" secondItem="uAa-pS-g7Y" secondAttribute="centerX" id="8pp-n2-4th"/>
-                            <constraint firstItem="hWh-f7-Zsl" firstAttribute="centerY" secondItem="uAa-pS-g7Y" secondAttribute="centerY" id="tft-z2-xhD"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="alertView" destination="hWh-f7-Zsl" id="RWb-gM-1pF"/>
-                        <outlet property="btnOk" destination="KdN-dS-CI9" id="NWV-GN-tlg"/>
-                        <outlet property="lblMessage" destination="rAT-Os-K1T" id="ajY-sM-3me"/>
-                        <outlet property="lblTitle" destination="O8h-uZ-PCY" id="Qfz-DZ-quy"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lTa-MT-aH7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-743" y="196"/>
         </scene>
         <!--DropdownVC-->
         <scene sceneID="lQH-OY-zVH">
@@ -310,25 +231,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kO0-wJ-ZeO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.782608695652179" y="223.36956521739131"/>
+            <point key="canvasLocation" x="-729" y="377"/>
         </scene>
-        <!--Create UserVC-->
+        <!--Create User-->
         <scene sceneID="A6G-Rd-kyT">
             <objects>
                 <viewController id="J17-Qg-WkO" customClass="CreateUserVC" customModule="TrackingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ITM-UE-cF9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="fsE-eJ-Fjf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eJE-AF-nkh"/>
+                    <navigationItem key="navigationItem" title="Create User" id="eJE-AF-nkh">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Toe-In-7m4">
+                            <connections>
+                                <action selector="didCancelUserTapped" destination="J17-Qg-WkO" id="3Q2-Z6-foe"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="rjZ-V4-wla">
+                            <connections>
+                                <action selector="didSaveUserTapped" destination="J17-Qg-WkO" id="5Tt-D9-G8T"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="shg-F1-rCw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1251" y="356"/>
+            <point key="canvasLocation" x="2481.1594202898555" y="-532.33695652173913"/>
         </scene>
-        <!--User ListVC-->
+        <!--User List-->
         <scene sceneID="jBb-yv-pKN">
             <objects>
                 <viewController id="PBn-Rn-HZj" customClass="UserListVC" customModule="TrackingApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -338,11 +270,21 @@
                         <viewLayoutGuide key="safeArea" id="vZ4-18-tvP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Vl7-cX-601"/>
+                    <navigationItem key="navigationItem" title="User List" id="Vl7-cX-601">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" systemItem="add" id="2wj-Zp-Fkm">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addUserTapped" destination="PBn-Rn-HZj" id="Ctr-Xc-leT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="XQq-vB-t89" kind="presentation" identifier="createUserSegue" id="FNL-Xl-r7c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9k-ub-8BF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="910" y="-540"/>
+            <point key="canvasLocation" x="799" y="-531"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tLV-ZL-oQY">
@@ -362,14 +304,29 @@
             </objects>
             <point key="canvasLocation" x="-975" y="-540"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CZP-YT-Chr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XQq-vB-t89" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UN3-cL-RVk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="J17-Qg-WkO" kind="relationship" relationship="rootViewController" id="NE0-Fl-9jE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bzr-Yt-q5K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1573.913043478261" y="-532.33695652173913"/>
+        </scene>
     </scenes>
     <resources>
         <image name="checkmark" width="30" height="30"/>
         <image name="circle_unchecked" width="30" height="30"/>
         <image name="home" width="640" height="400"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

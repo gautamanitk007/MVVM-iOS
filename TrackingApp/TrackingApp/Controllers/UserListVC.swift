@@ -23,6 +23,14 @@ class UserListVC: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
-    
+    @IBAction func addUserTapped(){
+        self.performSegue(withIdentifier: SegueIdentifier.CreateUserSegue.rawValue , sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.CreateUserSegue.rawValue {
+            //guard let createUserVC = segue.destination as? CreateUserVC else {fatalError("CreateUserVC not found")}
+           
+        }
+    }
 
 }

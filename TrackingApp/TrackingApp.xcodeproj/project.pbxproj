@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87244F0526648CF40052D6E2 /* UIHelpers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87244F0326648CF40052D6E2 /* UIHelpers.storyboard */; };
 		874EE6B22663893900CB2C45 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874EE6B12663893900CB2C45 /* Utility.swift */; };
 		8780FEB4266322A4007BF173 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB3266322A4007BF173 /* Managed.swift */; };
 		8780FEB6266322E0007BF173 /* DataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB5266322E0007BF173 /* DataStack.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		87244F0426648CF40052D6E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIHelpers.storyboard; sourceTree = "<group>"; };
 		874EE6B12663893900CB2C45 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		8780FEB3266322A4007BF173 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		8780FEB5266322E0007BF173 /* DataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStack.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				87ADEFF32660D0ED00CA63D1 /* Main.storyboard */,
 				87ADEFEC2660D08C00CA63D1 /* Info.plist */,
 				87ADF00E2660D35D00CA63D1 /* configuration.json */,
+				87244F0326648CF40052D6E2 /* UIHelpers.storyboard */,
 			);
 			path = TrackingApp;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87244F0526648CF40052D6E2 /* UIHelpers.storyboard in Resources */,
 				87ADEFF52660D0ED00CA63D1 /* Main.storyboard in Resources */,
 				87ADEFEB2660D08C00CA63D1 /* LaunchScreen.storyboard in Resources */,
 				87ADF00F2660D35D00CA63D1 /* configuration.json in Resources */,
@@ -460,6 +464,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		87244F0326648CF40052D6E2 /* UIHelpers.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87244F0426648CF40052D6E2 /* Base */,
+			);
+			name = UIHelpers.storyboard;
+			sourceTree = "<group>";
+		};
 		87ADEFE92660D08C00CA63D1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

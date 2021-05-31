@@ -14,4 +14,10 @@ class CreateUserVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
      
     }
+    @IBAction func didCancelUserTapped(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func didSaveUserTapped(){
+        self.dismiss(animated: true, completion: nil)
+    }
 }

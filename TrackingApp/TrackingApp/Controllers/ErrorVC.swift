@@ -9,7 +9,7 @@ import UIKit
 
 class ErrorVC: UIViewController {
     @IBOutlet weak var btnOk: RoundedButton!
-    @IBOutlet weak var alertView: UIView!
+    @IBOutlet weak var alertView: RoundedView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblMessage: UILabel!
     
