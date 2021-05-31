@@ -9,9 +9,11 @@ import Foundation
 import CoreData
 class UserViewModel{
     let api:API!
+    let token:String!
     let coOrdinator:Coordinator!
-    init( api:API,coOrdinator:Coordinator) {
+    init( api:API,token:String,coOrdinator:Coordinator) {
         self.api = api
+        self.token = token
         self.coOrdinator = coOrdinator
     }
     

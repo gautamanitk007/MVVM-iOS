@@ -36,11 +36,28 @@ class LoginViewModel{
 }
 
 extension LoginViewModel{
+    var isRemember:Bool{
+        return Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
+    }
+    var userId:String{
+        return Utility.getValue(forKey:Strings.UserId.rawValue)
+    }
+    var password:String{
+        return Utility.getValue(forKey:Strings.Password.rawValue)
+    }
+    var token:String{
+        return Utility.getValue(forKey:Strings.TokenKey.rawValue)
+    }
+}
+
+extension LoginViewModel{
     func checkCredentialsPreconditions(for userId:String,and password:String,on completion:@escaping(Bool,String?,String?,String?)->()){
         let uId = userId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let pwd = password.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let vId = uId.count >= AllowedLength.userIdLength.rawValue
         let vPassword = pwd.count >= AllowedLength.userPasswordLength.rawValue
+        
+        self.updateLogin(isRemember: self.isRemember, userId: uId, password: pwd)
         
         if vId == false && vPassword == false {
             completion(false,nil,nil,Strings.userIdAndPassowrd.rawValue)

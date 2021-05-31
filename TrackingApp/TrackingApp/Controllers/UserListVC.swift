@@ -18,8 +18,7 @@ class UserListVC: UIViewController {
         self.navigationItem.leftBarButtonItem = logoutButton
     }
     @objc func logoutTapped(){
-        let (_,token) = Utility.getToken(forKey: Strings.TokenKey.rawValue)
-        self.userViewModel.logoutUser(["token":token]) { [weak self ](statusCode, error) in
+        self.userViewModel.logoutUser(["token":self.userViewModel.token]) { [weak self ](statusCode, error) in
             guard let self = self else{return}
             self.navigationController?.popViewController(animated: true)
         }

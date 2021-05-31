@@ -25,6 +25,8 @@ class LoginVC: UIViewController {
     var isRemember:Bool?{
         didSet{
             self.btnRemember.isSelected = isRemember!
+            self.txtUserId.text = self.loginViewModel.userId
+            self.txtPassword.text = self.loginViewModel.password
         }
     }
     override func viewDidLoad() {
@@ -45,46 +47,32 @@ class LoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        self.isRemember = Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
-        self.txtUserId.text = Utility.getValue(forKey: Strings.UserId.rawValue)
-        self.txtPassword.text = Utility.getValue(forKey: Strings.Password.rawValue)
     }
     @IBAction func didRememberTapped(_ sender: Any) {
         self.loginViewModel.updateLogin(isRemember:!self.btnRemember.isSelected,userId: self.txtUserId.text!,password: self.txtPassword.text!)
-        self.isRemember = Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
+        self.isRemember = self.loginViewModel.isRemember
     }
     @IBAction func didCountryTapped(_ sender: Any) {
         self.performSegue(withIdentifier: SegueIdentifier.DropdownSegue.rawValue , sender: nil)
     }
 
     @IBAction func didLoginTapped(_ sender: Any) {
+        
         self.loginViewModel.checkCredentialsPreconditions(for: self.txtUserId.text!, and: self.txtPassword.text!) { [weak self] (allOk,uId,pwd, error )in
             guard let self = self else {return}
             if allOk{
                 self.startActivity()
-                self.loginViewModel.fetchLogin {[weak self]  login in
-                    guard let self = self else {return}
-                    let (isExist,value) = Utility.getToken(forKey: Strings.TokenKey.rawValue)
-                    if isExist{
-                        DispatchQueue.main.async {[weak self] in
-                            guard let self = self else {return}
-                            self.startLogin()
-                        }
-                    }else{
-                        self.loginViewModel.loginUser(["userId":uId!,"password":pwd!,"token":value]) { (_, error )in
-                            DispatchQueue.main.async {[weak self] in
-                                guard let self = self else {return}
-                                self.stopActivity()
-                                if error?.statusCode == ResponseCodes.success{
-                                    self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: nil)
-                                }else{
-                                    self.showAlert(title: Strings.infoTitle.rawValue,message:error!.message!)
-                                }
-                            }
+                self.loginViewModel.loginUser(["userId":uId!,"password":pwd!,"token":self.loginViewModel.token]) { (_, error )in
+                    DispatchQueue.main.async {[weak self] in
+                        guard let self = self else {return}
+                        self.stopActivity()
+                        if error?.statusCode == ResponseCodes.success{
+                            self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: nil)
+                        }else{
+                            self.showAlert(title: Strings.infoTitle.rawValue,message:error!.message!)
                         }
                     }
                 }
-                
             }else{
                 self.showAlert(title: Strings.infoTitle.rawValue,message:error!)
             }
@@ -94,10 +82,9 @@ class LoginVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.ShowUsersSegue.rawValue {
             guard let userListVC = segue.destination as? UserListVC else {fatalError("UserListVC not found")}
-            userListVC.userViewModel = UserViewModel(api: self.loginViewModel.api, coOrdinator: self.loginViewModel.coOrdinator)
-            userListVC.userId = self.txtUserId.text
+            userListVC.userViewModel = UserViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token ,coOrdinator: self.loginViewModel.coOrdinator)
         }else if segue.identifier == SegueIdentifier.DropdownSegue.rawValue{
-            guard let dropDown = segue.destination as? DropdownVC else {fatalError("UserListVC not found")}
+            guard let dropDown = segue.destination as? DropdownVC else {fatalError("DropdownVC not found")}
             dropDown.delegate = self
             dropDown.countryListViewModel = self.countryListViewModel
         }
@@ -131,7 +118,7 @@ class LoginVC: UIViewController {
                         self.startLogin()
                     }
                 }
-                self.isRemember = Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
+                self.isRemember = self.loginViewModel.isRemember
             }
         }
     }
