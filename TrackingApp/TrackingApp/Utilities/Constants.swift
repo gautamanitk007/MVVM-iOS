@@ -20,6 +20,8 @@ enum SegueIdentifier:String {
 }
 enum Identifier:String {
     case GeneralCellIdentifier = "GeneralCelli"
+    case UserCellIdentifier = "UserCelli"
+    
     
 }
 

@@ -19,6 +19,8 @@
 		8731DDCC266504E400999236 /* Address+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731DDC4266504E400999236 /* Address+CoreDataProperties.swift */; };
 		8731DDCD266504E400999236 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731DDC5266504E400999236 /* User+CoreDataClass.swift */; };
 		8731DDCE266504E400999236 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731DDC6266504E400999236 /* User+CoreDataProperties.swift */; };
+		8731DDD026650D4700999236 /* CollectionViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731DDCF26650D4700999236 /* CollectionViewDatasource.swift */; };
+		8731DDD226650FD200999236 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731DDD126650FD200999236 /* UserCell.swift */; };
 		874EE6B22663893900CB2C45 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874EE6B12663893900CB2C45 /* Utility.swift */; };
 		8780FEB4266322A4007BF173 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB3266322A4007BF173 /* Managed.swift */; };
 		8780FEB6266322E0007BF173 /* DataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB5266322E0007BF173 /* DataStack.swift */; };
@@ -89,6 +91,8 @@
 		8731DDC4266504E400999236 /* Address+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Address+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8731DDC5266504E400999236 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8731DDC6266504E400999236 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8731DDCF26650D4700999236 /* CollectionViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDatasource.swift; sourceTree = "<group>"; };
+		8731DDD126650FD200999236 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		874EE6B12663893900CB2C45 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		8780FEB3266322A4007BF173 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		8780FEB5266322E0007BF173 /* DataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStack.swift; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				87D3B25F2662A1B1008A2877 /* GeneralCell.swift */,
+				8731DDD126650FD200999236 /* UserCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				87D3B2622662A304008A2877 /* TableViewDatasource.swift */,
+				8731DDCF26650D4700999236 /* CollectionViewDatasource.swift */,
 			);
 			path = Datasource;
 			sourceTree = "<group>";
@@ -535,6 +541,7 @@
 				87ADF00B2660D33800CA63D1 /* Log.swift in Sources */,
 				87ADF0112660D38100CA63D1 /* AlertController.swift in Sources */,
 				87ADF0132660D3AD00CA63D1 /* LoginVC.swift in Sources */,
+				8731DDD026650D4700999236 /* CollectionViewDatasource.swift in Sources */,
 				8731DDC7266504E400999236 /* Company+CoreDataClass.swift in Sources */,
 				8780FEC22663251E007BF173 /* Login+CoreDataProperties.swift in Sources */,
 				87ADF0012660D22300CA63D1 /* UserInfo.swift in Sources */,
@@ -547,6 +554,7 @@
 				87A3033526613B5D00473FA9 /* ErrorVC.swift in Sources */,
 				87244F3C2664F2120052D6E2 /* UserResponse.swift in Sources */,
 				8731DDCC266504E400999236 /* Address+CoreDataProperties.swift in Sources */,
+				8731DDD226650FD200999236 /* UserCell.swift in Sources */,
 				8731DDCB266504E400999236 /* Address+CoreDataClass.swift in Sources */,
 				87D3B25C26628ED3008A2877 /* DropdownVC.swift in Sources */,
 				87ADF0032660D23200CA63D1 /* LoginResponse.swift in Sources */,
