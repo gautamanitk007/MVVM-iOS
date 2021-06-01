@@ -16,8 +16,8 @@ class LoginViewModel{
     }
     
     func loginUser(_ params:[String:String],on completion:@escaping(Int,ApiError?)->()){
-        
-        let loginResource = Resource<LoginResponse>(method:"POST",params:params, urlEndPoint: "users/login") { data in
+
+        let loginResource = Resource<LoginResponse>(method:"POST",token:"",params:params, urlEndPoint: "users/login") { data in
             let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data)
             return loginResponse
         }

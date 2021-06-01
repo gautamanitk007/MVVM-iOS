@@ -11,7 +11,7 @@ import CoreData
 
 @objc(GeoCode)
 public class GeoCode: NSManagedObject {
-    static func insert(into mContext: NSManagedObjectContext,for response: ResGeoCode) -> GeoCode{
+    static func insert(into mContext: NSManagedObjectContext,for response: SGeoCode) -> GeoCode{
         let geoCode : GeoCode = mContext.insertObject()
         geoCode.lattitude = response.lat
         geoCode.longitude = response.lng

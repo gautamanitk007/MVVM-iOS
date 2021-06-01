@@ -62,7 +62,7 @@ class LoginVC: UIViewController {
             guard let self = self else {return}
             if allOk{
                 self.startActivity()
-                self.loginViewModel.loginUser(["username":uName!,"password":pwd!,"token":self.loginViewModel.token]) { (_, error )in
+                self.loginViewModel.loginUser(["username":uName!,"password":pwd!]) { (_, error )in
                     DispatchQueue.main.async {[weak self] in
                         guard let self = self else {return}
                         self.stopActivity()
@@ -145,7 +145,7 @@ extension LoginVC{
     func showUserPage(){
         self.startActivity()
         let userViewModel = UserViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token ,coOrdinator: self.loginViewModel.coOrdinator)
-        userViewModel.getAllUsers(["token": userViewModel.token]) {(status, error) in
+        userViewModel.getAllUsers() {(status, error) in
             DispatchQueue.main.async {[weak self] in
                 guard let self = self else{return}
                 self.stopActivity()

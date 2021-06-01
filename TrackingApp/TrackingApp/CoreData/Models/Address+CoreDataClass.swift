@@ -11,7 +11,7 @@ import CoreData
 
 @objc(Address)
 public class Address: NSManagedObject {
-    static func insert(into mContext: NSManagedObjectContext,for response: ResAddress) -> Address{
+    static func insert(into mContext: NSManagedObjectContext,for response: SAddress) -> Address{
         let address : Address = mContext.insertObject()
         address.street = response.street
         address.suite = response.suite

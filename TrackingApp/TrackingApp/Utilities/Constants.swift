@@ -51,6 +51,7 @@ enum Strings:String {
     case password = "Password length should be more than 7 characters"
     case userNameAndPassword = "Please check user name and password length"
     case validateUser = "Please validate user first before remember"
+    case network = "Internet connection is not available"
     
   
 }

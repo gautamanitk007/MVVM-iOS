@@ -17,10 +17,10 @@ class UserViewModel{
         self.coOrdinator = coOrdinator
     }
     
-    func getAllUsers(_ params:[String:String],on completion:@escaping(Int,ApiError?)->()){
+    func getAllUsers(on completion:@escaping(Int,ApiError?)->()){
         
-        let uResponse = Resource<[UserResponse]>(method:"GET",params:params, urlEndPoint: "users") { data in
-            let uResponse = try? JSONDecoder().decode([UserResponse].self, from: data)
+        let uResponse = Resource<[SUser]>(method:"GET",token:self.token,params:[:], urlEndPoint: "users") { data in
+            let uResponse = try? JSONDecoder().decode([SUser].self, from: data)
             return uResponse
         }
         self.api.load(resource: uResponse) {[weak self](result, error) in
@@ -38,7 +38,7 @@ class UserViewModel{
     }
     
     func logoutUser(_ params:[String:String],on completion:@escaping(Int,ApiError?)->()){
-        let uResponse = Resource<Dictionary<String,Any>>(method:"POST",params:params, urlEndPoint: "users/logout") { data in
+        let uResponse = Resource<Dictionary<String,Any>>(method:"POST",token:self.token,params:params, urlEndPoint: "users/logout") { data in
             let json = try? JSONSerialization.jsonObject(with: data, options: [])
             return (json as! Dictionary<String, Any>)
         }
@@ -56,7 +56,7 @@ class UserViewModel{
 
 //MARK:API to insert in table
 extension UserViewModel{
-    private func insert(_ userList:[UserResponse]){
+    private func insert(_ userList:[SUser]){
         for response in userList {
             let user = User.insert(into: self.coOrdinator.viewContext, for: response)
             let _ = user.managedObjectContext?.saveOrRollback()

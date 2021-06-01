@@ -10,7 +10,7 @@
 		87244F0526648CF40052D6E2 /* UIHelpers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87244F0326648CF40052D6E2 /* UIHelpers.storyboard */; };
 		87244F07266491FD0052D6E2 /* ErrorVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87244F06266491FD0052D6E2 /* ErrorVCTests.swift */; };
 		87244F3A2664A0C20052D6E2 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87244F392664A0C20052D6E2 /* LoginViewModelTests.swift */; };
-		87244F3C2664F2120052D6E2 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87244F3B2664F2120052D6E2 /* UserResponse.swift */; };
+		87244F3C2664F2120052D6E2 /* SUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87244F3B2664F2120052D6E2 /* SUser.swift */; };
 		8731DDC7266504E400999236 /* Company+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731DDBF266504E400999236 /* Company+CoreDataClass.swift */; };
 		8731DDC8266504E400999236 /* Company+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731DDC0266504E400999236 /* Company+CoreDataProperties.swift */; };
 		8731DDC9266504E400999236 /* GeoCode+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731DDC1266504E400999236 /* GeoCode+CoreDataClass.swift */; };
@@ -28,6 +28,8 @@
 		8780FEB826632334007BF173 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB726632334007BF173 /* Coordinator.swift */; };
 		8780FEBA2663236C007BF173 /* NSManagedObjectContext+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB92663236C007BF173 /* NSManagedObjectContext+Extension.swift */; };
 		8780FEBE26632433007BF173 /* TrackingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEBC26632433007BF173 /* TrackingApp.xcdatamodeld */; };
+		87A1294026667F9000E83D72 /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A1293F26667F9000E83D72 /* CreateUserViewModel.swift */; };
+		87A12942266683E700E83D72 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A12941266683E700E83D72 /* Encodable+Extension.swift */; };
 		87A3033526613B5D00473FA9 /* ErrorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3033426613B5D00473FA9 /* ErrorVC.swift */; };
 		87ADEFDF2660D08800CA63D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADEFDE2660D08800CA63D1 /* AppDelegate.swift */; };
 		87ADEFE82660D08C00CA63D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87ADEFE72660D08C00CA63D1 /* Assets.xcassets */; };
@@ -86,7 +88,7 @@
 		87244F0E26649CAE0052D6E2 /* TrackingAppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackingAppUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87244F1226649CAE0052D6E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87244F392664A0C20052D6E2 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
-		87244F3B2664F2120052D6E2 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		87244F3B2664F2120052D6E2 /* SUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUser.swift; sourceTree = "<group>"; };
 		8731DDBF266504E400999236 /* Company+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8731DDC0266504E400999236 /* Company+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8731DDC1266504E400999236 /* GeoCode+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeoCode+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -104,6 +106,8 @@
 		8780FEB726632334007BF173 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8780FEB92663236C007BF173 /* NSManagedObjectContext+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extension.swift"; sourceTree = "<group>"; };
 		8780FEBD26632433007BF173 /* TrackingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrackingApp.xcdatamodel; sourceTree = "<group>"; };
+		87A1293F26667F9000E83D72 /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
+		87A12941266683E700E83D72 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		87A3033426613B5D00473FA9 /* ErrorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVC.swift; sourceTree = "<group>"; };
 		87ADEFDB2660D08800CA63D1 /* TrackingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ADEFDE2660D08800CA63D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 				87D3B2642662A377008A2877 /* CountryViewModel.swift */,
 				87D3B2662662A5A3008A2877 /* CountryListViewModel.swift */,
 				87D368C726662E1300F71E1F /* LocationPinViewModel.swift */,
+				87A1293F26667F9000E83D72 /* CreateUserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 				87D3B25926628D64008A2877 /* UIButton+Extension.swift */,
 				8780FEB92663236C007BF173 /* NSManagedObjectContext+Extension.swift */,
 				87D368C526662D2400F71E1F /* String+Extension.swift */,
+				87A12941266683E700E83D72 /* Encodable+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -344,7 +350,7 @@
 			children = (
 				87ADF0002660D22300CA63D1 /* UserInfo.swift */,
 				87ADF0022660D23200CA63D1 /* LoginResponse.swift */,
-				87244F3B2664F2120052D6E2 /* UserResponse.swift */,
+				87244F3B2664F2120052D6E2 /* SUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -557,6 +563,7 @@
 				87ADF0132660D3AD00CA63D1 /* LoginVC.swift in Sources */,
 				8731DDD026650D4700999236 /* CollectionViewDatasource.swift in Sources */,
 				8731DDC7266504E400999236 /* Company+CoreDataClass.swift in Sources */,
+				87A1294026667F9000E83D72 /* CreateUserViewModel.swift in Sources */,
 				87ADF0012660D22300CA63D1 /* UserInfo.swift in Sources */,
 				8731DDCD266504E400999236 /* User+CoreDataClass.swift in Sources */,
 				8731DDCE266504E400999236 /* User+CoreDataProperties.swift in Sources */,
@@ -566,7 +573,7 @@
 				8731DDD6266545C400999236 /* LocationService.swift in Sources */,
 				87ADF01C2660D44300CA63D1 /* UserViewModel.swift in Sources */,
 				87A3033526613B5D00473FA9 /* ErrorVC.swift in Sources */,
-				87244F3C2664F2120052D6E2 /* UserResponse.swift in Sources */,
+				87244F3C2664F2120052D6E2 /* SUser.swift in Sources */,
 				8731DDCC266504E400999236 /* Address+CoreDataProperties.swift in Sources */,
 				8731DDD226650FD200999236 /* UserCell.swift in Sources */,
 				8731DDCB266504E400999236 /* Address+CoreDataClass.swift in Sources */,
@@ -576,6 +583,7 @@
 				87ADF0182660D3F600CA63D1 /* RoundedView.swift in Sources */,
 				8780FEB826632334007BF173 /* Coordinator.swift in Sources */,
 				87D368C22666131F00F71E1F /* LoginUser+CoreDataProperties.swift in Sources */,
+				87A12942266683E700E83D72 /* Encodable+Extension.swift in Sources */,
 				87ADEFDF2660D08800CA63D1 /* AppDelegate.swift in Sources */,
 				87ADF01E2660D46400CA63D1 /* CreateUserVC.swift in Sources */,
 				8731DDC8266504E400999236 /* Company+CoreDataProperties.swift in Sources */,

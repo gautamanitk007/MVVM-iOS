@@ -7,31 +7,31 @@
 
 import Foundation
 
-struct ResCompany:Decodable{
+struct SCompany:Decodable,Encodable{
     let name:String
     let bs:String
     let catchPhrase:String
 }
 
-struct ResGeoCode:Decodable{
+struct SGeoCode:Decodable,Encodable{
     let lat:String
     let lng:String
 }
 
-struct ResAddress:Decodable{
+struct SAddress:Decodable,Encodable{
     let street:String
     let suite:String
     let city:String
     let zipcode:String
-    let geo:ResGeoCode
+    let geo:SGeoCode
 }
-struct UserResponse: Decodable {
+struct SUser: Decodable,Encodable {
     let userId: Int
     let name: String
     let email: String
     let username:String
     let phone:String
     let website:String
-    let company:ResCompany
-    let address:ResAddress
+    let company:SCompany
+    let address:SAddress
 }

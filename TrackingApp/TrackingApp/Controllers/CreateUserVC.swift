@@ -34,36 +34,32 @@ class CreateUserVC: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var baseScrollView: UIScrollView!
     
+    var createUserViewModel:CreateUserViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
-        
-        
-        self.txtUser.delegate = self
-        self.txtUserName.delegate = self
-        self.txtPassword.delegate = self
-        
-        self.txtEmail.delegate = self
-        self.txtPhone.delegate = self
-        self.txtStreet.delegate = self
-        
-        self.txtSuite.delegate = self
-        self.txtCity.delegate = self
-        self.txtZipcode.delegate = self
-        
-        self.txtCompName.delegate = self
-        self.txtCompPhrase.delegate = self
-        self.txtCompBs.delegate = self
-        
-        
-        
+        self.setup()
+        self.initialise()
         NotificationCenter.default.addObserver(self, selector: #selector(CreateUserVC.keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(CreateUserVC.keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    deinit {
+        
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
     }
     @IBAction func didCancelUserTapped(){
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func didSaveUserTapped(){
+        self.view.endEditing(true)
+        
+//        let sUser =  SUser(userId: self.createUserViewModel.userId,password:self.txtPassword.text!, name: self.txtUser.text!, email: self.txtEmail.text!, username: self.txtUserName.text!,
+//                           phone: self.txtPhone.text!,website: self.createUserViewModel.website,
+//                           company: SCompany(name: self.txtCompName.text!, bs: self.txtCompBs.text!, catchPhrase: self.txtCompPhrase.text!),
+//                           address: SAddress(street: self.txtStreet.text!, suite: self.txtSuite.text!, city: self.txtCity.text!, zipcode: self.txtZipcode.text!, geo: SGeoCode(lat: "34", lng: "341")))
+        
+        
         self.dismiss(animated: true, completion: nil)
     }
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -97,5 +93,35 @@ extension CreateUserVC:UITextFieldDelegate{
         }else{
             return textField.resignFirstResponder()
         }
+    }
+}
+
+extension CreateUserVC{
+    func setup(){
+        self.txtUser.delegate = self
+        self.txtUserName.delegate = self
+        self.txtPassword.delegate = self
+        
+        self.txtEmail.delegate = self
+        self.txtPhone.delegate = self
+        self.txtStreet.delegate = self
+        
+        self.txtSuite.delegate = self
+        self.txtCity.delegate = self
+        self.txtZipcode.delegate = self
+        
+        self.txtCompName.delegate = self
+        self.txtCompPhrase.delegate = self
+        self.txtCompBs.delegate = self
+    }
+    func initialise(){
+        self.txtPassword.text = self.createUserViewModel.password
+        self.txtEmail.text = self.createUserViewModel.email
+        self.txtPhone.text = self.createUserViewModel.phone
+        
+        self.txtCompName.text = self.createUserViewModel.companyName
+        self.txtCompPhrase.text = self.createUserViewModel.catchPhrase
+        self.txtCompBs.text = self.createUserViewModel.companyBS
+        
     }
 }

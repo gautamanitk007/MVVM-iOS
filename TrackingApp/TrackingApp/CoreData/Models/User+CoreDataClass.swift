@@ -12,7 +12,7 @@ import CoreData
 @objc(User)
 public class User: NSManagedObject {
 
-    static func insert(into mContext: NSManagedObjectContext,for response: UserResponse) -> User{
+    static func insert(into mContext: NSManagedObjectContext,for response: SUser) -> User{
         let user : User = mContext.insertObject()
         user.name = response.name
         user.username = response.username

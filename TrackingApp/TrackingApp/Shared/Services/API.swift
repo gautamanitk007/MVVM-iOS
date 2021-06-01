@@ -9,6 +9,7 @@ import Foundation
 
 struct Resource<T>{
     let method:String
+    let token:String
     let params:[String:Any]
     let urlEndPoint:String
     let parse:(Data) -> T?
@@ -29,20 +30,26 @@ class API{
 
 //MARK: - Private methods
 extension API{
-    private func request(_ endPoint:String,_ httpMethod:String,_ params:[String:Any]) -> URLRequest{
+    
+    private func genericRequest(_ endPoint:String,_ httpMethod:String) -> URLRequest{
         let url = URL(string: self.server + "/" + endPoint)!
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
-        if let token = params["token"] as? String,token.count > 0 {
-            let bearer = "Bearer \(token)"
-            request.addValue(bearer, forHTTPHeaderField: "Authorization")
-        }else {
-            if params.count > 0{
-                let jsonData = try? JSONSerialization.data(withJSONObject: ["username":params["username"],"password":params["password"]])
-                request.httpBody = jsonData
-            }
-        }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
+    
+    private func loginRequest(_ endPoint:String,_ httpMethod:String,_ params:[String:Any]) -> URLRequest{
+        var request = self.genericRequest(endPoint, httpMethod)
+        request.httpBody = try? JSONSerialization.data(withJSONObject: params)
+        return request
+    }
+    private func request(_ endPoint:String,_ httpMethod:String,_ params:[String:Any],_ token:String) -> URLRequest{
+        var request = self.genericRequest(endPoint, httpMethod)
+        if params.count > 0 {
+            request.httpBody = try? JSONSerialization.data(withJSONObject: params)
+        }
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
     }
 }
@@ -50,7 +57,13 @@ extension API{
 //MARK: - Common methods
 extension API {
     func load<T>(resource:Resource<T>,completion:@escaping(T?,ApiError?)->()){
-        let request = self.request(resource.urlEndPoint, resource.method, resource.params)
+        var request : URLRequest
+        if resource.token.count > 0 {
+            request = self.request(resource.urlEndPoint, resource.method, resource.params,resource.token)
+        }else{
+            request = self.loginRequest(resource.urlEndPoint, resource.method, resource.params)
+        }
+        
         URLSession.shared.dataTask(with: request) { data, response, error in
             var sError : ApiError?
             if let resp = response as? HTTPURLResponse{

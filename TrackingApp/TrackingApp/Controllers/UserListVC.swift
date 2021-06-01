@@ -67,8 +67,11 @@ class UserListVC: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.CreateUserSegue.rawValue {
-            //guard let createUserVC = segue.destination as? CreateUserVC else {fatalError("CreateUserVC not found")}
-           
+            guard let navController = segue.destination as? UINavigationController else {
+                fatalError("NavigationController not found")
+            }
+            guard let createUserVC = navController.viewControllers.first as? CreateUserVC else {fatalError("CreateUserVC not found")}
+            createUserVC.createUserViewModel = CreateUserViewModel()
         }
     }
     

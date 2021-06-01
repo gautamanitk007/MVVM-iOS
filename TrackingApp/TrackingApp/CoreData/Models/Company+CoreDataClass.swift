@@ -11,7 +11,7 @@ import CoreData
 
 @objc(Company)
 public class Company: NSManagedObject {
-    static func insert(into mContext: NSManagedObjectContext,for response: ResCompany) -> Company{
+    static func insert(into mContext: NSManagedObjectContext,for response: SCompany) -> Company{
         let company : Company = mContext.insertObject()
         company.name = response.name
         company.catchPhrase = response.catchPhrase
