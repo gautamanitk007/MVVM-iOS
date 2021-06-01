@@ -47,17 +47,20 @@ enum Strings:String {
     case cancel = "Cancel"
     case save = "Save"
     case error = "Error!"
-    case userName = "User Name length should be more than 3 characters"
+    case userName = "User Name length should be more than 5 characters"
     case password = "Password length should be more than 7 characters"
-    case userId = "User Id length should be more than 5 characters"
-    case userIdAndPassowrd = "Please check userid and password length"
+    case userNameAndPassword = "Please check user name and password length"
     case validateUser = "Please validate user first before remember"
-    case RememberKey = "isRemember"
-    case TokenKey = "tokenKey"
+    
+  
+}
+
+enum Keys:String{
+    case Remember = "isRemember"
+    case Token = "tokenKey"
     case UserName = "username"
     case Password = "password"
-    case PinViewKey = "pinViewKey"
-  
+    case PinView = "pinViewKey"
 }
 
 enum NotificatioString: String{

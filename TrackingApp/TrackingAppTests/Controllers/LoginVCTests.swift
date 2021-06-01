@@ -42,13 +42,13 @@ class LoginVCTests: XCTestCase {
     
     func test_login_with_empty_userId_and_password(){
         //Given
-        sut.txtUserId.text = ""
+        sut.txtUserName.text = ""
         sut.txtPassword.text = ""
 
         //When
         let exp = expectation(for: NSPredicate(block:{ vc, _ -> Bool in
             let presentedController = self.getTopController() as? ErrorVC
-            return presentedController != nil && presentedController!.alertTitle == Strings.infoTitle.rawValue && presentedController!.alertMessage == Strings.userIdAndPassowrd.rawValue
+            return presentedController != nil && presentedController!.alertTitle == Strings.infoTitle.rawValue && presentedController!.alertMessage == Strings.userNameAndPassword.rawValue
         }), evaluatedWith: sut, handler: nil)
 
         self.whenSignIn()
@@ -59,19 +59,19 @@ class LoginVCTests: XCTestCase {
         presentedController?.didOkTapped(presentedController?.btnOk as Any)
         XCTAssertNotNil(presentedController)
         XCTAssertEqual(presentedController?.alertTitle,Strings.infoTitle.rawValue)
-        XCTAssertEqual(presentedController?.alertMessage,Strings.userIdAndPassowrd.rawValue)
+        XCTAssertEqual(presentedController?.alertMessage,Strings.userNameAndPassword.rawValue)
     }
 
     func test_login_with_invalid_userId_and_password_length(){
 
         //Given
-        sut.txtUserId.text = "ssdd"
+        sut.txtUserName.text = "ssdd"
         sut.txtPassword.text = "abc"
 
         //When
         let exp = expectation(for: NSPredicate(block:{ vc, _ -> Bool in
             let presentedController = self.getTopController() as? ErrorVC
-            return presentedController != nil && presentedController!.alertTitle == Strings.infoTitle.rawValue && presentedController!.alertMessage == Strings.userIdAndPassowrd.rawValue
+            return presentedController != nil && presentedController!.alertTitle == Strings.infoTitle.rawValue && presentedController!.alertMessage == Strings.userNameAndPassword.rawValue
         }), evaluatedWith: sut, handler: nil)
 
         self.whenSignIn()
@@ -83,7 +83,7 @@ class LoginVCTests: XCTestCase {
 
         XCTAssertNotNil(presentedController)
         XCTAssertEqual(presentedController?.alertTitle,Strings.infoTitle.rawValue)
-        XCTAssertEqual(presentedController?.alertMessage,Strings.userIdAndPassowrd.rawValue)
+        XCTAssertEqual(presentedController?.alertMessage,Strings.userNameAndPassword.rawValue)
 
     }
     
@@ -91,7 +91,7 @@ class LoginVCTests: XCTestCase {
 
     func test_login_with_valid_userId_length_and_invalid_password_length(){
         //Given
-        sut.txtUserId.text = "gautamkkr1"
+        sut.txtUserName.text = "gautamkkr1"
         sut.txtPassword.text = "abc"
 
         //When
@@ -138,8 +138,8 @@ class LoginVCTests: XCTestCase {
 
 extension LoginVCTests{
     func givenGoodLogin() {
-        sut.txtUserId.text = "gautamkkr1"
-        sut.txtPassword.text = "abc1324678!"
+        sut.txtUserName.text = "singh007"
+        sut.txtPassword.text = "admin123!"
     }
     func whenSignIn() {
         sut.didLoginTapped(sut.btnLogin as Any)

@@ -43,7 +43,7 @@ class UserViewModel{
             return (json as! Dictionary<String, Any>)
         }
         self.api.load(resource: uResponse) {(result, error) in
-            Utility.saveInDefaults(value: "", forKey: Strings.TokenKey.rawValue)
+            Utility.saveInDefaults(value: "", forKey: Keys.Token.rawValue)
             if let err = error, err.statusCode != ResponseCodes.success{
                 completion(err.statusCode,err)
             }else{

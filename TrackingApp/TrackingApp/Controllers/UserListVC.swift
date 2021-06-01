@@ -126,11 +126,11 @@ extension UserListVC: MKMapViewDelegate {
 
         var annotationView: MKMarkerAnnotationView
 
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: Strings.PinViewKey.rawValue) as? MKMarkerAnnotationView {
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: Keys.PinView.rawValue) as? MKMarkerAnnotationView {
             dequeuedView.annotation = annotation
             annotationView = dequeuedView
         } else {
-            annotationView = MKMarkerAnnotationView(annotation: annotation,reuseIdentifier: Strings.PinViewKey.rawValue)
+            annotationView = MKMarkerAnnotationView(annotation: annotation,reuseIdentifier: Keys.PinView.rawValue)
             annotationView.canShowCallout = true
             annotationView.calloutOffset = CGPoint(x: -5, y: 5)
             annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)

@@ -37,7 +37,7 @@ class LoginViewModel{
 
 extension LoginViewModel{
     var isRemember:Bool{
-        return Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
+        return Utility.getBoolValueFromDefaults(forKey:Keys.Remember.rawValue)
     }
     var username:String{
         return "singh007"//Utility.getValue(forKey:Strings.UserId.rawValue)
@@ -46,10 +46,10 @@ extension LoginViewModel{
         return "admin123!"//Utility.getValue(forKey:Strings.Password.rawValue)
     }
     var token:String{
-        return Utility.getValue(forKey:Strings.TokenKey.rawValue)
+        return Utility.getValue(forKey:Keys.Token.rawValue)
     }
     var isTokenExist:Bool{
-        let tkn = Utility.getValue(forKey:Strings.TokenKey.rawValue)
+        let tkn = Utility.getValue(forKey:Keys.Token.rawValue)
         if tkn.count > 0 {
             return true
         }
@@ -77,22 +77,22 @@ extension LoginViewModel{
             }
         }else{
             if vPassword == true {
-                completion(true,uName,pwd,Strings.userId.rawValue)
+                completion(true,uName,pwd,Strings.userName.rawValue)
             }else{
-                completion(false,uName,pwd,Strings.userIdAndPassowrd.rawValue)
+                completion(false,uName,pwd,Strings.userNameAndPassword.rawValue)
             }
         }
     }
     func updateLogin(isRemember reMember:Bool,userName uName:String,password pwd:String){
         if reMember {
-            Utility.saveInDefaults(value: uName, forKey: Strings.UserName.rawValue)
-            Utility.saveInDefaults(value: pwd, forKey: Strings.Password.rawValue)
+            Utility.saveInDefaults(value: uName, forKey: Keys.UserName.rawValue)
+            Utility.saveInDefaults(value: pwd, forKey: Keys.Password.rawValue)
         }else{
-            Utility.saveInDefaults(value: "", forKey: Strings.UserName.rawValue)
-            Utility.saveInDefaults(value: "", forKey: Strings.Password.rawValue)
+            Utility.saveInDefaults(value: "", forKey: Keys.UserName.rawValue)
+            Utility.saveInDefaults(value: "", forKey: Keys.Password.rawValue)
         }
         
-        Utility.saveBoolInDefaults(reMember, forKey: Strings.RememberKey.rawValue)
+        Utility.saveBoolInDefaults(reMember, forKey: Keys.Remember.rawValue)
     }
     
 }
@@ -100,7 +100,7 @@ extension LoginViewModel{
 extension LoginViewModel{
     func insert(_ object:LoginResponse,_ password:String){
         Log.debug(object.token)
-        Utility.saveInDefaults(value: object.token, forKey: Strings.TokenKey.rawValue)
+        Utility.saveInDefaults(value: object.token, forKey: Keys.Token.rawValue)
         self.coOrdinator.perform {[weak self] in
             guard let self = self else{ return}
             if let loginObj = LoginUser.findOrFetch(in: self.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(LoginUser.username),object.user.username)){

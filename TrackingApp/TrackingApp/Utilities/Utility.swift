@@ -47,9 +47,9 @@ class Utility: NSObject {
         }
     }
     class func resetUserDefault(){
-        Utility.saveInDefaults(value: "", forKey: Strings.UserName.rawValue)
-        Utility.saveInDefaults(value: "", forKey: Strings.Password.rawValue)
-        Utility.saveInDefaults(value: "", forKey: Strings.TokenKey.rawValue)
-        Utility.saveBoolInDefaults( false, forKey: Strings.RememberKey.rawValue)
+        Utility.saveInDefaults(value: "", forKey: Keys.UserName.rawValue)
+        Utility.saveInDefaults(value: "", forKey: Keys.Password.rawValue)
+        Utility.saveInDefaults(value: "", forKey: Keys.Token.rawValue)
+        Utility.saveBoolInDefaults( false, forKey: Keys.Remember.rawValue)
     }
 }
