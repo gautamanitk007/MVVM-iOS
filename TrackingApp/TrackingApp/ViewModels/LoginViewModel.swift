@@ -40,10 +40,10 @@ extension LoginViewModel{
         return Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
     }
     var userId:String{
-        return "gautamkkr1"//Utility.getValue(forKey:Strings.UserId.rawValue)
+        return "singh007"//Utility.getValue(forKey:Strings.UserId.rawValue)
     }
     var password:String{
-        return "abc1324678!"//Utility.getValue(forKey:Strings.Password.rawValue)
+        return "admin123!"//Utility.getValue(forKey:Strings.Password.rawValue)
     }
     var token:String{
         return Utility.getValue(forKey:Strings.TokenKey.rawValue)
@@ -58,34 +58,34 @@ extension LoginViewModel{
 }
 
 extension LoginViewModel{
-    func checkCredentialsPreconditions(for userId:String,and password:String,on completion:@escaping(Bool,String?,String?,String?)->()){
-        let uId = userId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    func checkCredentialsPreconditions(for userName:String,and password:String,on completion:@escaping(Bool,String?,String?,String?)->()){
+        let uName = userName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let pwd = password.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        let vId = uId.count >= AllowedLength.userIdLength.rawValue
+        let vName = uName.count >= AllowedLength.userIdLength.rawValue
         let vPassword = pwd.count >= AllowedLength.userPasswordLength.rawValue
         
-        self.updateLogin(isRemember: self.isRemember, userId: uId, password: pwd)
+        self.updateLogin(isRemember: self.isRemember, userName: uName, password: pwd)
         
-        if vId == true {
+        if vName == true {
             if vPassword == true {
-                completion(true,uId,pwd,nil)
+                completion(true,uName,pwd,nil)
             }else{
-                completion(false,uId,pwd,Strings.password.rawValue)
+                completion(false,uName,pwd,Strings.password.rawValue)
             }
         }else{
             if vPassword == true {
-                completion(true,uId,pwd,Strings.userId.rawValue)
+                completion(true,uName,pwd,Strings.userId.rawValue)
             }else{
-                completion(false,uId,pwd,Strings.userIdAndPassowrd.rawValue)
+                completion(false,uName,pwd,Strings.userIdAndPassowrd.rawValue)
             }
         }
     }
-    func updateLogin(isRemember reMember:Bool,userId uId:String,password pwd:String){
+    func updateLogin(isRemember reMember:Bool,userName uName:String,password pwd:String){
         if reMember {
-            Utility.saveInDefaults(value: uId, forKey: Strings.UserId.rawValue)
+            Utility.saveInDefaults(value: uName, forKey: Strings.UserName.rawValue)
             Utility.saveInDefaults(value: pwd, forKey: Strings.Password.rawValue)
         }else{
-            Utility.saveInDefaults(value: "", forKey: Strings.UserId.rawValue)
+            Utility.saveInDefaults(value: "", forKey: Strings.UserName.rawValue)
             Utility.saveInDefaults(value: "", forKey: Strings.Password.rawValue)
         }
         
@@ -104,19 +104,19 @@ extension LoginViewModel{
         Utility.saveInDefaults(value: object.token, forKey: Strings.TokenKey.rawValue)
         self.coOrdinator.perform {[weak self] in
             guard let self = self else{ return}
-            if let loginObj = Login.findOrFetch(in: self.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(Login.userId),object.user.userId)){
+            if let loginObj = LoginUser.findOrFetch(in: self.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(LoginUser.username),object.user.username)){
                 loginObj.token = object.token
                 let _ = loginObj.managedObjectContext?.saveOrRollback()
             }else{
-                let _ =  Login.insert(into: self.coOrdinator.syncContext, for: object, password: password)
+                let _ =  LoginUser.insert(into: self.coOrdinator.syncContext, for: object, password: password)
             }
             let _ =  self.coOrdinator.syncContext.saveOrRollback()
         }
     }
-    func fetchLogin(on completion:@escaping(Login?)->()){
+    func fetchLogin(on completion:@escaping(LoginUser?)->()){
         self.coOrdinator.perform {[weak self] in
             guard let self = self else{ return}
-            let loginObj = Login.findOrFetch(in: self.coOrdinator.syncContext, matching: Login.defaultPredicate)
+            let loginObj = LoginUser.findOrFetch(in: self.coOrdinator.syncContext, matching: LoginUser.defaultPredicate)
             completion(loginObj)
         }
     }

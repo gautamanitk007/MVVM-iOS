@@ -54,7 +54,7 @@ enum Strings:String {
     case validateUser = "Please validate user first before remember"
     case RememberKey = "isRemember"
     case TokenKey = "tokenKey"
-    case UserId = "userId"
+    case UserName = "username"
     case Password = "password"
   
 }

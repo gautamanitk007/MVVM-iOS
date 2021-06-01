@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y51-TI-6nK">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,20 +13,20 @@
             <objects>
                 <viewController storyboardIdentifier="login" id="BYZ-38-t0r" customClass="LoginVC" customModule="TrackingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXK-Pf-kkS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0b6-rq-VzC">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="v50-LN-Ll7">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYG-KV-yiV">
-                                                <rect key="frame" x="32" y="241.66666666666663" width="350" height="253"/>
+                                                <rect key="frame" x="125" y="173.5" width="350" height="253"/>
                                                 <subviews>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="JHY-Ya-8qo">
                                                         <rect key="frame" x="157" y="8" width="37" height="37"/>
@@ -39,7 +38,7 @@
                                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </activityIndicatorView>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#user id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZM9-ew-hhA">
-                                                        <rect key="frame" x="8" y="61.000000000000028" width="334" height="40"/>
+                                                        <rect key="frame" x="8" y="61" width="334" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="M6d-l1-4KY"/>
                                                         </constraints>
@@ -47,7 +46,7 @@
                                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vSH-SI-4Vv">
-                                                        <rect key="frame" x="8" y="109.00000000000003" width="334" height="40"/>
+                                                        <rect key="frame" x="8" y="109" width="334" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="2Um-Aa-mWF"/>
                                                         </constraints>
@@ -55,7 +54,7 @@
                                                         <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8F7-Yu-Nos" customClass="RoundedButton" customModule="TrackingApp" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="205.00000000000003" width="130" height="40"/>
+                                                        <rect key="frame" x="8" y="205" width="130" height="40"/>
                                                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="130" id="8Eu-tg-6fB"/>
@@ -70,7 +69,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwg-kb-O0m" customClass="RoundedButton" customModule="TrackingApp" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="157.00000000000003" width="334" height="40"/>
+                                                        <rect key="frame" x="8" y="157" width="334" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="cgS-V0-XC1"/>
@@ -81,7 +80,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe0-Cc-orq">
-                                                        <rect key="frame" x="146" y="205.00000000000003" width="196" height="40"/>
+                                                        <rect key="frame" x="146" y="205" width="196" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="qLQ-Q1-ePc"/>
                                                         </constraints>
@@ -165,7 +164,7 @@
                         <outlet property="contentView" destination="0b6-rq-VzC" id="pXY-bV-hyM"/>
                         <outlet property="loginView" destination="eYG-KV-yiV" id="8Wi-WM-qVV"/>
                         <outlet property="txtPassword" destination="vSH-SI-4Vv" id="gwv-ln-NgX"/>
-                        <outlet property="txtUserId" destination="ZM9-ew-hhA" id="31b-UO-PkC"/>
+                        <outlet property="txtUserName" destination="ZM9-ew-hhA" id="31b-UO-PkC"/>
                         <segue destination="PBn-Rn-HZj" kind="show" identifier="showUserSegue" id="fvl-Mu-OSy"/>
                         <segue destination="aGn-h2-TIb" kind="popoverPresentation" identifier="dropDownSegue" popoverAnchorView="nwg-kb-O0m" id="QGO-PL-4oO">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -181,23 +180,23 @@
             <objects>
                 <viewController storyboardIdentifier="dropdown" id="aGn-h2-TIb" customClass="DropdownVC" customModule="TrackingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xcf-za-S27">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="tGv-8x-qLS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GeneralCelli" id="JmA-Vu-qOf" customClass="GeneralCell" customModule="TrackingApp" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="49" width="374" height="42.666667938232422"/>
+                                        <rect key="frame" x="16" y="49.5" width="568" height="42.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JmA-Vu-qOf" id="wq5-zY-Vjw">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="568" height="42.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blD-fV-xnT">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="334" height="20.666666666666671"/>
+                                                    <rect key="frame" x="16" y="11" width="536" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -239,7 +238,7 @@
             <objects>
                 <viewController id="J17-Qg-WkO" customClass="CreateUserVC" customModule="TrackingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ITM-UE-cF9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="fsE-eJ-Fjf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -266,14 +265,14 @@
             <objects>
                 <viewController id="PBn-Rn-HZj" customClass="UserListVC" customModule="TrackingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QFI-W1-4RV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIN-Tm-PbC">
-                                <rect key="frame" x="0.0" y="44" width="414" height="335"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="268.5"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="u34-Kd-LFZ">
-                                        <rect key="frame" x="4" y="4" width="406" height="327"/>
+                                        <rect key="frame" x="4" y="4" width="592" height="260.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="JOH-UU-Taf">
                                             <size key="itemSize" width="120" height="120"/>
@@ -345,16 +344,15 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="u34-Kd-LFZ" secondAttribute="trailing" constant="4" id="EVs-Fl-k8G"/>
                                     <constraint firstAttribute="bottom" secondItem="u34-Kd-LFZ" secondAttribute="bottom" constant="4" id="cdW-jT-E2h"/>
-                                    <constraint firstAttribute="height" constant="335" id="gca-Ab-haT"/>
                                     <constraint firstItem="u34-Kd-LFZ" firstAttribute="leading" secondItem="XIN-Tm-PbC" secondAttribute="leading" constant="4" id="qV3-JQ-MC2"/>
                                     <constraint firstItem="u34-Kd-LFZ" firstAttribute="top" secondItem="XIN-Tm-PbC" secondAttribute="top" constant="4" id="xpH-k3-pMY"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DOW-gp-3ew">
-                                <rect key="frame" x="0.0" y="387" width="414" height="349"/>
+                                <rect key="frame" x="0.0" y="320.5" width="600" height="279.5"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xnG-em-Ppa">
-                                        <rect key="frame" x="8" y="8" width="398" height="333"/>
+                                        <rect key="frame" x="8" y="8" width="584" height="263.5"/>
                                     </mapView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
@@ -369,6 +367,7 @@
                         <viewLayoutGuide key="safeArea" id="vZ4-18-tvP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="DOW-gp-3ew" firstAttribute="height" secondItem="XIN-Tm-PbC" secondAttribute="height" multiplier="1.04179" id="2q8-nE-fqy"/>
                             <constraint firstItem="DOW-gp-3ew" firstAttribute="trailing" secondItem="vZ4-18-tvP" secondAttribute="trailing" id="6eV-ff-ZcY"/>
                             <constraint firstItem="XIN-Tm-PbC" firstAttribute="top" secondItem="vZ4-18-tvP" secondAttribute="top" id="QQQ-hJ-XMT"/>
                             <constraint firstItem="DOW-gp-3ew" firstAttribute="bottom" secondItem="vZ4-18-tvP" secondAttribute="bottom" id="WsX-va-BeM"/>

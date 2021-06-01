@@ -38,34 +38,19 @@ extension API{
             request.addValue(bearer, forHTTPHeaderField: "Authorization")
         }else {
             if params.count > 0{
-                let jsonData = try? JSONSerialization.data(withJSONObject: ["userId":params["userId"],"password":params["password"]])
+                let jsonData = try? JSONSerialization.data(withJSONObject: ["username":params["username"],"password":params["password"]])
                 request.httpBody = jsonData
             }
         }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         return request
     }
-    
-    //
-    private func request()->URLRequest{
-        var request = URLRequest(url: URL.init(string: "https://jsonplaceholder.typicode.com/users")!)
-        request.httpMethod = "GET"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        return request
-    }
-    
 }
 
 //MARK: - Common methods
 extension API {
     func load<T>(resource:Resource<T>,completion:@escaping(T?,ApiError?)->()){
-        var request:URLRequest
-        
-        if let isByPass = resource.params["isByPass"], let byPassIntValue = Int(isByPass as! String),byPassIntValue == 1{
-            request = self.request()
-        }else{
-            request = self.request(resource.urlEndPoint, resource.method, resource.params)
-        }
+        let request = self.request(resource.urlEndPoint, resource.method, resource.params)
         URLSession.shared.dataTask(with: request) { data, response, error in
             var sError : ApiError?
             if let resp = response as? HTTPURLResponse{
@@ -74,7 +59,7 @@ extension API {
             DispatchQueue.main.async {
                 if let data = data {
                     //let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: [])
-                   // print(jsonResponse)
+                   //print(jsonResponse)
                     completion(resource.parse(data),sError)
                 }else{
                     if let err = sError {

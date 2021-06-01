@@ -16,7 +16,7 @@ public class User: NSManagedObject {
         let user : User = mContext.insertObject()
         user.name = response.name
         user.username = response.username
-        user.userId = Int64(response.id)
+        user.userId = Int64(response.userId)
         user.email = response.email
         user.website = response.website
         user.phone = response.phone

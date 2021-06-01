@@ -8,13 +8,14 @@
 import UIKit
 import MapKit
 import CoreData
+import CoreLocation
 class UserListVC: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
     var userViewModel:UserViewModel!
-    var userId:String!
+    var locationService: LocationService?
     lazy var userFetchResultController:NSFetchedResultsController<User>? = {
         let request = User.sortedFetchRequest
         request.returnsObjectsAsFaults = false
@@ -39,14 +40,9 @@ class UserListVC: UIViewController {
         self.collectionView.dataSource = self.dataSource
         self.collectionView.delegate = self
         
-        self.userViewModel.getAllUsers(["isByPass": "1"]) {(status, error) in
-            DispatchQueue.main.async {[weak self] in
-                guard let self = self else{return}
-                if status != ResponseCodes.success{
-                    self.showAlert(title: Strings.infoTitle.rawValue, message: error!.message)
-                }
-            }
-        }
+        self.setupLocationService()
+        self.mapView.showsUserLocation = true
+       
     }
     @objc func logoutTapped(){
         self.userViewModel.logoutUser(["token":self.userViewModel.token]) { [weak self ](statusCode, error) in
@@ -63,7 +59,10 @@ class UserListVC: UIViewController {
            
         }
     }
-
+    
+    func setupLocationService(){
+        locationService?.requestLocationAuthorization()
+    }
 }
 
 //MARK:- CollectionViewDataSourceDelegate
@@ -98,3 +97,4 @@ extension UserListVC:UICollectionViewDelegate{
         Log.debug(user.name!)
     }
 }
+

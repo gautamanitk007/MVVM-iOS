@@ -17,7 +17,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var btnCountry: RoundedButton!
     @IBOutlet weak var btnLogin: RoundedButton!
     @IBOutlet weak var txtPassword: UITextField!
-    @IBOutlet weak var txtUserId: UITextField!
+    @IBOutlet weak var txtUserName: UITextField!
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var baseScrollView: UIScrollView!
     var countryListViewModel:CountryListViewModel!
@@ -25,14 +25,14 @@ class LoginVC: UIViewController {
     var isRemember:Bool?{
         didSet{
             self.btnRemember.isSelected = isRemember!
-            self.txtUserId.text = self.loginViewModel.userId
+            self.txtUserName.text = self.loginViewModel.userId
             self.txtPassword.text = self.loginViewModel.password
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        self.txtUserId.delegate = self
+        self.txtUserName.delegate = self
         self.txtPassword.delegate = self
         self.btnCountry.setImage(image: UIImage(named: "drop.png")!, renderMode: .alwaysOriginal, semantics: .forceRightToLeft, alignment: .right, left: 0, right: 60)
         self.btnRemember.setImage(image: UIImage(named: "circle_unchecked.png")!, renderMode: .alwaysOriginal, semantics: .forceLeftToRight, alignment: .left, left: 12, right: 0)
@@ -49,7 +49,7 @@ class LoginVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     @IBAction func didRememberTapped(_ sender: Any) {
-        self.loginViewModel.updateLogin(isRemember:!self.btnRemember.isSelected,userId: self.txtUserId.text!,password: self.txtPassword.text!)
+        self.loginViewModel.updateLogin(isRemember:!self.btnRemember.isSelected,userName: self.txtUserName.text!,password: self.txtPassword.text!)
         self.isRemember = self.loginViewModel.isRemember
     }
     @IBAction func didCountryTapped(_ sender: Any) {
@@ -58,16 +58,16 @@ class LoginVC: UIViewController {
 
     @IBAction func didLoginTapped(_ sender: Any) {
         
-        self.loginViewModel.checkCredentialsPreconditions(for: self.txtUserId.text!, and: self.txtPassword.text!) { [weak self] (allOk,uId,pwd, error )in
+        self.loginViewModel.checkCredentialsPreconditions(for: self.txtUserName.text!, and: self.txtPassword.text!) { [weak self] (allOk,uName,pwd, error )in
             guard let self = self else {return}
             if allOk{
                 self.startActivity()
-                self.loginViewModel.loginUser(["userId":uId!,"password":pwd!,"token":self.loginViewModel.token]) { (_, error )in
+                self.loginViewModel.loginUser(["username":uName!,"password":pwd!,"token":self.loginViewModel.token]) { (_, error )in
                     DispatchQueue.main.async {[weak self] in
                         guard let self = self else {return}
                         self.stopActivity()
                         if error?.statusCode == ResponseCodes.success{
-                            self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: nil)
+                            self.showUserPage()
                         }else{
                             self.showAlert(title: Strings.infoTitle.rawValue,message:error!.message!)
                         }
@@ -82,7 +82,7 @@ class LoginVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.ShowUsersSegue.rawValue {
             guard let userListVC = segue.destination as? UserListVC else {fatalError("UserListVC not found")}
-            userListVC.userViewModel = UserViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token ,coOrdinator: self.loginViewModel.coOrdinator)
+            userListVC.userViewModel = (sender as! UserViewModel)
         }else if segue.identifier == SegueIdentifier.DropdownSegue.rawValue{
             guard let dropDown = segue.destination as? DropdownVC else {fatalError("DropdownVC not found")}
             dropDown.delegate = self
@@ -137,7 +137,22 @@ extension LoginVC{
     }
     func startLogin(){
         self.stopActivity()
-        self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: nil)
+        self.showUserPage()
+    }
+    func showUserPage(){
+        self.startActivity()
+        let userViewModel = UserViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token ,coOrdinator: self.loginViewModel.coOrdinator)
+        userViewModel.getAllUsers(["token": userViewModel.token]) {(status, error) in
+            DispatchQueue.main.async {[weak self] in
+                guard let self = self else{return}
+                self.stopActivity()
+                if status == ResponseCodes.success{
+                    self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: userViewModel)
+                }else{
+                    self.showAlert(title: Strings.infoTitle.rawValue, message: error!.message)
+                }
+            }
+        }
     }
 }
 //MARK:- UITextFieldDelegate

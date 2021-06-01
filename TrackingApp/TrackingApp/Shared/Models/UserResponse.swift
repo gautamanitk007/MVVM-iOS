@@ -26,7 +26,7 @@ struct ResAddress:Decodable{
     let geo:ResGeoCode
 }
 struct UserResponse: Decodable {
-    let id: Int
+    let userId: Int
     let name: String
     let email: String
     let username:String

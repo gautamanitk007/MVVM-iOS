@@ -10,5 +10,10 @@ import Foundation
 struct UserInfo: Decodable {
     let _id: String
     let name: String
-    let userId: String
+    let username: String
+    let zipcode:String
+    let lattitude:String
+    let longitude:String
+    let city:String
+    let street:String
 }

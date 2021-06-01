@@ -60,5 +60,9 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app will use location service in order to show user location on map</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app will use location service in order to show user location on map</string>
 </dict>
 </plist>
