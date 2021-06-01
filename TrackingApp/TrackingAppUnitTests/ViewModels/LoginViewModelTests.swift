@@ -25,14 +25,14 @@ class LoginViewModelTests: XCTestCase {
             self.waitForExpectations(timeout: 0)
         }
         //Given
-        let userId = ""
+        let username = ""
         let password = ""
         let expectation = self.expectation(description: "Completion wasn't called")
         //When
-        self.sut.checkCredentialsPreconditions(for: userId, and: password) { success, uId, pwd, error in
+        self.sut.checkCredentialsPreconditions(for: username, and: password) { success, uname, pwd, error in
             //Then
             XCTAssertFalse(success)
-            XCTAssertEqual(uId,"")
+            XCTAssertEqual(uname,"")
             XCTAssertEqual(pwd,"")
             XCTAssertEqual(error, Strings.userIdAndPassowrd.rawValue)
             expectation.fulfill()
@@ -131,18 +131,18 @@ class LoginViewModelTests: XCTestCase {
             self.waitForExpectations(timeout: 10)
         }
         //Given
-        let userId = "gautamkkr"
-        let password = "abc1324678!"
+        let username = "singh007"
+        let password = "admin123!"
         let expectation = self.expectation(description: "Completion wasn't called")
         //When
         
-        self.sut.loginUser(["userId":userId,"password":password,"token":""]) {[weak self](statusCode, error )in
+        self.sut.loginUser(["username":username,"password":password,"token":""]) {[weak self](statusCode, error )in
             guard let self = self else{return}
             //Then
             XCTAssertEqual(statusCode,ResponseCodes.success)
             XCTAssertEqual(error!.message,"no error")
-            if let login = Login.findOrFetch(in: self.sut.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(Login.userId),userId)){
-                XCTAssertEqual(login.userId,userId)
+            if let login = LoginUser.findOrFetch(in: self.sut.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(LoginUser.username),username)){
+                XCTAssertEqual(login.username,username)
                 XCTAssertEqual(login.password,password)
                 XCTAssertEqual(login.token,Utility.getValue(forKey: Strings.TokenKey.rawValue))
                 expectation.fulfill()

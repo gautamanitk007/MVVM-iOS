@@ -52,6 +52,9 @@
 		87ADF0482660F11C00CA63D1 /* LoginVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF0472660F11C00CA63D1 /* LoginVCTests.swift */; };
 		87D368C12666131F00F71E1F /* LoginUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D368BF2666131F00F71E1F /* LoginUser+CoreDataClass.swift */; };
 		87D368C22666131F00F71E1F /* LoginUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D368C02666131F00F71E1F /* LoginUser+CoreDataProperties.swift */; };
+		87D368C42666297F00F71E1F /* LocationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D368C32666297F00F71E1F /* LocationPin.swift */; };
+		87D368C626662D2400F71E1F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D368C526662D2400F71E1F /* String+Extension.swift */; };
+		87D368C826662E1300F71E1F /* LocationPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D368C726662E1300F71E1F /* LocationPinViewModel.swift */; };
 		87D3B25A26628D64008A2877 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3B25926628D64008A2877 /* UIButton+Extension.swift */; };
 		87D3B25C26628ED3008A2877 /* DropdownVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3B25B26628ED3008A2877 /* DropdownVC.swift */; };
 		87D3B2602662A1B1008A2877 /* GeneralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3B25F2662A1B1008A2877 /* GeneralCell.swift */; };
@@ -129,6 +132,9 @@
 		87ADF0472660F11C00CA63D1 /* LoginVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCTests.swift; sourceTree = "<group>"; };
 		87D368BF2666131F00F71E1F /* LoginUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		87D368C02666131F00F71E1F /* LoginUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		87D368C32666297F00F71E1F /* LocationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPin.swift; sourceTree = "<group>"; };
+		87D368C526662D2400F71E1F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		87D368C726662E1300F71E1F /* LocationPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPinViewModel.swift; sourceTree = "<group>"; };
 		87D3B25926628D64008A2877 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		87D3B25B26628ED3008A2877 /* DropdownVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownVC.swift; sourceTree = "<group>"; };
 		87D3B25F2662A1B1008A2877 /* GeneralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCell.swift; sourceTree = "<group>"; };
@@ -266,6 +272,7 @@
 				87ADF01B2660D44300CA63D1 /* UserViewModel.swift */,
 				87D3B2642662A377008A2877 /* CountryViewModel.swift */,
 				87D3B2662662A5A3008A2877 /* CountryListViewModel.swift */,
+				87D368C726662E1300F71E1F /* LocationPinViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -275,6 +282,7 @@
 			children = (
 				87ADEFFD2660D1F200CA63D1 /* Services */,
 				87ADEFFC2660D1EB00CA63D1 /* Models */,
+				87D368C32666297F00F71E1F /* LocationPin.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -285,6 +293,7 @@
 				87ADF0102660D38100CA63D1 /* AlertController.swift */,
 				87D3B25926628D64008A2877 /* UIButton+Extension.swift */,
 				8780FEB92663236C007BF173 /* NSManagedObjectContext+Extension.swift */,
+				87D368C526662D2400F71E1F /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -532,11 +541,13 @@
 				87D3B2632662A304008A2877 /* TableViewDatasource.swift in Sources */,
 				87ADF0202660D48800CA63D1 /* UserListVC.swift in Sources */,
 				87D3B25A26628D64008A2877 /* UIButton+Extension.swift in Sources */,
+				87D368C826662E1300F71E1F /* LocationPinViewModel.swift in Sources */,
 				87ADEFFF2660D21200CA63D1 /* API.swift in Sources */,
 				8780FEBA2663236C007BF173 /* NSManagedObjectContext+Extension.swift in Sources */,
 				87D368C12666131F00F71E1F /* LoginUser+CoreDataClass.swift in Sources */,
 				8780FEB4266322A4007BF173 /* Managed.swift in Sources */,
 				87D3B2602662A1B1008A2877 /* GeneralCell.swift in Sources */,
+				87D368C626662D2400F71E1F /* String+Extension.swift in Sources */,
 				8780FEBE26632433007BF173 /* TrackingApp.xcdatamodeld in Sources */,
 				87D3B2672662A5A3008A2877 /* CountryListViewModel.swift in Sources */,
 				8731DDC9266504E400999236 /* GeoCode+CoreDataClass.swift in Sources */,
@@ -561,6 +572,7 @@
 				8731DDCB266504E400999236 /* Address+CoreDataClass.swift in Sources */,
 				87D3B25C26628ED3008A2877 /* DropdownVC.swift in Sources */,
 				87ADF0032660D23200CA63D1 /* LoginResponse.swift in Sources */,
+				87D368C42666297F00F71E1F /* LocationPin.swift in Sources */,
 				87ADF0182660D3F600CA63D1 /* RoundedView.swift in Sources */,
 				8780FEB826632334007BF173 /* Coordinator.swift in Sources */,
 				87D368C22666131F00F71E1F /* LoginUser+CoreDataProperties.swift in Sources */,

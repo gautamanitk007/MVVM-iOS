@@ -334,7 +334,7 @@
                                                 <connections>
                                                     <outlet property="lblCity" destination="tNv-86-l2W" id="OST-KS-yvP"/>
                                                     <outlet property="lblName" destination="f9S-Cc-111" id="aUE-Tw-tYF"/>
-                                                    <outlet property="lblStreet" destination="be5-ms-h4P" id="oMa-Gf-hUp"/>
+                                                    <outlet property="lblZipcode" destination="be5-ms-h4P" id="oMa-Gf-hUp"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>

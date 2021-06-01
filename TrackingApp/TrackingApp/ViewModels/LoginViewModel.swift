@@ -39,7 +39,7 @@ extension LoginViewModel{
     var isRemember:Bool{
         return Utility.getBoolValueFromDefaults(forKey:Strings.RememberKey.rawValue)
     }
-    var userId:String{
+    var username:String{
         return "singh007"//Utility.getValue(forKey:Strings.UserId.rawValue)
     }
     var password:String{
@@ -54,6 +54,9 @@ extension LoginViewModel{
             return true
         }
         return false
+    }
+    var loginedUser:LoginUser?{
+        return LoginUser.findOrFetch(in: self.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(LoginUser.username),self.username))
     }
 }
 
@@ -94,11 +97,7 @@ extension LoginViewModel{
     
 }
 
-
-
-
 extension LoginViewModel{
-
     func insert(_ object:LoginResponse,_ password:String){
         Log.debug(object.token)
         Utility.saveInDefaults(value: object.token, forKey: Strings.TokenKey.rawValue)
@@ -113,13 +112,11 @@ extension LoginViewModel{
             let _ =  self.coOrdinator.syncContext.saveOrRollback()
         }
     }
-    func fetchLogin(on completion:@escaping(LoginUser?)->()){
+    func fetchLogin(for username:String,on completion:@escaping(LoginUser?)->()){
         self.coOrdinator.perform {[weak self] in
             guard let self = self else{ return}
-            let loginObj = LoginUser.findOrFetch(in: self.coOrdinator.syncContext, matching: LoginUser.defaultPredicate)
+            let loginObj = LoginUser.findOrFetch(in: self.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(LoginUser.username),username))
             completion(loginObj)
         }
     }
-
-    
 }

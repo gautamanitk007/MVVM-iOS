@@ -14,8 +14,12 @@ class UserListVC: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var userViewModel:UserViewModel!
+    var locationPinViewModel:LocationPinViewModel!
     var locationService: LocationService?
+    var loginedUser:LoginUser!
+    
     lazy var userFetchResultController:NSFetchedResultsController<User>? = {
         let request = User.sortedFetchRequest
         request.returnsObjectsAsFaults = false
@@ -34,15 +38,23 @@ class UserListVC: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.hidesBackButton = true
+        self.navigationItem.title = "Welcome \(self.loginedUser.username!.capitalized)"
         let logoutButton = UIBarButtonItem(title: "Logout", style:.plain, target: self, action: #selector(UserListVC.logoutTapped))
         self.navigationItem.leftBarButtonItem = logoutButton
         
         self.collectionView.dataSource = self.dataSource
         self.collectionView.delegate = self
         
-        self.setupLocationService()
+       // self.setupLocationService()
         self.mapView.showsUserLocation = true
-       
+        self.mapView.delegate = self
+        
+        self.locationPinViewModel.generateLocationPins()
+        self.mapView.addAnnotations(self.locationPinViewModel.locPins!)
+        
+        let initialLocation = CLLocation(latitude: self.loginedUser.lattitude!.doubleValue(), longitude:self.loginedUser.longitude!.doubleValue())
+        self.mapView.centerToLocation(initialLocation)
+        
     }
     @objc func logoutTapped(){
         self.userViewModel.logoutUser(["token":self.userViewModel.token]) { [weak self ](statusCode, error) in
@@ -63,6 +75,7 @@ class UserListVC: UIViewController {
     func setupLocationService(){
         locationService?.requestLocationAuthorization()
     }
+    
 }
 
 //MARK:- CollectionViewDataSourceDelegate
@@ -98,3 +111,30 @@ extension UserListVC:UICollectionViewDelegate{
     }
 }
 
+private extension MKMapView {
+  func centerToLocation(_ location: CLLocation,regionRadius: CLLocationDistance = 4000) {
+    let coordinateRegion = MKCoordinateRegion(center: location.coordinate,latitudinalMeters: regionRadius,longitudinalMeters: regionRadius)
+    setRegion(coordinateRegion, animated: true)
+  }
+}
+//MARK:- UICollectionViewDelegate
+extension UserListVC: MKMapViewDelegate {
+    
+  func mapView(_ mapView: MKMapView,viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    
+        guard let annotation = annotation as? LocationPin else {return nil}
+
+        var annotationView: MKMarkerAnnotationView
+
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: Strings.PinViewKey.rawValue) as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            annotationView = dequeuedView
+        } else {
+            annotationView = MKMarkerAnnotationView(annotation: annotation,reuseIdentifier: Strings.PinViewKey.rawValue)
+            annotationView.canShowCallout = true
+            annotationView.calloutOffset = CGPoint(x: -5, y: 5)
+            annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        return annotationView
+    }
+}

@@ -56,6 +56,7 @@ enum Strings:String {
     case TokenKey = "tokenKey"
     case UserName = "username"
     case Password = "password"
+    case PinViewKey = "pinViewKey"
   
 }
 

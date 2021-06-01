@@ -25,7 +25,7 @@ class LoginVC: UIViewController {
     var isRemember:Bool?{
         didSet{
             self.btnRemember.isSelected = isRemember!
-            self.txtUserName.text = self.loginViewModel.userId
+            self.txtUserName.text = self.loginViewModel.username
             self.txtPassword.text = self.loginViewModel.password
         }
     }
@@ -82,7 +82,10 @@ class LoginVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.ShowUsersSegue.rawValue {
             guard let userListVC = segue.destination as? UserListVC else {fatalError("UserListVC not found")}
-            userListVC.userViewModel = (sender as! UserViewModel)
+            let (uViewModel,locPinViewModel) = sender as! (UserViewModel,LocationPinViewModel)
+            userListVC.userViewModel = uViewModel
+            userListVC.locationPinViewModel = locPinViewModel
+            userListVC.loginedUser = self.loginViewModel.loginedUser
         }else if segue.identifier == SegueIdentifier.DropdownSegue.rawValue{
             guard let dropDown = segue.destination as? DropdownVC else {fatalError("DropdownVC not found")}
             dropDown.delegate = self
@@ -107,7 +110,7 @@ class LoginVC: UIViewController {
     }
     
     @objc func autoLogin(){
-        self.loginViewModel.fetchLogin { _ in
+        self.loginViewModel.fetchLogin(for: self.loginViewModel.username) { _ in
             DispatchQueue.main.async {[weak self] in
                 guard let self = self else {return}
                 if self.loginViewModel.isTokenExist{
@@ -147,7 +150,8 @@ extension LoginVC{
                 guard let self = self else{return}
                 self.stopActivity()
                 if status == ResponseCodes.success{
-                    self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: userViewModel)
+                    let locationPinViewModel = LocationPinViewModel(users: User.fetch(in: self.loginViewModel.coOrdinator.viewContext))
+                    self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: (userViewModel,locationPinViewModel))
                 }else{
                     self.showAlert(title: Strings.infoTitle.rawValue, message: error!.message)
                 }
