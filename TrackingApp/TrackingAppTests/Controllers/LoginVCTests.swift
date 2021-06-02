@@ -91,7 +91,7 @@ class LoginVCTests: XCTestCase {
 
     func test_login_with_valid_userId_length_and_invalid_password_length(){
         //Given
-        sut.txtUserName.text = "gautamkkr1"
+        sut.txtUserName.text = "singh007"
         sut.txtPassword.text = "abc"
 
         //When

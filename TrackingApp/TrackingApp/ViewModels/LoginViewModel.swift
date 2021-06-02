@@ -58,10 +58,13 @@ extension LoginViewModel{
     var loginedUser:LoginUser?{
         return LoginUser.findOrFetch(in: self.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(LoginUser.username),self.username))
     }
+    var loginParams:[String:String]{
+        return ["username":username,"password":password]
+    }
 }
 
 extension LoginViewModel{
-    func checkCredentialsPreconditions(for userName:String,and password:String,on completion:@escaping(Bool,String?,String?,String?)->()){
+    func validateCredentials(for userName:String,and password:String,on completion:@escaping(Bool,[String:String]?,String?)->()){
         let uName = userName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let pwd = password.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let vName = uName.count >= AllowedLength.userIdLength.rawValue
@@ -71,15 +74,15 @@ extension LoginViewModel{
         
         if vName == true {
             if vPassword == true {
-                completion(true,uName,pwd,nil)
+                completion(true,self.loginParams,nil)
             }else{
-                completion(false,uName,pwd,Strings.password.rawValue)
+                completion(false,nil,Strings.password.rawValue)
             }
         }else{
             if vPassword == true {
-                completion(true,uName,pwd,Strings.userName.rawValue)
+                completion(true,nil,Strings.userName.rawValue)
             }else{
-                completion(false,uName,pwd,Strings.userNameAndPassword.rawValue)
+                completion(false,nil,Strings.userNameAndPassword.rawValue)
             }
         }
     }

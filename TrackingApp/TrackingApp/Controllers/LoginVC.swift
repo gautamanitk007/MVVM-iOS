@@ -58,11 +58,11 @@ class LoginVC: UIViewController {
 
     @IBAction func didLoginTapped(_ sender: Any) {
         
-        self.loginViewModel.checkCredentialsPreconditions(for: self.txtUserName.text!, and: self.txtPassword.text!) { [weak self] (allOk,uName,pwd, error )in
+        self.loginViewModel.validateCredentials(for: self.txtUserName.text!, and: self.txtPassword.text!) { [weak self] (allOk,params, error )in
             guard let self = self else {return}
             if allOk{
                 self.startActivity()
-                self.loginViewModel.loginUser(["username":uName!,"password":pwd!]) { (_, error )in
+                self.loginViewModel.loginUser(params!) { (_, error )in
                     DispatchQueue.main.async {[weak self] in
                         guard let self = self else {return}
                         self.stopActivity()
@@ -94,19 +94,16 @@ class LoginVC: UIViewController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        let keyboardSize = ((notification.userInfo! as NSDictionary).object(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! CGRect).size
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            var frame:CGRect = self.view.frame
-            frame.origin.y = -keyboardSize.height/4
-            self.view.frame =  frame
-        })
+        let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardInfo = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
+        let keyboardSize = keyboardInfo.cgRectValue.size
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        self.baseScrollView.contentInset = contentInsets
+        self.baseScrollView.scrollIndicatorInsets = contentInsets
     }
     @objc func keyboardWillHide(_ notification: Notification) {
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            var frame:CGRect = self.view.frame
-            frame.origin.y = 0
-            self.view.frame =  frame
-        })
+        self.baseScrollView.contentInset = .zero
+        self.baseScrollView.scrollIndicatorInsets = .zero
     }
     
     @objc func autoLogin(){

@@ -29,11 +29,10 @@ class LoginViewModelTests: XCTestCase {
         let password = ""
         let expectation = self.expectation(description: "Completion wasn't called")
         //When
-        self.sut.checkCredentialsPreconditions(for: username, and: password) { success, uname, pwd, error in
+        self.sut.validateCredentials(for: username, and: password) { success, params, error in
             //Then
             XCTAssertFalse(success)
-            XCTAssertEqual(uname,"")
-            XCTAssertEqual(pwd,"")
+            XCTAssertNil(params)
             XCTAssertEqual(error, Strings.userNameAndPassword.rawValue)
             expectation.fulfill()
         }
@@ -47,11 +46,10 @@ class LoginViewModelTests: XCTestCase {
         let password = "pqr"
         let expectation = self.expectation(description: "Completion wasn't called")
         //When
-        self.sut.checkCredentialsPreconditions(for: username, and: password) { success, uname, pwd, error in
+        self.sut.validateCredentials(for: username, and: password) { success, params, error in
             //Then
             XCTAssertFalse(success)
-            XCTAssertEqual(uname,username)
-            XCTAssertEqual(pwd,password)
+            XCTAssertNil(params)
             XCTAssertEqual(error, Strings.userNameAndPassword.rawValue)
             expectation.fulfill()
         }
@@ -65,11 +63,10 @@ class LoginViewModelTests: XCTestCase {
         let password = "pqr"
         let expectation = self.expectation(description: "Completion wasn't called")
         //When
-        self.sut.checkCredentialsPreconditions(for: username, and: password) { success, uId, pwd, error in
+        self.sut.validateCredentials(for: username, and: password) { success, params, error in
             //Then
             XCTAssertFalse(success)
-            XCTAssertEqual(uId,username)
-            XCTAssertEqual(pwd,password)
+            XCTAssertNil(params)
             XCTAssertEqual(error, Strings.password.rawValue)
             expectation.fulfill()
         }
@@ -83,11 +80,10 @@ class LoginViewModelTests: XCTestCase {
         let password = "pqrwertwee"
         let expectation = self.expectation(description: "Completion wasn't called")
         //When
-        self.sut.checkCredentialsPreconditions(for: username, and: password) { success, uId, pwd, error in
+        self.sut.validateCredentials(for: username, and: password) { success,params, error in
             //Then
             XCTAssertTrue(success)
-            XCTAssertEqual(uId,username)
-            XCTAssertEqual(pwd,password)
+            XCTAssertNotNil(params)
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -144,7 +140,6 @@ class LoginViewModelTests: XCTestCase {
             if let login = LoginUser.findOrFetch(in: self.sut.coOrdinator.syncContext, matching: NSPredicate(format: "%K == %@", #keyPath(LoginUser.username),username)){
                 XCTAssertEqual(login.username,username)
                 XCTAssertEqual(login.password,password)
-                XCTAssertEqual(login.token,self.sut.token)
                 expectation.fulfill()
             }
         }
