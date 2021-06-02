@@ -86,9 +86,6 @@ class LoginVCTests: XCTestCase {
         XCTAssertEqual(presentedController?.alertMessage,Strings.userNameAndPassword.rawValue)
 
     }
-    
-  
-
     func test_login_with_valid_userId_length_and_invalid_password_length(){
         //Given
         sut.txtUserName.text = "singh007"
@@ -110,11 +107,10 @@ class LoginVCTests: XCTestCase {
         XCTAssertEqual(presentedController?.alertTitle,Strings.infoTitle.rawValue)
         XCTAssertEqual(presentedController?.alertMessage,Strings.password.rawValue)
     }
-
     func test_login_with_valid_userId_and_password_length(){
         //Given
         self.givenGoodLogin()
-
+        Utility.resetUserDefault()
         //When
         let exp = expectation(for: NSPredicate(block:{ [weak self]( _, _) -> Bool in
             guard let self = self else{return false}
@@ -138,7 +134,7 @@ class LoginVCTests: XCTestCase {
 
 extension LoginVCTests{
     func givenGoodLogin() {
-        sut.txtUserName.text = "singh007"
+        sut.txtUserName.text = "mehto007"
         sut.txtPassword.text = "admin123!"
     }
     func whenSignIn() {

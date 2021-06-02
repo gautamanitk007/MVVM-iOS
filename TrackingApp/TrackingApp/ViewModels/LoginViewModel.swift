@@ -16,7 +16,6 @@ class LoginViewModel{
     }
     
     func loginUser(_ params:[String:String],on completion:@escaping(Int,ApiError?)->()){
-
         let loginResource = Resource<LoginResponse>(method:"POST",token:"",params:params, urlEndPoint: "users/login") { data in
             let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data)
             return loginResponse
@@ -40,10 +39,10 @@ extension LoginViewModel{
         return Utility.getBoolValueFromDefaults(forKey:Keys.Remember.rawValue)
     }
     var username:String{
-        return "kumar07"//Utility.getValue(forKey:Strings.UserId.rawValue)
+        return Utility.getValue(forKey:Keys.UserName.rawValue)
     }
     var password:String{
-        return "admin123!"//Utility.getValue(forKey:Strings.Password.rawValue)
+        return Utility.getValue(forKey:Keys.Password.rawValue)
     }
     var token:String{
         return Utility.getValue(forKey:Keys.Token.rawValue)
@@ -74,7 +73,11 @@ extension LoginViewModel{
         
         if vName == true {
             if vPassword == true {
-                completion(true,self.loginParams,nil)
+                if isRemember {
+                    completion(true,self.loginParams,nil)
+                }else{
+                    completion(true,["username":uName,"password":pwd],nil)
+                }
             }else{
                 completion(false,nil,Strings.password.rawValue)
             }

@@ -63,7 +63,7 @@ extension API {
         }else{
             request = self.loginRequest(resource.urlEndPoint, resource.method, resource.params)
         }
-        
+        Log.debug(request)
         URLSession.shared.dataTask(with: request) { data, response, error in
             var sError : ApiError?
             if let resp = response as? HTTPURLResponse{
@@ -71,8 +71,8 @@ extension API {
             }
             DispatchQueue.main.async {
                 if let data = data {
-                   // let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: [])
-                   // print(jsonResponse)
+                    //let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: [])
+                    //Log.debug(jsonResponse as Any)
                     completion(resource.parse(data),sError)
                 }else{
                     if let err = sError {

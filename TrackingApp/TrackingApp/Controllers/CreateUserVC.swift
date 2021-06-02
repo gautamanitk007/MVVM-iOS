@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+protocol CreateUserDelegate:AnyObject {
+    func didUserAdded()
+}
 class CreateUserVC: UIViewController {
 
     @IBOutlet weak var txtPassword: BindingTextField!{
@@ -86,11 +88,13 @@ class CreateUserVC: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var baseScrollView: UIScrollView!
-    
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     var createUserViewModel:CreateUserViewModel!
+    weak var delegate:CreateUserDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
+        self.stopActivity()
         self.setup()
         NotificationCenter.default.addObserver(self, selector: #selector(CreateUserVC.keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(CreateUserVC.keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
@@ -108,9 +112,12 @@ class CreateUserVC: UIViewController {
         self.createUserViewModel.checkUserCredentials{[weak self]( _, error) in
             guard let self = self else{return}
             if error == nil{
+                self.startActivity()
                 self.createUserViewModel.saveUser {[weak self](statusCode, error) in
                     guard let self = self else{return}
+                    self.stopActivity()
                     if statusCode == ResponseCodes.success{
+                        self.delegate?.didUserAdded()
                         self.dismiss(animated: true, completion: nil)
                     }else{
                         self.alert(title: Strings.infoTitle.rawValue, message: error!.message!)
@@ -168,4 +175,16 @@ extension CreateUserVC{
     }
 }
 
-
+//MARK:- utility
+extension CreateUserVC{
+   fileprivate func startActivity(){
+        if self.activityView.isAnimating == false {
+            self.activityView.startAnimating()
+        }
+    }
+    fileprivate func stopActivity(){
+        if self.activityView.isAnimating == true {
+            self.activityView.stopAnimating()
+        }
+    }
+}

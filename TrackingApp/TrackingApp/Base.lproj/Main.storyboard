@@ -3,6 +3,7 @@
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -38,7 +39,7 @@
                                                         </constraints>
                                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </activityIndicatorView>
-                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#user id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZM9-ew-hhA">
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZM9-ew-hhA">
                                                         <rect key="frame" x="8" y="61.000000000000028" width="334" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="M6d-l1-4KY"/>
@@ -279,7 +280,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="W8q-w2-FNY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aFs-32-2M3" customClass="BindingTextField" customModule="TrackingApp" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="501" width="398" height="40"/>
@@ -319,7 +320,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="v6p-Wb-LJX"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="# email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJq-mE-lGr" customClass="BindingTextField" customModule="TrackingApp" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="177" width="398" height="40"/>
@@ -359,7 +360,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="RTA-b5-aHt"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="# longitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gj1-tU-UUS" customClass="BindingTextField" customModule="TrackingApp" customModuleProvider="target">
                                                 <rect key="frame" x="143.33333333333334" y="417" width="127.33333333333334" height="40"/>
@@ -367,7 +368,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="oIl-RO-PHN"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -427,13 +428,19 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="E95-6a-h0x">
+                                        <rect key="frame" x="188.66666666666666" y="311.66666666666669" width="37" height="37"/>
+                                        <color key="color" name="AccentColor"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="AsB-33-l8u" firstAttribute="top" secondItem="Aen-5T-Cje" secondAttribute="top" id="1o8-8j-2bx"/>
                                     <constraint firstItem="aFs-32-2M3" firstAttribute="top" secondItem="J76-t5-FwF" secondAttribute="bottom" constant="8" id="5uN-be-gt5"/>
                                     <constraint firstItem="J76-t5-FwF" firstAttribute="top" secondItem="Gj1-tU-UUS" secondAttribute="bottom" constant="15" id="9GQ-mh-GSJ"/>
                                     <constraint firstAttribute="bottom" secondItem="AsB-33-l8u" secondAttribute="bottom" id="FPT-oP-3dd"/>
+                                    <constraint firstItem="E95-6a-h0x" firstAttribute="centerX" secondItem="Aen-5T-Cje" secondAttribute="centerX" id="GSm-Cj-jzO"/>
                                     <constraint firstItem="AsB-33-l8u" firstAttribute="centerX" secondItem="Aen-5T-Cje" secondAttribute="centerX" id="HgP-OU-qFe"/>
+                                    <constraint firstItem="E95-6a-h0x" firstAttribute="centerY" secondItem="Aen-5T-Cje" secondAttribute="centerY" id="Tvt-U8-j2X"/>
                                     <constraint firstItem="AsB-33-l8u" firstAttribute="leading" secondItem="Aen-5T-Cje" secondAttribute="leading" id="aoG-Uh-nEC"/>
                                     <constraint firstItem="J76-t5-FwF" firstAttribute="leading" secondItem="e1d-Tb-VL5" secondAttribute="leading" constant="8" id="efB-Cj-WZe"/>
                                     <constraint firstAttribute="trailing" secondItem="AsB-33-l8u" secondAttribute="trailing" id="fsf-cW-fys"/>
@@ -466,6 +473,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityView" destination="E95-6a-h0x" id="il4-em-OJa"/>
                         <outlet property="baseScrollView" destination="Aen-5T-Cje" id="KQX-hi-oqB"/>
                         <outlet property="containerView" destination="AsB-33-l8u" id="oaw-0u-9AK"/>
                         <outlet property="txtCity" destination="nWm-CZ-WVb" id="dWe-bh-Epi"/>
@@ -567,6 +575,11 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="YkY-hn-Uvd">
+                                        <rect key="frame" x="4" y="4" width="406" height="327"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="color" systemColor="systemBlueColor"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -614,6 +627,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityView" destination="YkY-hn-Uvd" id="bAH-RS-L93"/>
                         <outlet property="bottomView" destination="DOW-gp-3ew" id="ICD-Iz-q9n"/>
                         <outlet property="collectionView" destination="u34-Kd-LFZ" id="c17-YI-24d"/>
                         <outlet property="mapView" destination="xnG-em-Ppa" id="HAf-Ao-i5B"/>
@@ -666,8 +680,14 @@
         <image name="checkmark" width="30" height="30"/>
         <image name="circle_unchecked" width="30" height="30"/>
         <image name="home" width="640" height="400"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

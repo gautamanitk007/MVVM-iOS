@@ -38,8 +38,9 @@ class CreateUserViewModel{
             if let userResponse = result{
                 DispatchQueue.main.async {
                     self.insert(userResponse)
+                    completion(ResponseCodes.success,error)
                 }
-                completion(ResponseCodes.success,error)
+               
             }else{
                 completion(error!.statusCode,error)
             }

@@ -59,7 +59,6 @@ class LoginVC: UIViewController {
     }
 
     @IBAction func didLoginTapped(_ sender: Any) {
-        
         self.loginViewModel.validateCredentials(for: self.txtUserName.text!, and: self.txtPassword.text!) { [weak self] (allOk,params, error )in
             guard let self = self else {return}
             if allOk{
@@ -128,21 +127,21 @@ class LoginVC: UIViewController {
 
 //MARK:- utility
 extension LoginVC{
-    func startActivity(){
+    fileprivate func startActivity(){
         if self.activityView.isAnimating == false {
             self.activityView.startAnimating()
         }
     }
-    func stopActivity(){
+    fileprivate func stopActivity(){
         if self.activityView.isAnimating == true {
             self.activityView.stopAnimating()
         }
     }
-    func startLogin(){
+    fileprivate func startLogin(){
         self.stopActivity()
         self.showUserPage()
     }
-    func showUserPage(){
+    fileprivate func showUserPage(){
         self.startActivity()
         let userViewModel = UserViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token ,coOrdinator: self.loginViewModel.coOrdinator)
         userViewModel.getAllUsers() {(status, error) in

@@ -95,6 +95,7 @@ class LoginViewModelTests: XCTestCase {
         //Given
         let username = "gautamkkr12"
         let password = "abc1324678!"
+        Utility.resetUserDefault()
         let expectation = self.expectation(description: "Completion wasn't called")
         //When
         
@@ -110,12 +111,13 @@ class LoginViewModelTests: XCTestCase {
             self.waitForExpectations(timeout: 10)
         }
         //Given
-        let username = "singh007"
+        let username = "mehto007"
         let password = "admin123!"
         let expectation = self.expectation(description: "Completion wasn't called")
+        Utility.resetUserDefault()
         //When
         
-        self.sut.loginUser(["username":username,"password":password,"token":""]) { statusCode, error in
+        self.sut.loginUser(["username":username,"password":password]) { statusCode, error in
             //Then
             XCTAssertEqual(statusCode,ResponseCodes.success)
             XCTAssertEqual(error!.message,"no error")
@@ -127,12 +129,13 @@ class LoginViewModelTests: XCTestCase {
             self.waitForExpectations(timeout: 10)
         }
         //Given
-        let username = "singh007"
+        let username = "mehto007"
         let password = "admin123!"
+        Utility.resetUserDefault()
         let expectation = self.expectation(description: "Completion wasn't called")
         //When
         
-        self.sut.loginUser(["username":username,"password":password,"token":""]) {[weak self](statusCode, error )in
+        self.sut.loginUser(["username":username,"password":password]) {[weak self](statusCode, error )in
             guard let self = self else{return}
             //Then
             XCTAssertEqual(statusCode,ResponseCodes.success)

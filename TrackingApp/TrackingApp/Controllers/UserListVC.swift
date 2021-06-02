@@ -14,7 +14,7 @@ class UserListVC: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     var userViewModel:UserViewModel!
     var locationPinViewModel:LocationPinViewModel!
     lazy var userFetchResultController:NSFetchedResultsController<User>? = {
@@ -38,19 +38,20 @@ class UserListVC: UIViewController {
         self.navigationItem.title = "Welcome"
         let logoutButton = UIBarButtonItem(image: UIImage(named: "logout.png")!, style: .plain, target: self, action: #selector(UserListVC.logoutTapped))
         self.navigationItem.leftBarButtonItem = logoutButton
-    
+        self.stopActivity()
         self.collectionView.dataSource = self.dataSource
         self.collectionView.delegate = self
     
         self.mapView.showsUserLocation = true
         self.mapView.delegate = self
+        self.showPins()
         
-        self.locationPinViewModel.generateLocationPins()
-        self.mapView.addAnnotations(self.locationPinViewModel.locPins!)
     }
     @objc func logoutTapped(){
+        self.startActivity()
         self.userViewModel.logoutUser(["token":self.userViewModel.token]) { [weak self ](statusCode, error) in
             guard let self = self else{return}
+            self.stopActivity()
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -64,6 +65,7 @@ class UserListVC: UIViewController {
             }
             guard let createUserVC = navController.viewControllers.first as? CreateUserVC else {fatalError("CreateUserVC not found")}
             createUserVC.createUserViewModel = CreateUserViewModel(api: self.userViewModel.api, token:self.userViewModel.token,cordinator: self.userViewModel.coOrdinator, userModel: UserModel())
+            createUserVC.delegate = self
         }
     }
 }
@@ -126,5 +128,31 @@ extension UserListVC: MKMapViewDelegate {
             annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
         return annotationView
+    }
+}
+//MARK:- utility
+extension UserListVC{
+    fileprivate func startActivity(){
+        if self.activityView.isAnimating == false {
+            self.activityView.startAnimating()
+        }
+    }
+    fileprivate func stopActivity(){
+        if self.activityView.isAnimating == true {
+            self.activityView.stopAnimating()
+        }
+    }
+    fileprivate func showPins(){
+        self.locationPinViewModel.generateLocationPins()
+        self.mapView.addAnnotations(self.locationPinViewModel.locPins!)
+    }
+}
+
+//MARK:-CreateUserDelegate
+extension UserListVC:CreateUserDelegate{
+    func didUserAdded() {
+        self.mapView.removeAnnotations(self.locationPinViewModel.locPins!)
+        self.locationPinViewModel.reGenerateLocation(for: User.fetch(in: self.userViewModel.coOrdinator.viewContext))
+        self.showPins()
     }
 }
