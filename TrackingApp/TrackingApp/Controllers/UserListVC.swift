@@ -17,9 +17,6 @@ class UserListVC: UIViewController {
     
     var userViewModel:UserViewModel!
     var locationPinViewModel:LocationPinViewModel!
-    var locationService: LocationService?
-    var loginedUser:LoginUser!
-    
     lazy var userFetchResultController:NSFetchedResultsController<User>? = {
         let request = User.sortedFetchRequest
         request.returnsObjectsAsFaults = false
@@ -38,23 +35,18 @@ class UserListVC: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.hidesBackButton = true
-        self.navigationItem.title = "Welcome \(self.loginedUser.username!.capitalized)"
-        let logoutButton = UIBarButtonItem(title: "Logout", style:.plain, target: self, action: #selector(UserListVC.logoutTapped))
+        self.navigationItem.title = "Welcome"
+        let logoutButton = UIBarButtonItem(image: UIImage(named: "logout.png")!, style: .plain, target: self, action: #selector(UserListVC.logoutTapped))
         self.navigationItem.leftBarButtonItem = logoutButton
-        
+    
         self.collectionView.dataSource = self.dataSource
         self.collectionView.delegate = self
-        
-       // self.setupLocationService()
+    
         self.mapView.showsUserLocation = true
         self.mapView.delegate = self
         
         self.locationPinViewModel.generateLocationPins()
         self.mapView.addAnnotations(self.locationPinViewModel.locPins!)
-        
-        let initialLocation = CLLocation(latitude: self.loginedUser.lattitude!.doubleValue(), longitude:self.loginedUser.longitude!.doubleValue())
-        self.mapView.centerToLocation(initialLocation)
-        
     }
     @objc func logoutTapped(){
         self.userViewModel.logoutUser(["token":self.userViewModel.token]) { [weak self ](statusCode, error) in
@@ -71,14 +63,9 @@ class UserListVC: UIViewController {
                 fatalError("NavigationController not found")
             }
             guard let createUserVC = navController.viewControllers.first as? CreateUserVC else {fatalError("CreateUserVC not found")}
-            createUserVC.createUserViewModel = CreateUserViewModel()
+            createUserVC.createUserViewModel = CreateUserViewModel(api: self.userViewModel.api, token:self.userViewModel.token,cordinator: self.userViewModel.coOrdinator, userModel: UserModel())
         }
     }
-    
-    func setupLocationService(){
-        locationService?.requestLocationAuthorization()
-    }
-    
 }
 
 //MARK:- CollectionViewDataSourceDelegate

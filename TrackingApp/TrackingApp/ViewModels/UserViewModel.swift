@@ -19,11 +19,11 @@ class UserViewModel{
     
     func getAllUsers(on completion:@escaping(Int,ApiError?)->()){
         
-        let uResponse = Resource<[SUser]>(method:"GET",token:self.token,params:[:], urlEndPoint: "users") { data in
+        let resource = Resource<[SUser]>(method:"GET",token:self.token,params:[:], urlEndPoint: "users") { data in
             let uResponse = try? JSONDecoder().decode([SUser].self, from: data)
             return uResponse
         }
-        self.api.load(resource: uResponse) {[weak self](result, error) in
+        self.api.load(resource: resource) {[weak self](result, error) in
             guard let self = self else{return}
             if let userList = result{
                 DispatchQueue.main.async {

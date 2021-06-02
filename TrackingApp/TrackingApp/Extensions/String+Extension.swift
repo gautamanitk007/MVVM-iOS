@@ -9,10 +9,15 @@ import Foundation
 
 extension String{
     func intValue()->Int{
-        return Int.init(self)!
+        if let value = Int.init(self){
+            return value
+        }
+        return 0
     }
     func doubleValue()->Double{
-        return Double.init(self)!
+        if let value = Double.init(self){
+            return value
+        }
+        return 0.0
     }
-    
 }

@@ -8,8 +8,8 @@
 import Foundation
 
 enum AllowedLength:Int{
-    case userNameLength = 2
-    case userIdLength = 5
+    case nameLength = 2
+    case userNameLength = 5
     case userPasswordLength = 7
 }
 enum SegueIdentifier:String {

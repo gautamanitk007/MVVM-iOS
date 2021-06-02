@@ -31,7 +31,3 @@ class LocationPinViewModel {
     }
    
 }
-
-extension LocationPin{
-    
-}

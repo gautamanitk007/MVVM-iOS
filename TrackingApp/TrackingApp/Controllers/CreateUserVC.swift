@@ -9,27 +9,80 @@ import UIKit
 
 class CreateUserVC: UIViewController {
 
-    @IBOutlet weak var txtPassword: UITextField!
-    @IBOutlet weak var txtUserName: UITextField!
-    @IBOutlet weak var txtUser: UITextField!
+    @IBOutlet weak var txtPassword: BindingTextField!{
+        didSet{
+            txtPassword.bind{self.createUserViewModel.userModel.password = $0}
+        }
+    }
+    @IBOutlet weak var txtUserName: BindingTextField!{
+        didSet{
+            txtUserName.bind{self.createUserViewModel.userModel.username = $0}
+        }
+    }
+    @IBOutlet weak var txtUser: BindingTextField!{
+        didSet{
+            txtUser.bind{self.createUserViewModel.userModel.name = $0}
+        }
+    }
     
-    @IBOutlet weak var txtEmail: UITextField!
-    @IBOutlet weak var txtPhone: UITextField!
-    @IBOutlet weak var txtStreet: UITextField!
+    @IBOutlet weak var txtEmail: BindingTextField!{
+        didSet{
+            txtEmail.bind{self.createUserViewModel.userModel.email = $0}
+        }
+    }
+    @IBOutlet weak var txtPhone: BindingTextField!{
+        didSet{
+            txtPhone.bind{self.createUserViewModel.userModel.phone = $0}
+        }
+    }
+    @IBOutlet weak var txtStreet: BindingTextField!{
+        didSet{
+            txtStreet.bind{self.createUserViewModel.userModel.street = $0}
+        }
+    }
     
+    @IBOutlet weak var txtSuite: BindingTextField!{
+        didSet{
+            txtSuite.bind{self.createUserViewModel.userModel.suite = $0}
+        }
+    }
+    @IBOutlet weak var txtCity: BindingTextField!{
+        didSet{
+            txtCity.bind{self.createUserViewModel.userModel.city = $0}
+        }
+    }
     
-    @IBOutlet weak var txtSuite: UITextField!
-    @IBOutlet weak var txtCity: UITextField!
-    @IBOutlet weak var txtZipcode: UITextField!
+    @IBOutlet weak var txtCompName: BindingTextField!{
+        didSet{
+            txtCompName.bind{self.createUserViewModel.userModel.companyName = $0}
+        }
+    }
+    @IBOutlet weak var txtCompPhrase: BindingTextField!{
+        didSet{
+            txtCompPhrase.bind{self.createUserViewModel.userModel.catchPhrase = $0}
+        }
+    }
+    @IBOutlet weak var txtCompBs: BindingTextField!{
+        didSet{
+            txtCompBs.bind{self.createUserViewModel.userModel.companyBS = $0}
+        }
+    }
     
-    @IBOutlet weak var btnSearch: RoundedButton!
-    @IBOutlet weak var lblLattitude: UILabel!
-    @IBOutlet weak var lblLongitude: UILabel!
-    
-    @IBOutlet weak var txtCompName: UITextField!
-    @IBOutlet weak var txtCompPhrase: UITextField!
-    @IBOutlet weak var txtCompBs: UITextField!
-    
+    @IBOutlet weak var txtLattitude: BindingTextField!{
+        didSet{
+            txtLattitude.bind{self.createUserViewModel.userModel.lattitude = $0}
+        }
+    }
+    @IBOutlet weak var txtLongitude: BindingTextField!{
+        didSet{
+            txtLongitude.bind{self.createUserViewModel.userModel.longitude = $0}
+        }
+    }
+    @IBOutlet weak var txtZipcode: BindingTextField!{
+        didSet{
+            txtZipcode.bind{self.createUserViewModel.userModel.zipcode = $0}
+        }
+    }
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var baseScrollView: UIScrollView!
@@ -39,12 +92,11 @@ class CreateUserVC: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
         self.setup()
-        self.initialise()
         NotificationCenter.default.addObserver(self, selector: #selector(CreateUserVC.keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(CreateUserVC.keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
     }
     deinit {
-        
+        self.createUserViewModel = nil
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
     }
@@ -53,14 +105,21 @@ class CreateUserVC: UIViewController {
     }
     @IBAction func didSaveUserTapped(){
         self.view.endEditing(true)
-        
-//        let sUser =  SUser(userId: self.createUserViewModel.userId,password:self.txtPassword.text!, name: self.txtUser.text!, email: self.txtEmail.text!, username: self.txtUserName.text!,
-//                           phone: self.txtPhone.text!,website: self.createUserViewModel.website,
-//                           company: SCompany(name: self.txtCompName.text!, bs: self.txtCompBs.text!, catchPhrase: self.txtCompPhrase.text!),
-//                           address: SAddress(street: self.txtStreet.text!, suite: self.txtSuite.text!, city: self.txtCity.text!, zipcode: self.txtZipcode.text!, geo: SGeoCode(lat: "34", lng: "341")))
-        
-        
-        self.dismiss(animated: true, completion: nil)
+        self.createUserViewModel.checkUserCredentials{[weak self]( _, error) in
+            guard let self = self else{return}
+            if error == nil{
+                self.createUserViewModel.saveUser {[weak self](statusCode, error) in
+                    guard let self = self else{return}
+                    if statusCode == ResponseCodes.success{
+                        self.dismiss(animated: true, completion: nil)
+                    }else{
+                        self.alert(title: Strings.infoTitle.rawValue, message: error!.message!)
+                    }
+                }
+            }else{
+                self.alert(title: Strings.infoTitle.rawValue, message: error!)
+            }
+        }
     }
     @objc func keyboardWillShow(_ notification: Notification) {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
@@ -74,9 +133,6 @@ class CreateUserVC: UIViewController {
         self.baseScrollView.contentInset = .zero
         self.baseScrollView.scrollIndicatorInsets = .zero
     }
-    @IBAction func didSearchTapped(_ sender: Any) {
-       
-    }
 }
 //MARK:- UITextFieldDelegate
 extension CreateUserVC:UITextFieldDelegate{
@@ -87,12 +143,8 @@ extension CreateUserVC:UITextFieldDelegate{
         return true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.tag == 1 {
-            self.txtPassword.becomeFirstResponder()
-            return true
-        }else{
-            return textField.resignFirstResponder()
-        }
+        textField.resignFirstResponder()
+        return true
     }
 }
 
@@ -114,14 +166,6 @@ extension CreateUserVC{
         self.txtCompPhrase.delegate = self
         self.txtCompBs.delegate = self
     }
-    func initialise(){
-        self.txtPassword.text = self.createUserViewModel.password
-        self.txtEmail.text = self.createUserViewModel.email
-        self.txtPhone.text = self.createUserViewModel.phone
-        
-        self.txtCompName.text = self.createUserViewModel.companyName
-        self.txtCompPhrase.text = self.createUserViewModel.catchPhrase
-        self.txtCompBs.text = self.createUserViewModel.companyBS
-        
-    }
 }
+
+

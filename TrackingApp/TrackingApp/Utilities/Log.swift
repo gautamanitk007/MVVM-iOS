@@ -7,17 +7,37 @@
 
 import Foundation
 
-class Log {
-  static func fatal(_ message: String) {
-    print("[FATAL]- " + message)
-  }
+
+enum LogType : String{
+    case error = "‼️"
+    case debug = "💬"
   
-  static func debug(_ message: String) {
-    guard AppDelegate.configuration.debug else { return }
-    print("[DEBUG]- " + message)
-  }
-  
-  static func error(_ error: Error) {
-    print("[ERROR]- " + error.localizedDescription)
-  }
+}
+class Log{
+    static var dateFormat = "yyyy-MM-dd hh:mm:ss"
+    static var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = dateFormat
+        formatter.locale = Locale.current
+        formatter.timeZone = TimeZone.current
+        return formatter
+    }
+    fileprivate class func sourceFileName(for path:String) -> String{
+        let fileComponents = path.components(separatedBy: "/")
+        return fileComponents.isEmpty ? "" : fileComponents.last!
+    }
+    class func error(_ object : Any , fName : String = #file,line : Int = #line, funcName : String = #function){
+        guard AppDelegate.configuration.debug else { return }
+        print("\(Date().toString()) \(LogType.error.rawValue)[\(sourceFileName(for: fName))]:\(line) \(funcName) -> \(object)")
+    }
+    class func debug(_ object : Any , fName : String = #file,line : Int = #line, funcName : String = #function){
+        guard AppDelegate.configuration.debug else { return }
+        print("\(Date().toString()) \(LogType.debug.rawValue)[\(sourceFileName(for: fName))]:\(line) \(funcName) -> \(object)")
+    }
+}
+
+extension Date{
+    func toString() -> String {
+        return Log.dateFormatter.string(from: self)
+    }
 }

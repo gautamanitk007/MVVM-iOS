@@ -25,9 +25,6 @@ final class LocationService: NSObject {
     var newLocation: ((Result<CLLocation>) -> Void)?
     var didChangeStatus: ((Bool) -> Void)?
 
-    var status: CLAuthorizationStatus {
-        return CLLocationManager.authorizationStatus()
-    }
 
     func requestLocationAuthorization() {
         manager.delegate = self

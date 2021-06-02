@@ -40,7 +40,7 @@ extension LoginViewModel{
         return Utility.getBoolValueFromDefaults(forKey:Keys.Remember.rawValue)
     }
     var username:String{
-        return "singh007"//Utility.getValue(forKey:Strings.UserId.rawValue)
+        return "kumar07"//Utility.getValue(forKey:Strings.UserId.rawValue)
     }
     var password:String{
         return "admin123!"//Utility.getValue(forKey:Strings.Password.rawValue)
@@ -67,7 +67,7 @@ extension LoginViewModel{
     func validateCredentials(for userName:String,and password:String,on completion:@escaping(Bool,[String:String]?,String?)->()){
         let uName = userName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let pwd = password.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        let vName = uName.count >= AllowedLength.userIdLength.rawValue
+        let vName = uName.count >= AllowedLength.userNameLength.rawValue
         let vPassword = pwd.count >= AllowedLength.userPasswordLength.rawValue
         
         self.updateLogin(isRemember: self.isRemember, userName: uName, password: pwd)

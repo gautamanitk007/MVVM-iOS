@@ -22,6 +22,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var baseScrollView: UIScrollView!
     var countryListViewModel:CountryListViewModel!
     var loginViewModel:LoginViewModel!
+    var locationService:LocationService?
     var isRemember:Bool?{
         didSet{
             self.btnRemember.isSelected = isRemember!
@@ -43,6 +44,7 @@ class LoginVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.autoLogin), name:NSNotification.Name(NotificatioString.AutoLogin.rawValue), object: nil)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -85,7 +87,6 @@ class LoginVC: UIViewController {
             let (uViewModel,locPinViewModel) = sender as! (UserViewModel,LocationPinViewModel)
             userListVC.userViewModel = uViewModel
             userListVC.locationPinViewModel = locPinViewModel
-            userListVC.loginedUser = self.loginViewModel.loginedUser
         }else if segue.identifier == SegueIdentifier.DropdownSegue.rawValue{
             guard let dropDown = segue.destination as? DropdownVC else {fatalError("DropdownVC not found")}
             dropDown.delegate = self
@@ -118,6 +119,8 @@ class LoginVC: UIViewController {
                     }
                 }
                 self.isRemember = self.loginViewModel.isRemember
+               
+                self.locationService?.requestLocationAuthorization()
             }
         }
     }

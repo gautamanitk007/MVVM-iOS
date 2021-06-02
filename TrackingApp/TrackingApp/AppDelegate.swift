@@ -33,10 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let loginViewController = self.window?.rootViewController?.children.first as? LoginVC{
                 loginViewController.loginViewModel = LoginViewModel(api: self.api, coOrdinator: self.coordinator)
                 loginViewController.countryListViewModel = CountryListViewModel(countryList: AppDelegate.configuration.countryList)
+                loginViewController.locationService = LocationService()
                 NotificationCenter.default.post(name: NSNotification.Name(NotificatioString.AutoLogin.rawValue), object: nil)
             }
         }
-        //NotificationCenter.default.addObserver(forName:UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { (_) in
+        
         return true
     }
 }
