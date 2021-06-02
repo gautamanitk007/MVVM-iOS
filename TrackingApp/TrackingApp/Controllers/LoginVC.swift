@@ -83,9 +83,8 @@ class LoginVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.ShowUsersSegue.rawValue {
             guard let userListVC = segue.destination as? UserListVC else {fatalError("UserListVC not found")}
-            let (uViewModel,locPinViewModel) = sender as! (UserViewModel,LocationPinViewModel)
-            userListVC.userViewModel = uViewModel
-            userListVC.locationPinViewModel = locPinViewModel
+            userListVC.userViewModel =  (sender as! UserViewModel)
+            userListVC.locationPinViewModel =  LocationPinViewModel(users: User.fetch(in: self.loginViewModel.coOrdinator.viewContext))
         }else if segue.identifier == SegueIdentifier.DropdownSegue.rawValue{
             guard let dropDown = segue.destination as? DropdownVC else {fatalError("DropdownVC not found")}
             dropDown.delegate = self
@@ -107,19 +106,19 @@ class LoginVC: UIViewController {
     }
     
     @objc func autoLogin(){
-        self.loginViewModel.fetchLogin(for: self.loginViewModel.username) { _ in
+        self.loginViewModel.fetchLogin(for: self.loginViewModel.username) { loginUser in
             DispatchQueue.main.async {[weak self] in
                 guard let self = self else {return}
+                
+                self.isRemember = self.loginViewModel.isRemember
+                self.locationService?.requestLocationAuthorization()
+                
                 if self.loginViewModel.isTokenExist{
-                    if let _ = self.navigationController?.topViewController as? UserListVC{
-                        Log.debug("TopVC")
-                    }else{
-                        self.startLogin()
+                    if let _ = self.navigationController?.topViewController as? LoginVC{
+                        let uViewModel = UserViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token ,coOrdinator: self.loginViewModel.coOrdinator)
+                        self.pushUserPage(uViewModel)
                     }
                 }
-                self.isRemember = self.loginViewModel.isRemember
-               
-                self.locationService?.requestLocationAuthorization()
             }
         }
     }
@@ -137,20 +136,18 @@ extension LoginVC{
             self.activityView.stopAnimating()
         }
     }
-    fileprivate func startLogin(){
-        self.stopActivity()
-        self.showUserPage()
+    fileprivate func pushUserPage(_ viewModel:UserViewModel){
+        self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender:viewModel)
     }
     fileprivate func showUserPage(){
         self.startActivity()
-        let userViewModel = UserViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token ,coOrdinator: self.loginViewModel.coOrdinator)
-        userViewModel.getAllUsers() {(status, error) in
+        let uViewModel = UserViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token ,coOrdinator: self.loginViewModel.coOrdinator)
+        uViewModel.getAllUsers() {(status, error) in
             DispatchQueue.main.async {[weak self] in
                 guard let self = self else{return}
                 self.stopActivity()
                 if status == ResponseCodes.success{
-                    let locationPinViewModel = LocationPinViewModel(users: User.fetch(in: self.loginViewModel.coOrdinator.viewContext))
-                    self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender: (userViewModel,locationPinViewModel))
+                    self.pushUserPage(uViewModel)
                 }else{
                     self.showAlert(title: Strings.infoTitle.rawValue, message: error!.message)
                 }
@@ -160,19 +157,13 @@ extension LoginVC{
 }
 //MARK:- UITextFieldDelegate
 extension LoginVC:UITextFieldDelegate{
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.tag == 1 {
             self.txtPassword.becomeFirstResponder()
-            return true
         }else{
-            return textField.resignFirstResponder()
+            textField.resignFirstResponder()
         }
+        return false
     }
 }
 

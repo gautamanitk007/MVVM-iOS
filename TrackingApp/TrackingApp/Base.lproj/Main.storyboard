@@ -45,7 +45,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="M6d-l1-4KY"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="username"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vSH-SI-4Vv">
                                                         <rect key="frame" x="8" y="109.00000000000003" width="334" height="40"/>
@@ -53,7 +53,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="2Um-Aa-mWF"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8F7-Yu-Nos" customClass="RoundedButton" customModule="TrackingApp" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="205.00000000000003" width="130" height="40"/>
@@ -280,7 +280,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="W8q-w2-FNY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aFs-32-2M3" customClass="BindingTextField" customModule="TrackingApp" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="501" width="398" height="40"/>
@@ -360,7 +360,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="RTA-b5-aHt"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="# longitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gj1-tU-UUS" customClass="BindingTextField" customModule="TrackingApp" customModuleProvider="target">
                                                 <rect key="frame" x="143.33333333333334" y="417" width="127.33333333333334" height="40"/>
@@ -368,7 +368,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="oIl-RO-PHN"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad" returnKeyType="next"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -593,15 +593,15 @@
                                 <rect key="frame" x="0.0" y="387" width="414" height="349"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xnG-em-Ppa">
-                                        <rect key="frame" x="8" y="8" width="398" height="333"/>
+                                        <rect key="frame" x="0.0" y="1" width="414" height="348"/>
                                     </mapView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                                 <constraints>
-                                    <constraint firstItem="xnG-em-Ppa" firstAttribute="top" secondItem="DOW-gp-3ew" secondAttribute="top" constant="8" id="Lbn-j5-107"/>
-                                    <constraint firstAttribute="bottom" secondItem="xnG-em-Ppa" secondAttribute="bottom" constant="8" id="WOF-dm-87K"/>
-                                    <constraint firstItem="xnG-em-Ppa" firstAttribute="leading" secondItem="DOW-gp-3ew" secondAttribute="leading" constant="8" id="ncN-g7-pbl"/>
-                                    <constraint firstAttribute="trailing" secondItem="xnG-em-Ppa" secondAttribute="trailing" constant="8" id="ub0-Fb-vYw"/>
+                                    <constraint firstItem="xnG-em-Ppa" firstAttribute="top" secondItem="DOW-gp-3ew" secondAttribute="top" constant="1" id="Lbn-j5-107"/>
+                                    <constraint firstAttribute="bottom" secondItem="xnG-em-Ppa" secondAttribute="bottom" id="WOF-dm-87K"/>
+                                    <constraint firstItem="xnG-em-Ppa" firstAttribute="leading" secondItem="DOW-gp-3ew" secondAttribute="leading" id="ncN-g7-pbl"/>
+                                    <constraint firstAttribute="trailing" secondItem="xnG-em-Ppa" secondAttribute="trailing" id="ub0-Fb-vYw"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -99,7 +99,8 @@ extension UserListVC:UICollectionViewDelegateFlowLayout{
 extension UserListVC:UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let user = self.userFetchResultController!.object(at: indexPath)
-        Log.debug(user.name!)
+        let loc = CLLocation(latitude: (user.address?.geo?.lattitude?.doubleValue())!, longitude: (user.address?.geo?.longitude?.doubleValue())!)
+        self.mapView.centerToLocation(loc)
     }
 }
 

@@ -28,6 +28,6 @@ public class User: NSManagedObject {
 }
 extension User: Managed{
     @objc(defaultSortDescriptors) public static var defaultSortDescriptors : [NSSortDescriptor]{
-        return [NSSortDescriptor(key: #keyPath(userId), ascending: false)]
+        return [NSSortDescriptor(key: #keyPath(username), ascending: true)]
     }
 }

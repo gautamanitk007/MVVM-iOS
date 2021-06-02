@@ -132,7 +132,7 @@ class CreateUserVC: UIViewController {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
         let keyboardInfo = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
         let keyboardSize = keyboardInfo.cgRectValue.size
-        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 30, right: 0)
         self.baseScrollView.contentInset = contentInsets
         self.baseScrollView.scrollIndicatorInsets = contentInsets
     }
@@ -143,15 +143,9 @@ class CreateUserVC: UIViewController {
 }
 //MARK:- UITextFieldDelegate
 extension CreateUserVC:UITextFieldDelegate{
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        return true
+        return false
     }
 }
 
