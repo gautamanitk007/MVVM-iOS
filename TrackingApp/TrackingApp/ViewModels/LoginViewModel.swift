@@ -33,13 +33,13 @@ class LoginViewModel:CommonModel{
 
 extension LoginViewModel{
     var isRemember:Bool{
-        return true //Utility.getBoolValueFromDefaults(forKey:Keys.Remember.rawValue)
+        return Utility.getBoolValueFromDefaults(forKey:Keys.Remember.rawValue)
     }
     var username:String{
-        return "mehto007"//Utility.getValue(forKey:Keys.UserName.rawValue)
+        return Utility.getValue(forKey:Keys.UserName.rawValue)
     }
     var password:String{
-        return "admin123!"//Utility.getValue(forKey:Keys.Password.rawValue)
+        return Utility.getValue(forKey:Keys.Password.rawValue)
     }
     var token:String{
         return Utility.getValue(forKey:Keys.Token.rawValue)
@@ -102,7 +102,6 @@ extension LoginViewModel{
 
 extension LoginViewModel{
     func insert(_ object:LoginResponse,_ password:String){
-        Log.debug(object.token)
         Utility.saveInDefaults(value: object.token, forKey: Keys.Token.rawValue)
         self.coOrdinator.perform {[weak self] in
             guard let self = self else{ return}

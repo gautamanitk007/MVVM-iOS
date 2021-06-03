@@ -63,7 +63,6 @@ extension API {
         }else{
             request = self.loginRequest(resource.urlEndPoint, resource.method, resource.params)
         }
-        Log.debug(request)
         URLSession.shared.dataTask(with: request) { data, response, error in
             var sError : ApiError?
             if let resp = response as? HTTPURLResponse{
