@@ -1,24 +1,38 @@
 //
-//  UserViewModel.swift
+//  UserListViewModel.swift
 //  TrackingApp
 //
-//  Created by Gautam Kumar Singh on 28/5/21.
+//  Created by Gautam Kumar Singh on 3/6/21.
 //
 
 import Foundation
 import CoreData
-class UserViewModel{
-    let api:API!
-    let token:String!
-    let coOrdinator:Coordinator!
+class UserListViewModel:CommonModel{
+    var token:String!
+    var locationPinViewModel:LocationPinViewModel?
+    
+    lazy var userFetchResultController:NSFetchedResultsController<User>? = {
+        let request = User.sortedFetchRequest
+        request.returnsObjectsAsFaults = false
+        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.coOrdinator.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        return frc
+    }()
+    
     init( api:API,token:String,coOrdinator:Coordinator) {
-        self.api = api
+        super.init(api: api, coOrdinator: coOrdinator)
         self.token = token
-        self.coOrdinator = coOrdinator
+        self.locationPinViewModel = LocationPinViewModel(users: User.fetch(in: self.coOrdinator.viewContext))
+    }
+    deinit {
+        self.token = nil
+        self.locationPinViewModel = nil
+        Log.debug("Clean")
     }
     
+}
+
+extension UserListViewModel{
     func getAllUsers(on completion:@escaping(Int,ApiError?)->()){
-        
         let resource = Resource<[SUser]>(method:"GET",token:self.token,params:[:], urlEndPoint: "users") { data in
             let uResponse = try? JSONDecoder().decode([SUser].self, from: data)
             return uResponse
@@ -29,15 +43,16 @@ class UserViewModel{
                 DispatchQueue.main.async {
                     self.cleanUsersData()
                     self.insert(userList)
+                    self.locationPinViewModel?.reGenerateLocation(for: User.fetch(in: self.coOrdinator.viewContext))
+                    completion(ResponseCodes.success,error)
                 }
-                completion(ResponseCodes.success,error)
             }else{
                 completion(error!.statusCode,error)
             }
         }
     }
     
-    func logoutUser(_ params:[String:String],on completion:@escaping(Int,ApiError?)->()){
+    func logoutUser(_ params:[String:Any],on completion:@escaping(Int,ApiError?)->()){
         let uResponse = Resource<Dictionary<String,Any>>(method:"POST",token:self.token,params:params, urlEndPoint: "users/logout") { data in
             let json = try? JSONSerialization.jsonObject(with: data, options: [])
             return (json as! Dictionary<String, Any>)
@@ -51,11 +66,20 @@ class UserViewModel{
             }
         }
     }
-    
 }
 
+//MARK: public api
+extension UserListViewModel{
+    func createLocationPin(for user:User) -> LocationPin{
+        let pin =  self.locationPinViewModel?.createPins(for: user)
+        self.locationPinViewModel?.locPins?.append(pin!)
+        return pin!
+    }
+}
+
+
 //MARK:API to insert in table
-extension UserViewModel{
+extension UserListViewModel{
     private func insert(_ userList:[SUser]){
         for response in userList {
             let user = User.insert(into: self.coOrdinator.viewContext, for: response)
@@ -70,4 +94,3 @@ extension UserViewModel{
         let _ = self.coOrdinator.viewContext.saveOrRollback()
     }
 }
-

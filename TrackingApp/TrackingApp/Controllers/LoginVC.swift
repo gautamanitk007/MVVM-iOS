@@ -68,7 +68,7 @@ class LoginVC: UIViewController {
                         guard let self = self else {return}
                         self.stopActivity()
                         if error?.statusCode == ResponseCodes.success{
-                            self.showUserPage()
+                            self.pushUserPage()
                         }else{
                             self.showAlert(title: Strings.infoTitle.rawValue,message:error!.message!)
                         }
@@ -83,8 +83,7 @@ class LoginVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.ShowUsersSegue.rawValue {
             guard let userListVC = segue.destination as? UserListVC else {fatalError("UserListVC not found")}
-            userListVC.userViewModel =  (sender as! UserViewModel)
-            userListVC.locationPinViewModel =  LocationPinViewModel(users: User.fetch(in: self.loginViewModel.coOrdinator.viewContext))
+            userListVC.userListViewModel =  UserListViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token, coOrdinator: self.loginViewModel.coOrdinator)
         }else if segue.identifier == SegueIdentifier.DropdownSegue.rawValue{
             guard let dropDown = segue.destination as? DropdownVC else {fatalError("DropdownVC not found")}
             dropDown.delegate = self
@@ -115,8 +114,7 @@ class LoginVC: UIViewController {
                 
                 if self.loginViewModel.isTokenExist{
                     if let _ = self.navigationController?.topViewController as? LoginVC{
-                        let uViewModel = UserViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token ,coOrdinator: self.loginViewModel.coOrdinator)
-                        self.pushUserPage(uViewModel)
+                        self.pushUserPage()
                     }
                 }
             }
@@ -136,23 +134,8 @@ extension LoginVC{
             self.activityView.stopAnimating()
         }
     }
-    fileprivate func pushUserPage(_ viewModel:UserViewModel){
-        self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender:viewModel)
-    }
-    fileprivate func showUserPage(){
-        self.startActivity()
-        let uViewModel = UserViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token ,coOrdinator: self.loginViewModel.coOrdinator)
-        uViewModel.getAllUsers() {(status, error) in
-            DispatchQueue.main.async {[weak self] in
-                guard let self = self else{return}
-                self.stopActivity()
-                if status == ResponseCodes.success{
-                    self.pushUserPage(uViewModel)
-                }else{
-                    self.showAlert(title: Strings.infoTitle.rawValue, message: error!.message)
-                }
-            }
-        }
+    fileprivate func pushUserPage(){
+        self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender:nil)
     }
 }
 //MARK:- UITextFieldDelegate

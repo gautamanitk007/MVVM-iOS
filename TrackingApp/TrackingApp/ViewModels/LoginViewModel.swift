@@ -7,12 +7,9 @@
 
 import Foundation
 import CoreData
-class LoginViewModel{
-    let api:API!
-    let coOrdinator:Coordinator!
-    init( api:API,coOrdinator:Coordinator) {
-        self.api = api
-        self.coOrdinator = coOrdinator
+class LoginViewModel:CommonModel{
+    override init( api:API,coOrdinator:Coordinator) {
+        super.init(api: api, coOrdinator: coOrdinator)
     }
     
     func loginUser(_ params:[String:String],on completion:@escaping(Int,ApiError?)->()){
@@ -36,13 +33,13 @@ class LoginViewModel{
 
 extension LoginViewModel{
     var isRemember:Bool{
-        return Utility.getBoolValueFromDefaults(forKey:Keys.Remember.rawValue)
+        return true //Utility.getBoolValueFromDefaults(forKey:Keys.Remember.rawValue)
     }
     var username:String{
-        return Utility.getValue(forKey:Keys.UserName.rawValue)
+        return "mehto007"//Utility.getValue(forKey:Keys.UserName.rawValue)
     }
     var password:String{
-        return Utility.getValue(forKey:Keys.Password.rawValue)
+        return "admin123!"//Utility.getValue(forKey:Keys.Password.rawValue)
     }
     var token:String{
         return Utility.getValue(forKey:Keys.Token.rawValue)

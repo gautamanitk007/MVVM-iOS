@@ -71,8 +71,8 @@ extension API {
             }
             DispatchQueue.main.async {
                 if let data = data {
-                    let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: [])
-                    Log.debug(jsonResponse as Any)
+                    //let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: [])
+                    //Log.debug(jsonResponse as Any)
                     completion(resource.parse(data),sError)
                 }else{
                     if let err = sError {

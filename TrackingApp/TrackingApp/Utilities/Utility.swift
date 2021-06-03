@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import CoreData
 class Utility: NSObject {
     class func saveBoolInDefaults(_ value: Bool, forKey: String){
         let appDefaults = UserDefaults.standard
@@ -51,5 +51,15 @@ class Utility: NSObject {
         Utility.saveInDefaults(value: "", forKey: Keys.Password.rawValue)
         Utility.saveInDefaults(value: "", forKey: Keys.Token.rawValue)
         Utility.saveBoolInDefaults( false, forKey: Keys.Remember.rawValue)
+    }
+    class func resetLocalDB(_ context: NSManagedObjectContext){
+        if let login = LoginUser.findOrFetch(in: context, matching: LoginUser.defaultPredicate){
+            login.managedObjectContext?.delete(login)
+        }
+        let users = User.fetch(in: context)
+        for user in users {
+            user.managedObjectContext?.delete(user)
+        }
+        let _ = context.saveOrRollback()
     }
 }

@@ -16,6 +16,7 @@ class LoginVCTests: XCTestCase {
     override func setUp() {
         super.setUp()
         Utility.resetUserDefault()
+        //Utility.resetLocalDB(self.cordinator.viewContext)
         sut = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: StoryboardID.LoginPageID.rawValue) as? LoginVC
         sut.loginViewModel = nil
         sut.countryListViewModel = nil

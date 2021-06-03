@@ -7,7 +7,7 @@
 
 import UIKit
 protocol CreateUserDelegate:AnyObject {
-    func didUserAdded()
+    func didUserAdded(_ user:User)
 }
 class CreateUserVC: UIViewController {
 
@@ -110,11 +110,11 @@ class CreateUserVC: UIViewController {
             guard let self = self else{return}
             if error == nil{
                 self.startActivity()
-                self.createUserViewModel.saveUser {[weak self](statusCode, error) in
+                self.createUserViewModel.saveUser {[weak self](statusCode,user, error) in
                     guard let self = self else{return}
                     self.stopActivity()
                     if statusCode == ResponseCodes.success{
-                        self.delegate?.didUserAdded()
+                        self.delegate?.didUserAdded(user!)
                         self.navigationController?.popViewController(animated: true)
                     }else{
                         self.alert(title: Strings.infoTitle.rawValue, message: error!.message!)

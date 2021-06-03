@@ -28,6 +28,8 @@
 		8731DDD6266545C400999236 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731DDD5266545C400999236 /* LocationService.swift */; };
 		874EE6B22663893900CB2C45 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874EE6B12663893900CB2C45 /* Utility.swift */; };
 		8754CA372668816C00EAE0F5 /* MKMapView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8754CA362668816C00EAE0F5 /* MKMapView+Extension.swift */; };
+		8754CA3926688AE200EAE0F5 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8754CA3826688AE200EAE0F5 /* UserListViewModel.swift */; };
+		8754CA3B26688B5300EAE0F5 /* CommonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8754CA3A26688B5300EAE0F5 /* CommonModel.swift */; };
 		8780FEB4266322A4007BF173 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB3266322A4007BF173 /* Managed.swift */; };
 		8780FEB6266322E0007BF173 /* DataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB5266322E0007BF173 /* DataStack.swift */; };
 		8780FEB826632334007BF173 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780FEB726632334007BF173 /* Coordinator.swift */; };
@@ -50,7 +52,6 @@
 		87ADF0152660D3D500CA63D1 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF0142660D3D500CA63D1 /* RoundedButton.swift */; };
 		87ADF0182660D3F600CA63D1 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF0172660D3F600CA63D1 /* RoundedView.swift */; };
 		87ADF01A2660D42B00CA63D1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF0192660D42B00CA63D1 /* LoginViewModel.swift */; };
-		87ADF01C2660D44300CA63D1 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF01B2660D44300CA63D1 /* UserViewModel.swift */; };
 		87ADF01E2660D46400CA63D1 /* CreateUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF01D2660D46400CA63D1 /* CreateUserVC.swift */; };
 		87ADF0202660D48800CA63D1 /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF01F2660D48800CA63D1 /* UserListVC.swift */; };
 		87ADF0482660F11C00CA63D1 /* LoginVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF0472660F11C00CA63D1 /* LoginVCTests.swift */; };
@@ -108,6 +109,8 @@
 		8731DDD5266545C400999236 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		874EE6B12663893900CB2C45 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		8754CA362668816C00EAE0F5 /* MKMapView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extension.swift"; sourceTree = "<group>"; };
+		8754CA3826688AE200EAE0F5 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
+		8754CA3A26688B5300EAE0F5 /* CommonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModel.swift; sourceTree = "<group>"; };
 		8780FEB3266322A4007BF173 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		8780FEB5266322E0007BF173 /* DataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStack.swift; sourceTree = "<group>"; };
 		8780FEB726632334007BF173 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -132,7 +135,6 @@
 		87ADF0142660D3D500CA63D1 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		87ADF0172660D3F600CA63D1 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		87ADF0192660D42B00CA63D1 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		87ADF01B2660D44300CA63D1 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		87ADF01D2660D46400CA63D1 /* CreateUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserVC.swift; sourceTree = "<group>"; };
 		87ADF01F2660D48800CA63D1 /* UserListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListVC.swift; sourceTree = "<group>"; };
 		87ADF03A2660EAA400CA63D1 /* TrackingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,11 +279,12 @@
 			isa = PBXGroup;
 			children = (
 				87ADF0192660D42B00CA63D1 /* LoginViewModel.swift */,
-				87ADF01B2660D44300CA63D1 /* UserViewModel.swift */,
 				87D3B2642662A377008A2877 /* CountryViewModel.swift */,
 				87D3B2662662A5A3008A2877 /* CountryListViewModel.swift */,
 				87D368C726662E1300F71E1F /* LocationPinViewModel.swift */,
 				871A9DB726674D60007BF1F3 /* CreateUserViewModel.swift */,
+				8754CA3826688AE200EAE0F5 /* UserListViewModel.swift */,
+				8754CA3A26688B5300EAE0F5 /* CommonModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				87D3B25A26628D64008A2877 /* UIButton+Extension.swift in Sources */,
 				87D368C826662E1300F71E1F /* LocationPinViewModel.swift in Sources */,
 				87ADEFFF2660D21200CA63D1 /* API.swift in Sources */,
+				8754CA3926688AE200EAE0F5 /* UserListViewModel.swift in Sources */,
 				8780FEBA2663236C007BF173 /* NSManagedObjectContext+Extension.swift in Sources */,
 				87D368C12666131F00F71E1F /* LoginUser+CoreDataClass.swift in Sources */,
 				8780FEB4266322A4007BF173 /* Managed.swift in Sources */,
@@ -568,6 +572,7 @@
 				87ADF0112660D38100CA63D1 /* AlertController.swift in Sources */,
 				87ADF0132660D3AD00CA63D1 /* LoginVC.swift in Sources */,
 				8731DDD026650D4700999236 /* CollectionViewDatasource.swift in Sources */,
+				8754CA3B26688B5300EAE0F5 /* CommonModel.swift in Sources */,
 				8731DDC7266504E400999236 /* Company+CoreDataClass.swift in Sources */,
 				87ADF0012660D22300CA63D1 /* UserInfo.swift in Sources */,
 				871A9DBA26675906007BF1F3 /* UserModel.swift in Sources */,
@@ -578,7 +583,6 @@
 				874EE6B22663893900CB2C45 /* Utility.swift in Sources */,
 				87ADF01A2660D42B00CA63D1 /* LoginViewModel.swift in Sources */,
 				8731DDD6266545C400999236 /* LocationService.swift in Sources */,
-				87ADF01C2660D44300CA63D1 /* UserViewModel.swift in Sources */,
 				87A3033526613B5D00473FA9 /* ErrorVC.swift in Sources */,
 				87244F3C2664F2120052D6E2 /* SUser.swift in Sources */,
 				8731DDCC266504E400999236 /* Address+CoreDataProperties.swift in Sources */,

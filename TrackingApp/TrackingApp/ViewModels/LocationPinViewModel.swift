@@ -18,10 +18,14 @@ class LocationPinViewModel {
     
     func generateLocationPins(){
         for user in self.users {
-            let cordinate = CLLocationCoordinate2D(latitude:user.address!.geo!.lattitude!.doubleValue(), longitude: user.address!.geo!.longitude!.doubleValue())
-            let pin = LocationPin(title: user.username,suite:user.address?.suite, street: user.address?.street, coordinate: cordinate)
+            let pin = createPins(for: user)
             self.locPins?.append(pin)
         }
+    }
+    
+    func createPins(for user:User)->LocationPin{
+        let cordinate = CLLocationCoordinate2D(latitude:user.address!.geo!.lattitude!.doubleValue(), longitude: user.address!.geo!.longitude!.doubleValue())
+        return LocationPin(title: user.username,suite:user.address?.suite, street: user.address?.street, coordinate: cordinate)
     }
     
     func reGenerateLocation(for users:[User]){

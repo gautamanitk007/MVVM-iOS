@@ -15,18 +15,11 @@ class UserListVC: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
-    var userViewModel:UserViewModel!
-    var locationPinViewModel:LocationPinViewModel!
-    lazy var userFetchResultController:NSFetchedResultsController<User>? = {
-        let request = User.sortedFetchRequest
-        request.returnsObjectsAsFaults = false
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.userViewModel.coOrdinator.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        return frc
-    }()
-
+    var userListViewModel:UserListViewModel!
+   
     lazy var dataSource: CollectionViewDatasource<UserListVC>? = {
         guard let cv = self.collectionView else { fatalError("must have collection view") }
-        guard let frc = self.userFetchResultController else{ return nil}
+        guard let frc = self.userListViewModel.userFetchResultController else{ return nil}
         let dt = CollectionViewDatasource(collectionView: cv, cellIdentifier:Identifier.UserCellIdentifier.rawValue, fetchedResultsController: frc, delegate: self)
         return dt
     }()
@@ -39,17 +32,20 @@ class UserListVC: UIViewController {
         let logoutButton = UIBarButtonItem(image: UIImage(named: "logout.png")!, style: .plain, target: self, action: #selector(UserListVC.logoutTapped))
         self.navigationItem.leftBarButtonItem = logoutButton
         self.stopActivity()
+        self.userListViewModel!.getAllUsers { [weak self] (statusCode, error ) in
+            guard let self = self else { return }
+            if statusCode == ResponseCodes.success{
+                self.mapView.showsUserLocation = true
+                self.mapView.delegate = self
+                self.showPins()
+            }
+        }
         self.collectionView.dataSource = self.dataSource
         self.collectionView.delegate = self
-    
-        self.mapView.showsUserLocation = true
-        self.mapView.delegate = self
-        self.showPins()
-        
     }
     @objc func logoutTapped(){
         self.startActivity()
-        self.userViewModel.logoutUser(["token":self.userViewModel.token]) { [weak self ](statusCode, error) in
+        self.userListViewModel.logoutUser(["token":self.userListViewModel.token as Any]) { [weak self ](statusCode, error) in
             guard let self = self else{return}
             self.stopActivity()
             self.navigationController?.popViewController(animated: true)
@@ -61,7 +57,7 @@ class UserListVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.CreateUserSegue.rawValue {
             guard let createUserVC = segue.destination as? CreateUserVC else {fatalError("CreateUserVC not found")}
-            createUserVC.createUserViewModel = CreateUserViewModel(api: self.userViewModel.api, token:self.userViewModel.token,cordinator: self.userViewModel.coOrdinator, userModel: UserModel())
+            createUserVC.createUserViewModel = CreateUserViewModel(api: self.userListViewModel.api, token:self.userListViewModel.token,cordinator: self.userListViewModel.coOrdinator, userModel: UserModel())
             createUserVC.delegate = self
         }
     }
@@ -95,7 +91,7 @@ extension UserListVC:UICollectionViewDelegateFlowLayout{
 //MARK:- UICollectionViewDelegate
 extension UserListVC:UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let user = self.userFetchResultController!.object(at: indexPath)
+        let user = self.userListViewModel.userFetchResultController!.object(at: indexPath)
         let loc = CLLocation(latitude: (user.address?.geo?.lattitude?.doubleValue())!, longitude: (user.address?.geo?.longitude?.doubleValue())!)
         self.mapView.centerToLocation(loc)
     }
@@ -136,16 +132,18 @@ extension UserListVC{
         }
     }
     fileprivate func showPins(){
-        self.locationPinViewModel.generateLocationPins()
-        self.mapView.addAnnotations(self.locationPinViewModel.locPins!)
+        if let locPins = self.userListViewModel.locationPinViewModel?.locPins{
+            self.mapView.addAnnotations(locPins)
+        }else{
+            Log.debug("Pins are not available")
+        }
     }
 }
 
-//MARK:-CreateUserDelegate
+//MARK:- CreateUserDelegate
 extension UserListVC:CreateUserDelegate{
-    func didUserAdded() {
-        self.mapView.removeAnnotations(self.locationPinViewModel.locPins!)
-        self.locationPinViewModel.reGenerateLocation(for: User.fetch(in: self.userViewModel.coOrdinator.viewContext))
-        self.showPins()
+    func didUserAdded(_ user:User){
+        let locPin = self.userListViewModel.createLocationPin(for: user)
+        self.mapView.addAnnotation(locPin)
     }
 }

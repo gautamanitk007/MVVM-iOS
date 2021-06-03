@@ -7,19 +7,16 @@
 
 import Foundation
 
-class CreateUserViewModel{
-    let api:API!
+class CreateUserViewModel:CommonModel{
     let token:String!
     var userModel:UserModel
-    let cordinator:Coordinator!
     init(api:API,token:String,cordinator:Coordinator, userModel:UserModel) {
         self.token = token
-        self.api = api
         self.userModel = userModel
-        self.cordinator = cordinator
+        super.init(api: api, coOrdinator: cordinator)
     }
     
-    func saveUser(on completion:@escaping(Int,ApiError?)->()){
+    func saveUser(on completion:@escaping(Int,User?,ApiError?)->()){
         let uId:Int = Int.random(in: 1..<500)*10000
         
         let user =  CreateUser(userId: uId,password:userModel.password, name: userModel.name, email: userModel.email, username: userModel.username,phone: userModel.phone,website: userModel.website,
@@ -37,12 +34,12 @@ class CreateUserViewModel{
             guard let self = self else{ return }
             if let userResponse = result{
                 DispatchQueue.main.async {
-                    self.insert(userResponse)
-                    completion(ResponseCodes.success,error)
+                    let user = self.save(userResponse)
+                    completion(ResponseCodes.success,user,error)
                 }
                
             }else{
-                completion(error!.statusCode,error)
+                completion(error!.statusCode,nil,error)
             }
         }
         
@@ -50,9 +47,10 @@ class CreateUserViewModel{
 }
 //MARK:API to insert in table
 extension CreateUserViewModel{
-    private func insert(_ response: SUser){
-        let user = User.insert(into: self.cordinator.viewContext, for: response)
+    private func save(_ response: SUser) -> User{
+        let user = User.insert(into: self.coOrdinator.viewContext, for: response)
         let _ = user.managedObjectContext?.saveOrRollback()
+        return user
     }
 }
 //MARK:public api
