@@ -10,18 +10,18 @@ import XCTest
 class LoginVCTests: XCTestCase {
 
     var sut:LoginVC!
-    var api: MockAPI!
+    var api: API!
     var loginViewModel:LoginViewModel!
     var cordinator:Coordinator!
     override func setUp() {
         super.setUp()
         Utility.resetUserDefault()
-        sut = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "login") as? LoginVC
+        sut = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: StoryboardID.LoginPageID.rawValue) as? LoginVC
         sut.loginViewModel = nil
         sut.countryListViewModel = nil
         
         self.cordinator = UIApplication.appDelegate.coordinator
-        self.api = MockAPI(api: UIApplication.appDelegate.api)
+        self.api = UIApplication.appDelegate.api
         self.loginViewModel = LoginViewModel(api: self.api,coOrdinator: self.cordinator)
         
         self.sut.loginViewModel = self.loginViewModel

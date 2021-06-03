@@ -53,7 +53,6 @@
 		87ADF01C2660D44300CA63D1 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF01B2660D44300CA63D1 /* UserViewModel.swift */; };
 		87ADF01E2660D46400CA63D1 /* CreateUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF01D2660D46400CA63D1 /* CreateUserVC.swift */; };
 		87ADF0202660D48800CA63D1 /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF01F2660D48800CA63D1 /* UserListVC.swift */; };
-		87ADF0452660EED600CA63D1 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF0442660EED600CA63D1 /* MockAPI.swift */; };
 		87ADF0482660F11C00CA63D1 /* LoginVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF0472660F11C00CA63D1 /* LoginVCTests.swift */; };
 		87D368C12666131F00F71E1F /* LoginUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D368BF2666131F00F71E1F /* LoginUser+CoreDataClass.swift */; };
 		87D368C22666131F00F71E1F /* LoginUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D368C02666131F00F71E1F /* LoginUser+CoreDataProperties.swift */; };
@@ -138,7 +137,6 @@
 		87ADF01F2660D48800CA63D1 /* UserListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListVC.swift; sourceTree = "<group>"; };
 		87ADF03A2660EAA400CA63D1 /* TrackingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ADF03E2660EAA400CA63D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		87ADF0442660EED600CA63D1 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
 		87ADF0472660F11C00CA63D1 /* LoginVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCTests.swift; sourceTree = "<group>"; };
 		87D368BF2666131F00F71E1F /* LoginUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		87D368C02666131F00F71E1F /* LoginUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -385,7 +383,6 @@
 			children = (
 				87ADF0462660F0FA00CA63D1 /* Controllers */,
 				87ADF03E2660EAA400CA63D1 /* Info.plist */,
-				87ADF0442660EED600CA63D1 /* MockAPI.swift */,
 			);
 			path = TrackingAppTests;
 			sourceTree = "<group>";
@@ -605,7 +602,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87ADF0452660EED600CA63D1 /* MockAPI.swift in Sources */,
 				87244F07266491FD0052D6E2 /* ErrorVCTests.swift in Sources */,
 				87ADF0482660F11C00CA63D1 /* LoginVCTests.swift in Sources */,
 				871632462667E11D0040CB4A /* UserListVCTests.swift in Sources */,

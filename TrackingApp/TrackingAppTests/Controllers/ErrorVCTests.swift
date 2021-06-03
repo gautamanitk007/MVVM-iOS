@@ -12,7 +12,7 @@ class ErrorVCTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        sut = UIStoryboard(name: "UIHelpers", bundle: nil).instantiateViewController(identifier: "alert") as? ErrorVC
+        sut = UIStoryboard(name: "UIHelpers", bundle: nil).instantiateViewController(identifier: StoryboardID.AlertPageID.rawValue) as? ErrorVC
     
        
     }

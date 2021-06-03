@@ -25,6 +25,14 @@ enum Identifier:String {
     
 }
 
+enum StoryboardID:String {
+    case LoginPageID = "loginPageID"
+    case UserListPageID = "userListPageID"
+    case CreateUserPageID = "createUserPageID"
+    case DropdownPageID = "dropdownPageID"
+    case AlertPageID = "alertPageID"
+}
+
 struct ResponseCodes {
     static let success = 200
     static let duplicate = 202
