@@ -60,10 +60,7 @@ class UserListVC: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.CreateUserSegue.rawValue {
-            guard let navController = segue.destination as? UINavigationController else {
-                fatalError("NavigationController not found")
-            }
-            guard let createUserVC = navController.viewControllers.first as? CreateUserVC else {fatalError("CreateUserVC not found")}
+            guard let createUserVC = segue.destination as? CreateUserVC else {fatalError("CreateUserVC not found")}
             createUserVC.createUserViewModel = CreateUserViewModel(api: self.userViewModel.api, token:self.userViewModel.token,cordinator: self.userViewModel.coOrdinator, userModel: UserModel())
             createUserVC.delegate = self
         }
@@ -104,12 +101,7 @@ extension UserListVC:UICollectionViewDelegate{
     }
 }
 
-private extension MKMapView {
-  func centerToLocation(_ location: CLLocation,regionRadius: CLLocationDistance = 4000) {
-    let coordinateRegion = MKCoordinateRegion(center: location.coordinate,latitudinalMeters: regionRadius,longitudinalMeters: regionRadius)
-    setRegion(coordinateRegion, animated: true)
-  }
-}
+
 //MARK:- UICollectionViewDelegate
 extension UserListVC: MKMapViewDelegate {
     

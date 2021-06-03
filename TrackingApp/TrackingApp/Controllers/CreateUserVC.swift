@@ -104,9 +104,6 @@ class CreateUserVC: UIViewController {
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
     }
-    @IBAction func didCancelUserTapped(){
-        self.dismiss(animated: true, completion: nil)
-    }
     @IBAction func didSaveUserTapped(){
         self.view.endEditing(true)
         self.createUserViewModel.checkUserCredentials{[weak self]( _, error) in
@@ -118,7 +115,7 @@ class CreateUserVC: UIViewController {
                     self.stopActivity()
                     if statusCode == ResponseCodes.success{
                         self.delegate?.didUserAdded()
-                        self.dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
                     }else{
                         self.alert(title: Strings.infoTitle.rawValue, message: error!.message!)
                     }
