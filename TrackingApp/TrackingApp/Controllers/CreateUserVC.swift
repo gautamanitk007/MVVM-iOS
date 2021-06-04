@@ -94,6 +94,9 @@ class CreateUserVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationItem.title = NSLocalizedString("Page_Create_User_Title",comment: "")
+        self.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Button_Save_Title",comment: "")
+      
         self.stopActivity()
         self.setup()
         NotificationCenter.default.addObserver(self, selector: #selector(CreateUserVC.keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)

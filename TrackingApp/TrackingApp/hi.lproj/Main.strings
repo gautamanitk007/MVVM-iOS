@@ -1,0 +1,78 @@
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "8F7-Yu-Nos"; */
+"8F7-Yu-Nos.normalTitle" = "Login";
+
+/* Class = "UITextField"; placeholder = "# user"; ObjectID = "E5H-c5-9Fc"; */
+"E5H-c5-9Fc.placeholder" = "# user";
+
+/* Class = "UITextField"; placeholder = "# street"; ObjectID = "GS0-TY-gxo"; */
+"GS0-TY-gxo.placeholder" = "# street";
+
+/* Class = "UITextField"; placeholder = "# longitude"; ObjectID = "Gj1-tU-UUS"; */
+"Gj1-tU-UUS.placeholder" = "# longitude";
+
+/* Class = "UITextField"; placeholder = "# zipcode"; ObjectID = "Hzg-iz-6WZ"; */
+"Hzg-iz-6WZ.placeholder" = "# zipcode";
+
+/* Class = "UIBarButtonItem"; title = "Logout"; ObjectID = "I1u-WQ-y4U"; */
+"I1u-WQ-y4U.title" = "Logout";
+
+/* Class = "UILabel"; text = "Company"; ObjectID = "J76-t5-FwF"; */
+"J76-t5-FwF.text" = "Company";
+
+/* Class = "UITextField"; placeholder = "# email"; ObjectID = "NJq-mE-lGr"; */
+"NJq-mE-lGr.placeholder" = "# email";
+
+/* Class = "UITextField"; placeholder = "#suite"; ObjectID = "O6l-5u-0yP"; */
+"O6l-5u-0yP.placeholder" = "#suite";
+
+/* Class = "UINavigationItem"; title = "User List"; ObjectID = "Vl7-cX-601"; */
+"Vl7-cX-601.title" = "User List";
+
+/* Class = "UITextField"; placeholder = "#user name"; ObjectID = "ZM9-ew-hhA"; */
+"ZM9-ew-hhA.placeholder" = "#user name";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "be5-ms-h4P"; */
+"be5-ms-h4P.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "blD-fV-xnT"; */
+"blD-fV-xnT.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Create User"; ObjectID = "eJE-AF-nkh"; */
+"eJE-AF-nkh.title" = "Create User";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "f9S-Cc-111"; */
+"f9S-Cc-111.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Remember Login"; ObjectID = "fe0-Cc-orq"; */
+"fe0-Cc-orq.normalTitle" = "Remember Login";
+
+/* Class = "UILabel"; text = "Personal Information"; ObjectID = "l5i-1M-MIt"; */
+"l5i-1M-MIt.text" = "Personal Information";
+
+/* Class = "UITextField"; placeholder = "# city"; ObjectID = "nWm-CZ-WVb"; */
+"nWm-CZ-WVb.placeholder" = "# city";
+
+/* Class = "UITextField"; placeholder = "# phone"; ObjectID = "nj2-TT-pUE"; */
+"nj2-TT-pUE.placeholder" = "# phone";
+
+/* Class = "UIButton"; normalTitle = "Please Select Country "; ObjectID = "nwg-kb-O0m"; */
+"nwg-kb-O0m.normalTitle" = "Please Select Country ";
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "rjZ-V4-wla"; */
+"rjZ-V4-wla.title" = "Save";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "tNv-86-l2W"; */
+"tNv-86-l2W.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "# password(min 7 character)"; ObjectID = "vCx-vP-J5s"; */
+"vCx-vP-J5s.placeholder" = "# password(min 7 character)";
+
+/* Class = "UITextField"; placeholder = "#Password"; ObjectID = "vSH-SI-4Vv"; */
+"vSH-SI-4Vv.placeholder" = "#Password";
+
+/* Class = "UITextField"; placeholder = "# username(min 5 character)"; ObjectID = "wSm-lL-70E"; */
+"wSm-lL-70E.placeholder" = "# username(min 5 character)";
+
+/* Class = "UITextField"; placeholder = "# lattitude"; ObjectID = "wXm-Ug-mdi"; */
+"wXm-Ug-mdi.placeholder" = "# lattitude";

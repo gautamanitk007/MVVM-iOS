@@ -32,13 +32,11 @@ class LoginVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+       
+        self.setupLocalizedValue()
+        
         self.txtUserName.delegate = self
         self.txtPassword.delegate = self
-        self.btnCountry.setImage(image: UIImage(named: "drop.png")!, renderMode: .alwaysOriginal, semantics: .forceRightToLeft, alignment: .right, left: 0, right: 60)
-        self.btnRemember.setImage(image: UIImage(named: "circle_unchecked.png")!, renderMode: .alwaysOriginal, semantics: .forceLeftToRight, alignment: .left, left: 12, right: 0)
-       
-        
         self.stopActivity()
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
@@ -136,6 +134,20 @@ extension LoginVC{
     }
     fileprivate func pushUserPage(){
         self.performSegue(withIdentifier: SegueIdentifier.ShowUsersSegue.rawValue, sender:nil)
+    }
+    fileprivate func setupLocalizedValue(){
+        self.txtUserName.placeholder = NSLocalizedString("Login_Text_Field_Placeholder",comment: "")
+        self.txtPassword.placeholder = NSLocalizedString("Password_Text_Field_Placeholder",comment: "")
+        
+        self.btnLogin.setTitle(NSLocalizedString("Login_Button_Title",comment: ""), for: .normal)
+        self.btnRemember.setTitle(NSLocalizedString("Remember_Login_Text",comment: ""), for: .normal)
+        self.btnCountry.setTitle(NSLocalizedString("Drop_Down_Defualt_Button_Title",comment: ""), for: .normal)
+        
+        self.btnCountry.setImage(image: UIImage(named: NSLocalizedString("Drop_Down_Image_Name",comment: ""))!, renderMode: .alwaysOriginal,state:.normal, semantics: .forceRightToLeft, alignment: .right, left: 0, right: 60)
+        
+        self.btnRemember.setImage(image: UIImage(named: NSLocalizedString("Un_Check_Button_Image_Name",comment: ""))!, renderMode: .alwaysOriginal,state:.normal, semantics: .forceLeftToRight, alignment: .left, left: 12, right: 0)
+        self.btnRemember.setImage(image: UIImage(named: NSLocalizedString("Check_Button_Image_Name",comment: ""))!, renderMode: .alwaysOriginal,state:.selected, semantics: .forceLeftToRight, alignment: .left, left: 12, right: 0)
+        
     }
 }
 //MARK:- UITextFieldDelegate

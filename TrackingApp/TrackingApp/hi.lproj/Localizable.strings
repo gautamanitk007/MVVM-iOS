@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  TrackingApp
+
+  Created by Gautam Kumar Singh on 4/6/21.
+  
+*/
+
+"Login_Button_Title" = "Login";
+"Remember_Login_text" = "Remember Login";

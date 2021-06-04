@@ -28,7 +28,8 @@ class UserListVC: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.hidesBackButton = true
-        self.navigationItem.title = "Welcome"
+        self.navigationItem.title =  NSLocalizedString("Page_User_List_Title",comment: "")
+        
         let logoutButton = UIBarButtonItem(image: UIImage(named: "logout.png")!, style: .plain, target: self, action: #selector(UserListVC.logoutTapped))
         self.navigationItem.leftBarButtonItem = logoutButton
         self.stopActivity()

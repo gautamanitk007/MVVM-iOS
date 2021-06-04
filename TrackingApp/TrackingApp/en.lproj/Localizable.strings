@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  TrackingApp
+
+  Created by Gautam Kumar Singh on 4/6/21.
+  
+*/
+
+"Login_Text_Field_Placeholder" = "# username";
+"Password_Text_Field_Placeholder" = "# password";
+"Drop_Down_Defualt_Button_Title" = "Please Select Country";
+"Login_Button_Title" = "Login";
+"Remember_Login_Text" = "Remember Login";
+"Drop_Down_Image_Name" = "drop.png";
+"Check_Button_Image_Name" = "checkmark.png";
+"Un_Check_Button_Image_Name" = "circle_unchecked.png";
+
+"Button_Logout_Title" = "Logout";
+"Page_User_List_Title" = "Welcome";
+"Page_Create_User_Title" = "Create User";
+"Button_Save_Title" = "Save";
+
+
+
