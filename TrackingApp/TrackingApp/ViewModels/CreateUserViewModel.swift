@@ -61,18 +61,11 @@ extension CreateUserViewModel{
         let vName = uName.count >= AllowedLength.userNameLength.rawValue
         let vPassword = pwd.count >= AllowedLength.userPasswordLength.rawValue
         
-        if vName == true {
-            if vPassword == true {
-                completion(true,nil)
-            }else{
-                completion(false,Strings.password.rawValue)
-            }
+        let (allOk,errorMessage) = Validator.checkCredentails(vName, vPassword)
+        if allOk {
+            completion(true,nil)
         }else{
-            if vPassword == true {
-                completion(true,Strings.userName.rawValue)
-            }else{
-                completion(false,Strings.userNameAndPassword.rawValue)
-            }
+            completion(false,errorMessage)
         }
     }
 }

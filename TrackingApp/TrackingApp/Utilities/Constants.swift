@@ -21,8 +21,6 @@ enum SegueIdentifier:String {
 enum Identifier:String {
     case GeneralCellIdentifier = "GeneralCelli"
     case UserCellIdentifier = "UserCelli"
-    
-    
 }
 
 enum StoryboardID:String {
@@ -45,23 +43,6 @@ struct ResponseCodes {
     static let server_problem = 500
     static let server_down = 503
     
-}
-
-enum Strings:String {
-    case infoTitle = "Information"
-    case warningTitle = "Warning"
-    case delegateNilMessage = "Check your delegate"
-    case ok = "OK"
-    case cancel = "Cancel"
-    case save = "Save"
-    case error = "Error!"
-    case userName = "User Name length should be more than 5 characters"
-    case password = "Password length should be more than 7 characters"
-    case userNameAndPassword = "Please check user name and password length"
-    case validateUser = "Please validate user first before remember"
-    case network = "Internet connection is not available"
-    
-  
 }
 
 enum Keys:String{

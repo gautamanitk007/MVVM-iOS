@@ -67,23 +67,15 @@ extension LoginViewModel{
         let vPassword = pwd.count >= AllowedLength.userPasswordLength.rawValue
         
         self.updateLogin(isRemember: self.isRemember, userName: uName, password: pwd)
-        
-        if vName == true {
-            if vPassword == true {
-                if isRemember {
-                    completion(true,self.loginParams,nil)
-                }else{
-                    completion(true,["username":uName,"password":pwd],nil)
-                }
+        let (allOk,errorMessage) = Validator.checkCredentails(vName, vPassword)
+        if allOk {
+            if isRemember {
+                completion(true,self.loginParams,nil)
             }else{
-                completion(false,nil,Strings.password.rawValue)
+                completion(true,["username":uName,"password":pwd],nil)
             }
         }else{
-            if vPassword == true {
-                completion(true,nil,Strings.userName.rawValue)
-            }else{
-                completion(false,nil,Strings.userNameAndPassword.rawValue)
-            }
+            completion(false,nil,errorMessage)
         }
     }
     func updateLogin(isRemember reMember:Bool,userName uName:String,password pwd:String){

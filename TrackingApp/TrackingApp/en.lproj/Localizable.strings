@@ -22,3 +22,11 @@
 
 
 
+"Information_Title" = "Information";
+"Warning_Title" = "Warning";
+"Button_OK_Title" = "OK";
+"Button_Cancel_Title" = "Cancel";
+"Information_Error_Title" = "Error!";
+"UserName_Min_Length_Message" = "User Name length should be more than 5 characters";
+"Password_Min_Length_Message" = "Password length should be more than 7 characters";
+"UserName_Password_Length_Message" = "Please check user name and password length";

@@ -11,7 +11,7 @@ extension UIViewController{
     func alert(title titleValue:String, message msg:String){
         let alert = UIAlertController(title:titleValue, message:msg, preferredStyle: UIAlertController.Style.alert)
         alert.modalPresentationStyle = .popover
-        alert.addAction(UIAlertAction(title:Strings.ok.rawValue, style: .default) { _ in})
+        alert.addAction(UIAlertAction(title:NSLocalizedString("Button_OK_Title",comment: ""), style: .default) { _ in})
         present(alert, animated: true)
     }
     

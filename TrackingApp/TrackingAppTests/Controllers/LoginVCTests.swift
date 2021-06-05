@@ -49,7 +49,7 @@ class LoginVCTests: XCTestCase {
         //When
         let exp = expectation(for: NSPredicate(block:{ vc, _ -> Bool in
             let presentedController = self.getTopController() as? ErrorVC
-            return presentedController != nil && presentedController!.alertTitle == Strings.infoTitle.rawValue && presentedController!.alertMessage == Strings.userNameAndPassword.rawValue
+            return presentedController != nil && presentedController!.alertTitle ==  NSLocalizedString("Information_Title",comment: "") && presentedController!.alertMessage ==  NSLocalizedString("UserName_Password_Length_Message",comment: "")
         }), evaluatedWith: sut, handler: nil)
 
         self.whenSignIn()
@@ -59,8 +59,8 @@ class LoginVCTests: XCTestCase {
         let presentedController = self.getTopController() as? ErrorVC
         presentedController?.didOkTapped(presentedController?.btnOk as Any)
         XCTAssertNotNil(presentedController)
-        XCTAssertEqual(presentedController?.alertTitle,Strings.infoTitle.rawValue)
-        XCTAssertEqual(presentedController?.alertMessage,Strings.userNameAndPassword.rawValue)
+        XCTAssertEqual(presentedController?.alertTitle,NSLocalizedString("Information_Title",comment: ""))
+        XCTAssertEqual(presentedController?.alertMessage, NSLocalizedString("UserName_Password_Length_Message",comment: ""))
     }
 
     func test_login_with_invalid_userId_and_password_length(){
@@ -72,7 +72,7 @@ class LoginVCTests: XCTestCase {
         //When
         let exp = expectation(for: NSPredicate(block:{ vc, _ -> Bool in
             let presentedController = self.getTopController() as? ErrorVC
-            return presentedController != nil && presentedController!.alertTitle == Strings.infoTitle.rawValue && presentedController!.alertMessage == Strings.userNameAndPassword.rawValue
+            return presentedController != nil && presentedController!.alertTitle == NSLocalizedString("Information_Title",comment: "") && presentedController!.alertMessage ==  NSLocalizedString("UserName_Password_Length_Message",comment: "")
         }), evaluatedWith: sut, handler: nil)
 
         self.whenSignIn()
@@ -83,8 +83,8 @@ class LoginVCTests: XCTestCase {
         presentedController?.didOkTapped(presentedController?.btnOk as Any)
 
         XCTAssertNotNil(presentedController)
-        XCTAssertEqual(presentedController?.alertTitle,Strings.infoTitle.rawValue)
-        XCTAssertEqual(presentedController?.alertMessage,Strings.userNameAndPassword.rawValue)
+        XCTAssertEqual(presentedController?.alertTitle,NSLocalizedString("Information_Title",comment: ""))
+        XCTAssertEqual(presentedController?.alertMessage, NSLocalizedString("UserName_Password_Length_Message",comment: ""))
 
     }
     func test_login_with_valid_userId_length_and_invalid_password_length(){
@@ -95,7 +95,7 @@ class LoginVCTests: XCTestCase {
         //When
         let exp = expectation(for: NSPredicate(block:{ vc, _ -> Bool in
             let presentedController = self.getTopController() as? ErrorVC
-            return presentedController != nil && presentedController!.alertTitle == Strings.infoTitle.rawValue && presentedController!.alertMessage == Strings.password.rawValue
+            return presentedController != nil && presentedController!.alertTitle == NSLocalizedString("Information_Title",comment: "") && presentedController!.alertMessage == NSLocalizedString("Password_Min_Length_Message",comment: "")
         }), evaluatedWith: sut, handler: nil)
 
         self.whenSignIn()
@@ -105,8 +105,8 @@ class LoginVCTests: XCTestCase {
         let presentedController = self.getTopController() as? ErrorVC
         presentedController?.didOkTapped(presentedController?.btnOk as Any)
         XCTAssertNotNil(presentedController)
-        XCTAssertEqual(presentedController?.alertTitle,Strings.infoTitle.rawValue)
-        XCTAssertEqual(presentedController?.alertMessage,Strings.password.rawValue)
+        XCTAssertEqual(presentedController?.alertTitle,NSLocalizedString("Information_Title",comment: ""))
+        XCTAssertEqual(presentedController?.alertMessage,NSLocalizedString("Password_Min_Length_Message",comment: ""))
     }
     func test_login_with_valid_userId_and_password_length(){
         //Given

@@ -120,11 +120,11 @@ class CreateUserVC: UIViewController {
                         self.delegate?.didUserAdded(user!)
                         self.navigationController?.popViewController(animated: true)
                     }else{
-                        self.alert(title: Strings.infoTitle.rawValue, message: error!.message!)
+                        self.alert(title: NSLocalizedString("Information_Title",comment: ""), message: error!.message!)
                     }
                 }
             }else{
-                self.alert(title: Strings.infoTitle.rawValue, message: error!)
+                self.alert(title: NSLocalizedString("Information_Title",comment: ""), message: error!)
             }
         }
     }

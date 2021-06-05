@@ -20,6 +20,7 @@ class LoginViewModelTests: XCTestCase {
         self.sut = nil
         super.tearDown()
     }
+
     func test_empty_username_and_password(){
         defer{
             self.waitForExpectations(timeout: 0)
@@ -33,7 +34,7 @@ class LoginViewModelTests: XCTestCase {
             //Then
             XCTAssertFalse(success)
             XCTAssertNil(params)
-            XCTAssertEqual(error, Strings.userNameAndPassword.rawValue)
+            XCTAssertEqual(error, NSLocalizedString("UserName_Password_Length_Message",comment: ""))
             expectation.fulfill()
         }
     }
@@ -50,7 +51,7 @@ class LoginViewModelTests: XCTestCase {
             //Then
             XCTAssertFalse(success)
             XCTAssertNil(params)
-            XCTAssertEqual(error, Strings.userNameAndPassword.rawValue)
+            XCTAssertEqual(error, NSLocalizedString("UserName_Password_Length_Message",comment: ""))
             expectation.fulfill()
         }
     }
@@ -67,7 +68,7 @@ class LoginViewModelTests: XCTestCase {
             //Then
             XCTAssertFalse(success)
             XCTAssertNil(params)
-            XCTAssertEqual(error, Strings.password.rawValue)
+            XCTAssertEqual(error, NSLocalizedString("Password_Min_Length_Message",comment: ""))
             expectation.fulfill()
         }
     }

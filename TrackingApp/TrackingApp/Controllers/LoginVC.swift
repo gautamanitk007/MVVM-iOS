@@ -68,12 +68,12 @@ class LoginVC: UIViewController {
                         if error?.statusCode == ResponseCodes.success{
                             self.pushUserPage()
                         }else{
-                            self.showAlert(title: Strings.infoTitle.rawValue,message:error!.message!)
+                            self.showAlert(title: NSLocalizedString("Information_Title",comment: ""),message:error!.message!)
                         }
                     }
                 }
             }else{
-                self.showAlert(title: Strings.infoTitle.rawValue,message:error!)
+                self.showAlert(title: NSLocalizedString("Information_Title",comment: ""),message:error!)
             }
         }
     }

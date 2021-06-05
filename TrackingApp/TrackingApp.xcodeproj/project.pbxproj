@@ -55,6 +55,7 @@
 		87ADF01E2660D46400CA63D1 /* CreateUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF01D2660D46400CA63D1 /* CreateUserVC.swift */; };
 		87ADF0202660D48800CA63D1 /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF01F2660D48800CA63D1 /* UserListVC.swift */; };
 		87ADF0482660F11C00CA63D1 /* LoginVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF0472660F11C00CA63D1 /* LoginVCTests.swift */; };
+		87D23191266B287F007F2FD6 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D23190266B287F007F2FD6 /* Validator.swift */; };
 		87D368C12666131F00F71E1F /* LoginUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D368BF2666131F00F71E1F /* LoginUser+CoreDataClass.swift */; };
 		87D368C22666131F00F71E1F /* LoginUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D368C02666131F00F71E1F /* LoginUser+CoreDataProperties.swift */; };
 		87D368C42666297F00F71E1F /* LocationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D368C32666297F00F71E1F /* LocationPin.swift */; };
@@ -144,6 +145,7 @@
 		87ADF03A2660EAA400CA63D1 /* TrackingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ADF03E2660EAA400CA63D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87ADF0472660F11C00CA63D1 /* LoginVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCTests.swift; sourceTree = "<group>"; };
+		87D23190266B287F007F2FD6 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		87D368BF2666131F00F71E1F /* LoginUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		87D368C02666131F00F71E1F /* LoginUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		87D368C32666297F00F71E1F /* LocationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPin.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				87ADF00C2660D35200CA63D1 /* Configuration.swift */,
 				874EE6B12663893900CB2C45 /* Utility.swift */,
 				8731DDD5266545C400999236 /* LocationService.swift */,
+				87D23190266B287F007F2FD6 /* Validator.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				87D368C42666297F00F71E1F /* LocationPin.swift in Sources */,
 				87ADF0182660D3F600CA63D1 /* RoundedView.swift in Sources */,
 				8780FEB826632334007BF173 /* Coordinator.swift in Sources */,
+				87D23191266B287F007F2FD6 /* Validator.swift in Sources */,
 				87D368C22666131F00F71E1F /* LoginUser+CoreDataProperties.swift in Sources */,
 				87ADEFDF2660D08800CA63D1 /* AppDelegate.swift in Sources */,
 				87ADF01E2660D46400CA63D1 /* CreateUserVC.swift in Sources */,
