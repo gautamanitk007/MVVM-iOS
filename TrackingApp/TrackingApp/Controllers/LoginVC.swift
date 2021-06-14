@@ -14,7 +14,6 @@ class LoginVC: UIViewController {
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet var contentView:UIView!
     @IBOutlet weak var btnRemember: UIButton!
-    @IBOutlet weak var btnCountry: RoundedButton!
     @IBOutlet weak var btnLogin: RoundedButton!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtUserName: UITextField!
@@ -52,10 +51,6 @@ class LoginVC: UIViewController {
         self.loginViewModel.updateLogin(isRemember:!self.btnRemember.isSelected,userName: self.txtUserName.text!,password: self.txtPassword.text!)
         self.isRemember = self.loginViewModel.isRemember
     }
-    @IBAction func didCountryTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: SegueIdentifier.DropdownSegue.rawValue , sender: nil)
-    }
-
     @IBAction func didLoginTapped(_ sender: Any) {
         self.loginViewModel.validateCredentials(for: self.txtUserName.text!, and: self.txtPassword.text!) { [weak self] (allOk,params, error )in
             guard let self = self else {return}
@@ -82,10 +77,6 @@ class LoginVC: UIViewController {
         if segue.identifier == SegueIdentifier.ShowUsersSegue.rawValue {
             guard let userListVC = segue.destination as? UserListVC else {fatalError("UserListVC not found")}
             userListVC.userListViewModel =  UserListViewModel(api: self.loginViewModel.api, token: self.loginViewModel.token, coOrdinator: self.loginViewModel.coOrdinator)
-        }else if segue.identifier == SegueIdentifier.DropdownSegue.rawValue{
-            guard let dropDown = segue.destination as? DropdownVC else {fatalError("DropdownVC not found")}
-            dropDown.delegate = self
-            dropDown.countryListViewModel = self.countryListViewModel
         }
     }
     
@@ -141,10 +132,7 @@ extension LoginVC{
         
         self.btnLogin.setTitle(NSLocalizedString("Login_Button_Title",comment: ""), for: .normal)
         self.btnRemember.setTitle(NSLocalizedString("Remember_Login_Text",comment: ""), for: .normal)
-        self.btnCountry.setTitle(NSLocalizedString("Drop_Down_Defualt_Button_Title",comment: ""), for: .normal)
-        
-        self.btnCountry.setImage(image: UIImage(named: NSLocalizedString("Drop_Down_Image_Name",comment: ""))!, renderMode: .alwaysOriginal,state:.normal, semantics: .forceRightToLeft, alignment: .right, left: 0, right: 60)
-        
+  
         self.btnRemember.setImage(image: UIImage(named: NSLocalizedString("Un_Check_Button_Image_Name",comment: ""))!, renderMode: .alwaysOriginal,state:.normal, semantics: .forceLeftToRight, alignment: .left, left: 12, right: 0)
         self.btnRemember.setImage(image: UIImage(named: NSLocalizedString("Check_Button_Image_Name",comment: ""))!, renderMode: .alwaysOriginal,state:.selected, semantics: .forceLeftToRight, alignment: .left, left: 12, right: 0)
         
@@ -159,12 +147,5 @@ extension LoginVC:UITextFieldDelegate{
             textField.resignFirstResponder()
         }
         return false
-    }
-}
-
-//MARK:- DropdownDelegate
-extension LoginVC : DropdownDelegate{
-    func didSelected(viewModel vm: CountryViewModel) {
-        self.btnCountry.setTitle(vm.countryName, for: .normal)
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 class CommonModel{
     let api:API!
-    let coOrdinator:Coordinator!
+    let coOrdinator:Coordinator
     init( api:API,coOrdinator:Coordinator) {
         self.api = api
         self.coOrdinator = coOrdinator

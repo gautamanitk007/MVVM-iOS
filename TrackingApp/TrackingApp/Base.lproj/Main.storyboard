@@ -28,7 +28,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYG-KV-yiV">
-                                                <rect key="frame" x="32" y="241.66666666666663" width="350" height="253"/>
+                                                <rect key="frame" x="32" y="265.66666666666669" width="350" height="205"/>
                                                 <subviews>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="JHY-Ya-8qo">
                                                         <rect key="frame" x="157" y="8" width="37" height="37"/>
@@ -40,7 +40,7 @@
                                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </activityIndicatorView>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZM9-ew-hhA">
-                                                        <rect key="frame" x="8" y="61.000000000000028" width="334" height="40"/>
+                                                        <rect key="frame" x="8" y="61" width="334" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="M6d-l1-4KY"/>
                                                         </constraints>
@@ -48,7 +48,7 @@
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="username"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vSH-SI-4Vv">
-                                                        <rect key="frame" x="8" y="109.00000000000003" width="334" height="40"/>
+                                                        <rect key="frame" x="8" y="109" width="334" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="2Um-Aa-mWF"/>
                                                         </constraints>
@@ -56,7 +56,7 @@
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8F7-Yu-Nos" customClass="RoundedButton" customModule="TrackingApp" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="205.00000000000003" width="130" height="40"/>
+                                                        <rect key="frame" x="8" y="157" width="130" height="40"/>
                                                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="130" id="8Eu-tg-6fB"/>
@@ -70,19 +70,8 @@
                                                             <action selector="didLoginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HXX-TN-aph"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwg-kb-O0m" customClass="RoundedButton" customModule="TrackingApp" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="157.00000000000003" width="334" height="40"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="cgS-V0-XC1"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Please Select Country "/>
-                                                        <connections>
-                                                            <action selector="didCountryTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UEL-Ds-C7G"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe0-Cc-orq">
-                                                        <rect key="frame" x="146" y="205.00000000000003" width="196" height="40"/>
+                                                        <rect key="frame" x="146" y="157" width="196" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="qLQ-Q1-ePc"/>
                                                         </constraints>
@@ -98,25 +87,22 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="ZM9-ew-hhA" firstAttribute="top" secondItem="JHY-Ya-8qo" secondAttribute="bottom" constant="16.000000000000028" id="3ux-z5-AOV"/>
-                                                    <constraint firstAttribute="trailing" secondItem="nwg-kb-O0m" secondAttribute="trailing" constant="8" id="5YI-bb-dfL"/>
                                                     <constraint firstItem="ZM9-ew-hhA" firstAttribute="leading" secondItem="eYG-KV-yiV" secondAttribute="leading" constant="8" id="72V-nT-7zK"/>
                                                     <constraint firstItem="8F7-Yu-Nos" firstAttribute="leading" secondItem="eYG-KV-yiV" secondAttribute="leading" constant="8" id="7uU-8D-ltx"/>
+                                                    <constraint firstItem="8F7-Yu-Nos" firstAttribute="top" secondItem="vSH-SI-4Vv" secondAttribute="bottom" constant="8" id="G0T-k9-4zL"/>
                                                     <constraint firstAttribute="bottom" secondItem="8F7-Yu-Nos" secondAttribute="bottom" constant="8" id="Hm2-Dl-Nsz"/>
                                                     <constraint firstItem="JHY-Ya-8qo" firstAttribute="leading" secondItem="eYG-KV-yiV" secondAttribute="leading" constant="157" id="N3H-t8-apK"/>
                                                     <constraint firstItem="vSH-SI-4Vv" firstAttribute="leading" secondItem="eYG-KV-yiV" secondAttribute="leading" constant="8" id="N7j-em-k6m"/>
                                                     <constraint firstItem="vSH-SI-4Vv" firstAttribute="top" secondItem="ZM9-ew-hhA" secondAttribute="bottom" constant="8" id="QY4-hn-vjp"/>
+                                                    <constraint firstItem="fe0-Cc-orq" firstAttribute="top" secondItem="vSH-SI-4Vv" secondAttribute="bottom" constant="8" id="SqX-2c-Ntd"/>
                                                     <constraint firstAttribute="trailing" secondItem="ZM9-ew-hhA" secondAttribute="trailing" constant="8" id="VD2-WA-47s"/>
                                                     <constraint firstItem="fe0-Cc-orq" firstAttribute="leading" secondItem="8F7-Yu-Nos" secondAttribute="trailing" constant="8" symbolic="YES" id="Xhn-l9-Jfe"/>
-                                                    <constraint firstItem="nwg-kb-O0m" firstAttribute="leading" secondItem="eYG-KV-yiV" secondAttribute="leading" constant="8" id="bxQ-4H-qB9"/>
                                                     <constraint firstAttribute="bottom" secondItem="fe0-Cc-orq" secondAttribute="bottom" constant="8" id="dCO-Ka-cHr"/>
                                                     <constraint firstAttribute="trailing" secondItem="fe0-Cc-orq" secondAttribute="trailing" constant="8" id="dkg-JK-3dI"/>
-                                                    <constraint firstAttribute="height" constant="253" id="fLA-0t-K3d"/>
-                                                    <constraint firstItem="nwg-kb-O0m" firstAttribute="top" secondItem="vSH-SI-4Vv" secondAttribute="bottom" constant="8" id="jv4-gR-caV"/>
-                                                    <constraint firstItem="fe0-Cc-orq" firstAttribute="top" secondItem="nwg-kb-O0m" secondAttribute="bottom" constant="8" id="obI-4E-zSR"/>
+                                                    <constraint firstAttribute="height" constant="205" id="fLA-0t-K3d"/>
                                                     <constraint firstAttribute="trailing" secondItem="vSH-SI-4Vv" secondAttribute="trailing" constant="8" id="qUX-RS-zU2"/>
                                                     <constraint firstAttribute="width" constant="350" id="qw0-8f-S4g"/>
                                                     <constraint firstAttribute="trailing" secondItem="JHY-Ya-8qo" secondAttribute="trailing" constant="156" id="qyg-kZ-ar1"/>
-                                                    <constraint firstItem="8F7-Yu-Nos" firstAttribute="top" secondItem="nwg-kb-O0m" secondAttribute="bottom" constant="8" id="sF0-nS-fqj"/>
                                                     <constraint firstItem="JHY-Ya-8qo" firstAttribute="top" secondItem="eYG-KV-yiV" secondAttribute="top" constant="8" id="t5n-QE-jp6"/>
                                                 </constraints>
                                             </view>
@@ -160,7 +146,6 @@
                     <connections>
                         <outlet property="activityView" destination="JHY-Ya-8qo" id="Pxq-ZB-3W8"/>
                         <outlet property="baseScrollView" destination="eXK-Pf-kkS" id="l5R-C6-sR5"/>
-                        <outlet property="btnCountry" destination="nwg-kb-O0m" id="lrp-jP-JKR"/>
                         <outlet property="btnLogin" destination="8F7-Yu-Nos" id="kO8-fo-6y3"/>
                         <outlet property="btnRemember" destination="fe0-Cc-orq" id="oOD-ye-xds"/>
                         <outlet property="contentView" destination="0b6-rq-VzC" id="pXY-bV-hyM"/>
@@ -168,9 +153,6 @@
                         <outlet property="txtPassword" destination="vSH-SI-4Vv" id="gwv-ln-NgX"/>
                         <outlet property="txtUserName" destination="ZM9-ew-hhA" id="31b-UO-PkC"/>
                         <segue destination="PBn-Rn-HZj" kind="show" identifier="showUserSegue" id="fvl-Mu-OSy"/>
-                        <segue destination="aGn-h2-TIb" kind="popoverPresentation" identifier="dropDownSegue" popoverAnchorView="nwg-kb-O0m" id="QGO-PL-4oO">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -182,11 +164,11 @@
             <objects>
                 <viewController storyboardIdentifier="dropdownPageID" id="aGn-h2-TIb" customClass="DropdownVC" customModule="TrackingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xcf-za-S27">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="tGv-8x-qLS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
