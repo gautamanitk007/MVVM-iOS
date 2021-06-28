@@ -10,7 +10,7 @@
 "Password_Text_Field_Placeholder" = "# password";
 "Drop_Down_Defualt_Button_Title" = "Please Select Country";
 "Login_Button_Title" = "Login";
-"Remember_Login_Text" = "Remember Login";
+"Remember_Login_Text" = "Remember";
 "Drop_Down_Image_Name" = "drop.png";
 "Check_Button_Image_Name" = "checkmark.png";
 "Un_Check_Button_Image_Name" = "circle_unchecked.png";
